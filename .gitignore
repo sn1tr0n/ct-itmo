@@ -6,3 +6,4 @@
 *.out
 *.gz
 *.toc
+push.sh
