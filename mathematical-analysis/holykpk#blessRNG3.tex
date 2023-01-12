@@ -1,0 +1,962 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{arcs}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{stackrel}
+\usepackage{xcolor}
+\usepackage{epigraph}
+\usepackage{tikz}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{draftwatermark}
+\usepackage{ marvosym }
+\usepackage{physics}
+\usepackage{pdfpages}
+
+
+
+\def\letus{%
+\mathord{\setbox0=\hbox{$\exists$}%
+         \hbox{\kern 0.125\wd0%
+               \vbox to \ht0{%
+                  \hrule width 0.75\wd0%
+                  \vfill%
+                  \hrule width 0.75\wd0}%
+               \vrule height \ht0%
+               \kern 0.125\wd0}%
+       }%
+        }
+\def\dbl{\,\,}
+\def\image#1{\includegraphics[width=\linewidth]{static/#1}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\segm}{Segm}
+
+
+\newcommand*\lateraleye{%
+       \scalebox{0.15}{
+    \tikzset{every picture/.style={line width=0.75pt}} 
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    \draw  [line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
+    \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (308.94,116.33) .. controls (313.87,116.33) and (317.86,125.51) .. (317.85,136.83) .. controls (317.84,148.15) and (313.84,157.33) .. (308.91,157.33) .. controls (303.99,157.32) and (300,148.14) .. (300.01,136.82) .. controls (300.02,125.5) and (304.02,116.32) .. (308.94,116.33) -- cycle ;
+    \draw  [draw opacity=0][line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) -- (331.14,139.55) -- cycle ; \draw  [line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) ;
+    \draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (304.43,124.2) .. controls (306.09,124.25) and (307.32,128.01) .. (307.18,132.6) .. controls (307.05,137.19) and (305.59,140.88) .. (303.93,140.83) .. controls (302.27,140.78) and (301.03,137.02) .. (301.17,132.43) .. controls (301.31,127.83) and (302.76,124.15) .. (304.43,124.2) -- cycle ;
+    \end{tikzpicture}
+    }\,}
+    
+\def\D{\,\mathrm{d}}
+
+\let\vanillaparagraph\paragraph
+\let\vanillasubparagraph\subparagraph
+\renewcommand{\paragraph}[1]{\vanillaparagraph{#1}\mbox{}\\}
+\renewcommand{\subparagraph}[1]{\vanillasubparagraph{#1}\mbox{}\\}
+
+\graphicspath{{./images/}}
+
+\setlength{\parindent}{0pt}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\SetWatermarkText{$\underset{\text{@imodre @snitron}}{\text{ПРОДАМ ГАРАЖ}}$}
+\SetWatermarkScale{2}
+\SetWatermarkLightness{0.9}
+
+\begin{document}
+\DraftwatermarkOptions{stamp=false}
+\begin{titlepage}
+    \centering
+    \vspace*{\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\LARGE СВЯТОЙ КПК\\ [0.3\baselineskip] \#BlessRNG}\\[0.2\baselineskip]
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    \scshape
+    Или как не сдохнуть на 3 семе из-за матана \\
+    \vspace*{2\baselineskip}
+    Разработал \\[\baselineskip]
+    {\Large Никита Варламов\quad @snitron}
+        \vspace*{2\baselineskip}\par
+    Почётный автор \\[\baselineskip]
+    {\Large Тимофей Белоусов\quad @imodre}
+    \vfill
+    v0.0 alpha\\
+    {\scshape Октябрь-Undefined 2022-2023} \par
+\end{titlepage}
+
+\textbf{Заметки авторов}
+
+В данном конспекте названия всех задач имеют ссылку на своего автора в виде верхнего индекса:
+\begin{enumerate}
+    \item @imodre
+    \item @snitron
+\end{enumerate}
+По любым вопросам и предложениям/улучшениям обращаться в телеграмм к соответвующему автору.
+
+\textbf{Known Issues}
+
+
+
+Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов. Ваше авторство также будет указано, с вашего разрешения.
+\newpage
+
+\begin{flushright}
+\emph{Ah shit\\
+Here we go again!\\
+And again...}
+\end{flushright}
+
+\tableofcontents
+
+
+\setlength{\parskip}{6pt}%
+\newpage
+\DraftwatermarkOptions{stamp=false}
+
+
+\section{Период Палеозойский}
+\subsection{Важные определения}
+\subsubsection{Норма линейного оператора}
+Пусть $X, Y$ --- нормированные линейные пространства, $A \in \mathbb{L}(X, Y)$ (это множество линейных отображений над $X \rightarrow Y$). Тогда нормой линейного оператора называется $||A||_{X, Y} = \sup_{{x \in X}_{|x| = 1}}{|Ax|}_Y$
+
+Замечания (для $X = \mathbb{R}^m, Y = \mathbb{R}^n$):
+\begin{enumerate}
+\item По лемме об ограниченности нормы линейного оператора ($L = (l_{i, j}), |Lx| \le C_L|x| = C_L \cdot 1 = \sqrt{\sum{l_{i, j}^2}}$) --- всегда ограничена!
+\item $x \rightarrow |Lx|$ --- непрерывная функция, заданная на компакте ($|x| = 1 \Leftrightarrow x \in S(0, 1)$ --- сфера), причём по Вейерштрассу, максимум достигается. (напоминаю, мы в $\mathbb{R}^m!$)
+\item Верно неравенство $\forall x \in \mathbb{R}^m: |Lx| \le ||L|| \cdot |x|$ (тут у нас важно различать евклидову и неевклидову норму). КПК считает, что это очевидно: 
+    \begin{enumerate}
+        \item $x = 0$ --- равенство
+        \item $x \neq 0$ --- делим на норму $x: |L \frac{x}{|x|}| \le ||L||$, это очевидно, т.к. наша новая норма задаётся как супремум значений $|x| = 1$, ну и мы вот сравниваем супрермум с меньшими значениями.
+    \end{enumerate}
+\item $\forall x \in \mathbb{R}^m$, если нашлось $C > 0: |Lx| \le C \cdot |x| \Rightarrow ||L|| \le C$ --- тупо по пункту 3, очевидно.
+\end{enumerate}
+
+\subsubsection{Простое k-мерное гладкое многообразие в $\mathbb{R}^m$}
+
+\textit{Обобщение вот всей этой темы с диффеоморфизмами в одно толковое определение}
+
+$M \subset \mathbb{R}^m$ --- простое k-мерное $C^r$-гладкое многообразие в $\mathbb{R}^m$, если:
+
+\begin{itemize}
+    \item $\exists O \subset \mathbb{R}^k$ --- открытое (область?)
+    \item $\exists \Phi: O \rightarrow \mathbb{R}^m, \Phi(O) = M$ --- гомеоморфизм (непрерывная биекция)
+    \item $\Phi \in C^r(O)$
+    \item $\forall x \in O: \rank \Phi'(x) = k$
+\end{itemize}
+
+$\Phi$ --- гладкая параметризация.
+
+\newpage
+
+\subsection{Определения}
+
+\subsubsection{Положительно-, отрицательно-, незнако- определенная квадратичная форма}
+
+Квадратичная форма: $Q: \mathbb{R}^m \rightarrow \mathbb{R}$
+
+\[Q(h) = \sum_{1 \le i, j \le m}{a_{ij}h_i h_j}\]
+
+
+\begin{itemize}
+    \item Положительно-: $\forall h \in \mathbb{R}^m \neq 0: Q(h) > 0$
+    \item Отрицательно-: $\forall h \in \mathbb{R}^m \neq 0: Q(h) < 0$
+    \item Незнако-: $\exists h \in \mathbb{R}^m \neq 0: Q(h) < 0, \exists \widetilde{h} \neq 0: Q(\widetilde{h}) > 0$
+    \item Полуопределённая (положительно определённая вырожденая): $Q(h) \ge 0, \exists h \in \mathbb{R}^m \neq 0: Q(h) = 0$
+
+\end{itemize}
+
+\subsubsection{Локальный максимум, минимум, экстремум}
+Рассмотрим только максимум, остальное аналогично (+ строгий)
+
+$f: D \subset \mathbb{R}^m \rightarrow \mathbb{R}, a \in D$
+
+Если $\exists U(a): \forall x \in U(a) \quad f(x) \le f(a)$, то $a$ --- точка локального максимума.
+
+\subsubsection{Диффеоморфизм}
+$F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и связно (область)
+\begin{itemize}
+    \item $F$ --- обратимо
+    \item $F$ --- дифференцируемо
+    \item $F^{-1}$ --- дифференцируемо
+\end{itemize}
+
+Тогда $F$ --- диффеоморфизм
+
+\subsubsection{Теорема о локальной обратимости}
+
+\begin{itemize}
+    \item $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m$
+    \item $F \in C^1(O)$
+    \item $x_0 \in O: \det F'(x_0) \neq 0$
+\end{itemize}
+
+Тогда $\exists U(x_0): F|_{U(x_0)}$ --- диффеоморфизм
+
+\subsubsection{Формулировка теоремы о  гладкости обратного отображения в терминах систем уравнений}
+
+\begin{itemize}
+    \item $F = (f_1, f_2, \ldots, f_m)$
+    \item $\begin{cases}
+        f_1(x_1, x_2, \ldots, x_m) = y_1\\
+        f_2(x_1, x_2, \ldots, x_m) = y_2\\
+        \vdots\\
+        f_m(x_1, x_2, \ldots, x_m) = y_m
+    \end{cases}$
+    \item $(x_0, y_0): F(x_0) = y_0, \det \frac{\partial f_i}{\partial x_j} \neq 0$
+    \item $\exists U(x_0), W(y_0): \exists F: U \rightarrow W$ --- диффеоморфизм $: \exists $ гладкое решение $ \begin{cases}
+        x_1(y_1, y_2, \ldots, y_m)\\
+        x_2(y_1, y_2, \ldots, y_m)\\
+        \vdots\\
+        x_m(y_1, y_2, \ldots, y_m)
+    \end{cases}$
+\end{itemize}
+
+\subsubsection{Формулировка теоремы о неявном отображении в терминах систем уравнений}
+\begin{itemize}
+    \item $F = (x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n)$
+    \item $\begin{cases}
+        f_1(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0\\
+        f_2(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0\\
+        \vdots\\
+        f_n(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0
+    \end{cases}$
+    \item $(x^0, y^0): F(x^0, y^0) = 0, \det \frac{\partial f_i}{\partial y_j} \neq 0$
+    \item $\exists U(x^0) \in \mathbb{R}^m, \dbl \varphi(x): F(x, \varphi(x)) = 0, x \in U(x_0)$ --- гладкие решения
+\end{itemize}
+
+\subsubsection{Касательное пространство к $k$-мерному многообразию в $R^m$}
+
+\begin{itemize}
+    \item $M \subset \mathbb{R}^m$ --- простое $k$-мерное $C^r$-гладкое многообразие в $\mathbb{R}^m$
+    \item $p \in M$
+    \item $\Phi: O \subset \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- параметризация $M \cap U(p)$
+    \item $t^0 \in O: \Phi(t^0) = p$
+    \item $\Phi'(t^0): \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- линейный оператор
+\end{itemize}
+
+Тогда образ $\Phi'(t^0)$ --- линейное подпространство в $\mathbb{R}^m$, не зависящее от $\Phi$. Ну вот оно и называется \textit{касательным пространством} ($T_p M$).
+
+Причём важно, что это пространство не обязано проходить через точку $p$. Это просто пространство касательных векторов, откладываемых от начала координат (???). 
+
+
+\newpage
+\subsection{Важные теоремы}
+\subsubsection{Достаточное условие дифферецируемости}
+
+\textit{Формулировка:}
+\begin{itemize}
+    \item $f: D \subset \mathbb{R}^m \rightarrow \mathbb{R}$
+    \item $a \in Int(D)$
+    \item $\nabla f (a) = 0$
+    \item $f \in C^2(D)$
+    \item $Q(h) := d^2f(a, h)$
+\end{itemize}
+
+Тогда: 
+
+\begin{enumerate}
+    \item $Q(h)$ --- положительно-определённая, тогда $a$ --- точка локального минимума
+    \item $Q(h)$ --- отрицательно-определённая, тогда $a$ --- точка локального максимума
+    \item $Q(h)$ --- незнако-определённая, тогда $a$ --- не точка локального экстремума
+    \item $Q(h)$ --- полу-определённая, тогда информации недостаточно (может быть и так, и так)
+\end{enumerate}
+
+
+\textit{Доказательство:}
+
+\textbf{(1)}
+
+Давайте поближе присмотримся к $\forall h \in \mathbb{R}^m \dbl \forall t \in [0, 1]: \quad f(a + h) = f(a) + df(a, h) + \frac{1}{2!}d^2f(a + th, h)$ --- это типа формула Тейлора с остатком в форме Лагранжа.
+
+Теперь рассмотрим разность $f(a + h) - f(a)$, и заметим, что $df(a, h) = 0$ по условию.
+
+\begin{align*}
+    f(a + h) &= f(a) + \frac{1}{2!}(f_{x_1, x_1}''(a+th)h_1^2 + f_{x_1, x_2}''(a + th)h_1h_2 + \ldots) \\
+    &= f(a) + \frac{1}{2!}d^2f(a + th, h) \\
+    &= f(a) + \frac{1}{2!}Q(h) + \frac{1}{2!}(d^2f(a + th, h) - Q(h))\\
+    &= f(a) + \frac{1}{2!}Q(h) + \frac{1}{2!}(d^2f(a + th, h) - d^2f(a, h))\\
+    &= f(a) + \frac{1}{2!}Q(h) + \frac{1}{2!}(f_{x_1, x_1}''(a+th)h_1^2 - f_{x_1, x_1}''(a)h_1^2 + f_{x_1, x_2}''(a + th)h_1h_2 - \ldots)
+\end{align*}
+
+Теперь заметим, что если повыносить коэффициенты при двойных производных, получится что-то в стиле $(f''_1 - f''_2)(\sum_{i, j}{h_i h_j})$, где левая скобка --- б.м. при $h \rightarrow 0$, а правая оценивается $|h|^2$. Таким образом, все эти штуки есть ничто иное, как $\alpha(h)|h|^2$, где $\alpha(h)$ --- б.м. при $h \rightarrow 0$.
+
+В итоге получаем:
+
+\[f(a + h) - f(a) \ge \frac{1}{2}Q(h) + \alpha(h)|h|^2 \underset{\text{по лемме об оценке кв. формы}}{\ge} \frac{\gamma_Q}{2}|h|^2 + \alpha(h)|h|^2\]
+\[\underset{\text{при } h \rightarrow 0 }{\ge} \frac{\gamma_Q}{4}|h|^2 \underset{h \neq 0}{>} 0\]
+
+Получается, что в окрестности нашей точки $a$ все значения больше, чем в ней самой. Получается, это по определению это точка локального минимимума.
+
+\textbf{(2)}
+
+Всё то же самое, только пусть мы рассматриваем функцию $g := -f$. С учётом отрицательно определённой квадратичной формы всё получится, и тут у нас точка локального максимума.
+
+\textbf{(3)}
+
+Шизофазия начинается тут. Т.к. у нас незнакоопределённая форма, значит $\exists h > 0: Q(h) > 0, \quad \exists \widetilde{h} > 0: Q(\widetilde{h}) < 0$
+
+Раньше мы с вами считали, что $h$ может быть любым. Теперь же давайте рассмотрим относительно вот этих существующих $h, \widetilde{h}$. Но чтобы устремлять всё это дело к 0, нам необходим некоторый параметр. Пусть он будет $s$.
+Тогда рассматриваем по тому же принципу: $f(a + sh) - f(a)$, рассуждения такие же, только там везде дополнительно вылезает $s^2$, и, таким образом, функции станут зависеть от него:
+\[f(a + sh) - f(a) \ge \frac{1}{2}Q(sh) - |\alpha(s)|s^2 = \frac{s^2}{2}Q(h) - |\alpha(s)|s^2 \ge \frac{1}{4}Q(h)s^2\]
+
+Вот, тут у нас получилось, что это минимум. А если отработаем с $\widetilde{h}$, то получится наоборот.
+
+\textbf{(4)}
+
+Ну а тут, слава Богу, достаточно привести пример.
+
+Пусть $f(x) := x_1^2-x_2^4, \quad a = (0, 0)$
+
+$df(a, h) = 0, \quad  d^2f(a,h) = 2h_1^2$
+
+Видно, что в этом случае мы можем бегать и по $x_1$, и по $x_2$, и в итоге получим разные значения, потому что форма вообще зависит только от одной компоненты.
+
+А для почти идентичной $g(x) := x_1^2 + x_2^4$ уже всё наоборот, и существует строгий локальный минимум.
+
+ч. т. д. 
+
+\subsubsection{Теорема о неявном отображении}
+\textit{Формулировка:}
+\begin{itemize}
+    \item $F: O \subset \mathbb{R}^{m + n} \rightarrow \mathbb{R}^n$
+    \item $(a, b) \in O, \quad a \in \mathbb{R}^m, b \in \mathbb{R}^n$
+    \item $F(a, b) = 0 \in \mathbb{R}^{m + n}$
+    \item $F \in C^r, r \in \mathbb{N} \cup \{\infty\}$
+    \item $\det F_y'(a, b) \neq 0$
+\end{itemize}
+
+Тогда $\exists P(a) \subset \mathbb{R}^m, Q(b) \subset \mathbb{R}^n$ --- окрестности, и $\exists !\varphi : P \rightarrow Q \in C^r$ гладкое:
+
+\[\forall x \in P: F(x, \varphi(x)) = 0\]
+
+\textit{Бонус:}
+
+\[\varphi'(x) = -(F_y'(x, \varphi(x)))^{-1} \cdot F_x'(x, \varphi(x)) \Leftrightarrow F_x'(x, \varphi(x)) + F_y' \cdot \varphi'(x) = 0 \text{ (продифференцировали условие)}\]
+
+\textit{Доказательство:}
+
+\image{neyav_otobr}
+
+Нет, это не шутка. Всё доказательство строится вокруг одной картинки и яростного махания руками со знанием дела.
+
+Заведём $\Phi(x, y): O \subset \mathbb{R}^{m + n} \rightarrow \mathbb{R}^{m + n}, \quad \Phi(x, y) = (x, F(x, y))$. Логично, что по условию $\Phi(a, b) = (a, 0)$. Если посмотреть на производный оператор (а она дифференцируема, так как $F$ --- дифференцируема (?)), то прекрасно видно, что матрица квадратная, да ещё и блочная $\Rightarrow \det \Phi'(a, b) = \det E_m \cdot \det F_y'(a, b)$. По условию ничего из этого не 0, следовательно определитель невырожден. А поэтому, по теореме о локальной обратимости: $\Phi$ --- локальный диффеоморфизм класса $C^r$.
+
+Заведём окрестность (как декартово произведение, почему бы и нет) $\widetilde{U} = P_1 \times Q$. $P_1$ немного большевата для $P$, поэтому потом мы её немного подрежем. $ \widetilde{V} = \Phi(\widetilde{U})$. Заметим, что все эти окрестности открыты по предыдущим теоремам.
+
+Т.к. у нас $\Phi|_{\widetilde{U}}$ --- диффеоморфизм, на прообразе и образе имеет место быть обратное отображение $\Psi: \widetilde{V} \rightarrow \widetilde{U} = \Phi^{-1}$.
+
+Заметим, что отображение $\Phi$ не меняет ``$x$''-овые координаты (по построению функции ,см. рисунок), ``$y$''-овые же как-то колбасит, как показано зелёной областью. Значит и $\Psi$ их тоже не меняет, т.к. диффеоморфизм. Именно поэтому справа у нас координаты $(x, v)$. Можно представить $\Psi(x, v) = (x, H(x, v)), \quad H: \widetilde{V} \rightarrow \mathbb{R}^n \in C^r$. Поэтому давайте выберем окрестность $P \subset \mathbb{R}^m := \widetilde{V} \cap (\mathbb{R}^n \times \{0\})$. Она открыта по теореме (1 сем) о свойствах открытых множеств (конечное пересечение открытых открыто). $U = P \times Q$
+
+Вооот. А теперь давайте предложим в качестве $\varphi(x): P \rightarrow Q := H(x, 0)$. Она прнадлежит классу $C^r$, т.к. все функции до этого в нём лежали. А почему выполняется условие $F(x, \varphi(x)) = 0, x \in P$? Ну давайте проследим путь. Что такое вообще $H(x, 0)$ --- мы берём все точки вида $(x, 0)$ (см. картинку), и взаимно-однозначно отправляем их обратно в левую часть, тем самым вычисляя им значение $b_0 \in Q(b)$ (этим и занимается $H(x, v)$ по своей сути). Ну вот. А потом мы отправляем точку $(x, b_0)$ в правую часть, и куда же она должна приехать, если уезжала из 0? Правильно, в 0. Ура, условие выполняется.
+
+Осталось доказать едиственность, опять давайте помашем руками:
+
+\[x \in P, y \in Q: F(x, y) = 0, \quad \Phi(x, y) = (x, 0)\]
+
+\[(x, y) = \Psi\Phi(x, y) = \Psi(x, 0) = (x, H(x, 0)) = (x, \varphi(x))\]
+
+ч. т. д.
+
+\newpage
+
+\subsection{Теоремы}
+
+\subsubsection{Лемма об условиях, эквивалентных непрерывности линейного оператора}
+
+\textit{Формулировка:}
+
+Пусть $X, Y$ --- нормированные линейные пространства, $A \in \mathbb{L}(X, Y)$.
+
+Тогда следующие утверждения эквиваленты:
+
+\begin{enumerate}
+\item $A$ --- ограниченный оператор, в том смысле, что $||A||$ --- конечно
+\item $A$ --- непрерывно в нуле
+\item $A$ --- непрерывно на всём $X$
+\item $A$ --- равномерно непрерывно
+\end{enumerate}
+
+
+\textit{Доказательство:}
+Для $||A|| \equiv 0$ --- тривиально (супремум = 0, следовательно 0), поэтому далее считаем норму оператора ненулевой.
+Ну, во-первых, $4 \Rightarrow 3 \Rightarrow 2$ --- очевидно, просто одно следует из другого.
+
+Во-вторых,  $2 \Rightarrow 1$:
+
+По определению непрерывности в нуле: $\forall \varepsilon > 0, \dbl \exists \delta  \forall x \in B(0, \delta): |Ax| < \varepsilon$ (это нам дано, значит можем пользоваться, как хотим)
+
+Давайте рассмотрим $\varepsilon = 1: |Ax| < 1$, потом делим на $\delta$:
+
+\[|A\frac{x}{\delta}| < \frac{1}{\delta}\]
+Переназначим $x$ и заметим, что $x \in \overline{B(0, 1)}: |Ax| \le \frac{1}{\delta}$ (обратите внимание, мы взяли замыкание шара и получили нестрогое неравенство)
+
+Тогда для $x \in S(0, 1): |Ax| \le \frac{1}{\delta} = \frac{1}{\delta} \cdot |x|$ --- по замечанию 4 из определения, $||L|| \le \frac{1}{\delta}$.
+
+В-третих, $1 \Rightarrow 4$:
+
+Давайте опять запишем определение равномерной непрерывности:
+
+\[\forall \varepsilon > 0 \exists \delta: \forall x_1, x_2: |x_1 - x_2| < \delta |f(x_1) - f(x_2)| < \varepsilon\]
+
+Назначим $\delta := \frac{\varepsilon}{||A||}$
+\[|Ax_1 - Ax_2| < \varepsilon\]
+
+По линейности:
+
+\[|A(x_1 - x_2) < ||A|| \cdot |x_1 - x_2| = ||A|| \delta = ||A|| \frac{\varepsilon}{||A||} = \varepsilon\]
+
+ч.т.д.
+
+\subsubsection{Теорема Лагранжа для отображений}
+\textit{Формулировка:}
+$F: D \subset \mathbb{R}^m \rightarrow \mathbb{R}^l, D$ --- открытое
+
+$F$ --- дифференцируемо на $D$, $[a, b] \subset D$
+
+Тогда $\exists c \in [a, b]: |F(a) - F(b)| \le ||F'(c)|| \cdot |b - a|$
+\textit{Доказательство:}
+Заведём функцию $f(t) = F(a + t(b - a)), t \in [0, 1] \subset \mathbb{R}$. То есть как-бы двигаем точку по $[a, b]$.
+
+\[f'(t) = F'(a + t(b - a))(b - a)\]
+
+Заметим, что это оператор $\mathbb{R} \rightarrow \mathbb{R}^l$, т.к. $F'(a + t(b - a))$ --- $l$, а $b - a$ --- $m$ (???)
+
+Вспомним также теорему Лагранжа для векторнозначных функций:
+
+$F: [a, b] \rightarrow \mathbb{R}^n, F$ --- дифференцируема на $[a, b], \exists c \in [a, b]$
+\[|F(a) - F(b)| = |F'(c)| \cdot |b - a|\]
+
+Рассмотрим нашу функцию $f(t)$ по этой теореме в точках 0 и 1:
+
+\[|f(1) - f(0)| = |f'(c)| \cdot |1 - 0|\]
+Подставим:
+\[|F(b) - F(a)| = |F'(a + c(b - a))\cdot(b - a)| \underset{\text{по замечанию 3}}{\le} ||F'(a + c(b - a))|| \cdot |b - a|\]
+Ну а дальше, пусть $c := a + c(b - a)$ и всё супер.
+
+ч.т.д.
+
+
+
+\subsubsection{Теорема об обратимости линейного отображения, близкого к обратимому}
+\textit{Формулировка (безымянная лемма):}
+
+\textit{Возможно, она нахер не нужна, но пусть всё же будет}
+
+Пусть $B \in \mathbb{L}(\mathbb{R}^m, \mathbb{R}^m)$.
+
+Если $c > 0: \forall x \in \mathbb{R}^m: |Bx| \ge c|x|$, тогда $B \in \Omega_m$ и $||B^{-1}|| \le \frac{1}{c}$
+
+\textit{Доказательство:}
+
+$B$ --- очевидно инъективен, т.к. любой ненулевой вектор у нас отправляется в разные точки $\Rightarrow$ биекция $\Rightarrow$ обратимый $\Rightarrow \exists B^{-1}$
+
+Теперь пусть $y = B^{-1}x \Rightarrow |Bx| = |y| \ge c|x| = c |B^{-1}y| \Rightarrow |B^{-1}y| \le \frac{1}{c} \cdot |y| \underset{\text{по замечанию 3}}{\Rightarrow} ||B^{-1}|| \le \frac{1}{c}$
+
+ч.т.д.
+
+\textit{Замечание:}
+
+Если $A \in \Omega_m$, то можно провенуть такую штуку: $|x| = |A^{-1}Ax| \le ||A^{-1}||\cdot|Ax|$ (по 3 замечанию). Тогда:
+\[|Ax|\ge \frac{1}{||A^{-1}||} |x|\]
+
+\textit{Формулировка:}
+
+Пусть $L \in \Omega_m$ --- обратимый оператор, $M \in \mathbb{L}(\mathbb{R}^m, \mathbb{R}^m)$, $||L - M|| < \frac{1}{||L^{-1}||}$
+
+Тогда: \begin{enumerate}
+    \item $M \in \Omega_{m}$ --- обратимый
+    \item $||M^{-1}|| \le \frac{1}{\frac{1}{|L^{-1}|} - ||L - M||}$
+    \item $||L^{-1} - M^{-1}|| \le \frac{||L^{-1}||}{\frac{1}{|L^{-1}|} - ||L - M||} \cdot ||L - M||$
+\end{enumerate}
+
+\textit{Доказательство:}
+
+\textbf{(1) и (2)}
+
+Рассмотрим $|Mx|$ с рандомным возможным $x$. По неравенству треугольника (это всё же норма) и оценкам по замечаниям сверху:
+
+\[|Mx| \ge |Lx| - |(M - L)x| \ge \frac{1}{||L^{-1}||}|x| - ||M - L||\cdot|x| = \left(\frac{1}{||L^{-1}||} - ||M - L||\right)|x|\]
+
+По безымянной лемме всё доказано (заметим, что выражение в скобочках --- положительная константа).
+
+\textbf{(3)}
+
+Неповторимый оригинал:
+\[\frac{1}{l} - \frac{1}{m} = \frac{m - l}{ml}\]
+
+Жалкая копия (доказывается тривиально, раскрытием скобок):
+\[L^{-1}  - M^{-1} = M^{-1}(M - L)L^{-1}\]
+
+Отнормируем:
+\[||L^{-1} - M^{-1}|| \le ||M^{-1}|| \cdot ||L - M|| \cdot ||L^{-1}||\]
+
+Ну и просто подставим (2).
+
+ч.т.д.
+
+\textit{Следствие:}
+
+Отображение $\Omega_m \rightarrow \Omega_m: L \rightarrow L^{-1}$ непрерывно.
+
+\textit{Доказательство:}
+
+Давайте по Гейне: если $B_k \rightarrow L$, то сходится ли $B^{-1}_k \rightarrow L^{-1}$????
+
+Во-первых, начиная с некоторого места:
+
+\[|B_k - L| \le \frac{1}{||L^{-1}||}\]
+
+\[|B^{-1}_k - L^{-1}| \le \frac{||L^{-1}||}{\underbrace{\frac{1}{|L^{-1}|} - \underbrace{||L - B^{-1}_k||}_{\rightarrow 0}}_{\text{огр.}}} \cdot ||L - B^{-1}_k|| \rightarrow 0\]
+
+ч.т.д.
+
+
+\subsubsection{Теорема о непрерывно дифференцируемых отображениях}
+\textit{Формулировка:}
+$F: D \subset \mathbb{R}^m \rightarrow \mathbb{R}^l, F$ дифференцируема на $D, F': D \rightarrow \mathbb{L}(\mathbb{R}^m, \mathbb{R}^l)$
+
+Тогда следующие утверждения эквивалентны:
+
+\begin{enumerate}
+    \item $F \in C^1(D) \Leftrightarrow \forall i, j: \frac{\partial f_i}{\partial x_j}$ --- непрерывны
+    \item $F'$ --- непрерывно на $D: \forall x: \mathbb{R}^m \dbl \forall \varepsilon > 0 \dbl \exists \delta > 0: \dbl \forall \widetilde{x} \dbl |x - \widetilde{x}| < \delta \dbl ||F'(x) - F'(\widetilde{x})|| < \varepsilon$
+\end{enumerate}
+
+\textit{Доказательство:}
+
+\textbf{(1) $\Rightarrow$ (2)}
+
+Давайте зафиксируем какие-то $i, j$ и относительно них рассмотрим наше условие непрерывности частных производных по отдельности. Также, применим китайскую грамоту и возьмём немного другой эпсилон:
+\[\forall x: \mathbb{R}^m \dbl \forall \varepsilon > 0 \dbl \exists \delta > 0: \dbl \forall \widetilde{x} \dbl |x - \widetilde{x}| < \delta \dbl \left|\frac{\partial f_i}{\partial x_j}(x) - \frac{\partial f_i}{\partial x_j}(\widetilde{x})\right| < \frac{\varepsilon}{\sqrt{ml}}\]
+
+Тогда, так как нам это уже известно, проверим условие $(2)$:
+\[||F'(x) - F'(\widetilde{x})|| \underset{\text{по лемме об ограниченности нормы}}{\le} \sqrt{\sum_{i, j}{\left(\frac{\partial f_i}{\partial x_j}(x) - \frac{\partial f_i}{\partial x_j}(\widetilde{x})\right)^2}}\]
+
+Ну а теперь просто оцениваем всё это дело эпсилоном!
+\[\le \sqrt{\sum_{i, j}{\frac{\varepsilon^2}{ml}}}=\sqrt{ml\cdot\frac{\varepsilon^2}{ml}} = \varepsilon\]
+
+\textbf{(2) $\Rightarrow$ (1)}
+
+Ну а вот тут душный пиздец. Идея в том, что мы хотим проверить для каждой частной производной с индексами $(v, u)$ наше предположение.
+
+Давайте выберем $h \in \mathbb{R}^m = (0,0,0, \ldots, 0, \underbrace{1}_{u\text{-ое число}}, 0, \ldots, 0, 0)^T$.
+Теперь нам известно, что:
+\[|(F'(x) - F'(\widetilde{x}))h| \le ||F'(x) - F'(\widetilde{x})|| \cdot |h| \underset{|h| = 1}{\le} \varepsilon\]
+
+Ну а с другой стороны, $(F'(x) - F'(\widetilde{x}))h$ есть ничто иное, как вектор $\left(\frac{\partial f_i}{\partial x_u}(x) - \frac{\partial f_i}{\partial x_u}(\widetilde{x})\right)_{i = 1 \ldots l}$. Поэтому давайте рассмотрим его норму по вышеиспользованной лемме:
+\[\sqrt{\sum_{i = 1}^l{\left(\frac{\partial f_i}{\partial x_u}(x) - \frac{\partial f_i}{\partial x_u}(\widetilde{x})\right)^2}} \le \varepsilon\]
+
+Ну, раз уж у нас корень суммы квадратов меньше, то и каждое слагаемое по отдельности тоже меньше. Давайте зафиксируем $i = v$ и получим долгожданное:
+\[\left|\frac{\partial f_v}{\partial x_u}(x) - \frac{\partial f_v}{\partial x_u}(\widetilde{x})\right| \le \varepsilon\]
+
+Так как данные эпсилон-дельта преамбуды везде были одинаковыми, то и тут всё супер. Доказано, не умаляя общности!!!!
+
+ч. т. д.
+
+\subsubsection{Теорема Ферма. Необходимое условие экстремума. Теорема Ролля}
+\textit{Формулировка (Ферма):}
+
+$f: D \subset \mathbb{R}^m \rightarrow \mathbb{R}, a \in Int(D), f$ --- дифференцируема в точке $a$ (точка локального экстремума)
+
+Тогда $\forall l \in \mathbb{R}^m: |l| = 1$ (направление) $\frac{\partial f}{\partial l}(a) = 0$
+
+
+\textit{Доказательство:}
+
+Тривиалити, для $f|_{\text{прямая через }a\text{ по направлению }l} a$ --- тоже точка локального экстремума, поэтому по одномерной теореме Ферма всё работает!
+
+ч. т. д.
+
+\textit{Следствие (Необходимое условие экстремума)}
+
+$a$ --- точка локального экстремума $\Rightarrow \forall k \in [1, m]: \frac{\partial f}{\partial x_k} = 0$
+
+\textit{Следствие (Ролль)}
+\begin{itemize}
+    \item $f: D \subset \mathbb{R}^m \rightarrow \mathbb{R}$
+    \item $K \subset D$ --- компакт
+    \item $f$ --- дифференцируема в $Int(K)$, непрерывна на $K$
+    \item $f|_{\text{граница }K} = \const$
+\end{itemize}
+
+Тогда $\exists a \in Int(K): \nabla f \equiv 0$
+
+\textit{Доказательство}
+
+По теореме Вейерштрасса (привет, 1 сем), на компакте функция достигает своего минимимума и максимума.
+Тогда либо у нас на $K f \equiv const$, тогда такая точка --- любая, либо же по теореме Ферма она существует где-то внутри компакта.
+
+ч. т. д.
+
+
+
+\subsubsection{Лемма об оценке квадратичной формы и об эквивалентных нормах}
+\textit{Формулировка (Лемма об оценке квадратичной формы):}
+$Q$ --- положительно определённая квадратичная форма.
+
+Тогда $\exists \gamma_Q: \forall h \quad Q(h) \ge \gamma_Q \cdot |h|^2$
+
+\textit{Доказательство:}
+
+А давайте так: $$\gamma_Q := \min_{|x| = 1}{Q(x)}$$. Он достигается, так как мы гоняем по компакту (сфере), следовательно по Вейерштрассу всё хорошо.
+
+Для $x = 0$ всё тривиально, поэтому при $x \neq 0: Q(x) = |x|^2Q(\frac{x}{|x|}) \underset{\frac{x}{|x|}\text{ от 0 до 1!}}{\ge} \gamma_Q|x|^2$
+
+\textit{Формулировка (Лемма об эквивалентных нормах):}
+
+$p: \mathbb{R}^m \rightarrow \mathbb{R}$ --- норма
+
+Тогда $\exists \dbl C_1, C_2 > 0: \forall x \quad C_1|x| \le p(x) \le C_2|x|$
+
+\textit{Доказательство:}
+
+То же самое: $$C_1 := \min_{|x| = 1}{p(x)}, \quad C_2 := \max_{|x| = 1}{p(x)}$$
+
+Для минимума: $\forall x: p(x) = |x| \cdot p(\frac{x}{|x|}) \ge C_1|x|$, для максимума аналогично.
+
+ч. т. д.
+
+\subsubsection{Лемма о ``почти локальной инъективности''}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m$
+    \item $x_0 \in O$
+    \item $F$ --- дифференцируема в $x_0$
+    \item $\det F'(x_0) \neq 0 $
+\end{itemize}
+
+Тогда $\exists C > 0, \delta > 0 \quad \forall h \in B(0, \delta) \dbl |F(x_0 + h) - F(x_0)| \ge C|h|$
+
+\textit{Доказательство:}
+
+\begin{enumerate}
+    \item Если $F$ --- линейное отображение, то рассмотрим: $|h| = |F^{-1}Fh| \le ||F^{-1}|| \cdot |Fh|$. По линейности: 
+    \[|F(x_0 + h) - F(x_0)| = |Fh| \ge \underbrace{\frac{1}{||F^{-1}||}}_{C}|h| \quad \forall \delta\]
+    \item В противном случае, запишем определение дифферецируемости: $|F(x_0 + h) - F(x_0)| = |\underbrace{F'(x_0)h}_{> 0} + |h| \cdot \underbrace{\alpha(h)}_{\text{б. м.}}| \underset{\text{нер-во треугольника}}{\ge} \underbrace{C}_{\text{из пункта 1}}|h| + \alpha(h) \cdot |h|$. Давайте выберем $\delta$ так, чтобы $\alpha(h) < \frac{C}{2}$
+    
+    \[\ldots\ge \frac{C}{2}|h|\]
+\end{enumerate}
+
+ч.т.д.
+
+\textit{Замечание}
+
+При $\forall x \dbl \det F'(x) \neq 0$ не следует инъективность!
+
+\subsubsection{Теорема о сохранении области}
+
+\textit{Формулировка:}
+\begin{itemize}
+    \item $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открытое
+    \item $F$ --- дифференцируемо
+    \item $\forall x \in O: \dbl \det F'(x) \neq 0$
+\end{itemize}
+
+Тогда $F(O)$ --- открытое множество.
+
+\textit{Замечания}
+\begin{enumerate}
+    \item Если $O$ --- связное и $F$ --- непрерывное, то $F(O)$ --- связное\\\\
+    \textit{Доказательство:}
+
+    Ну, типа очев. Если у нас есть $W_1, W_2 \subset F(O)$, причём они не связны, то логично что получиться они могли только вследствие $F^{-1}(W_1) \cap F^{-1}(W_2) = \emptyset$
+    \item $F$ --- непрерывное $\Leftrightarrow \forall W \subset F(O)$ --- открытого, $F^{-1}(W)$ --- открыто
+    \textit{Доказательство:}
+
+    По топологическому определению непрерывности (привет, 1 сем!).\\\\
+    \image{sohr_obl_1.png}
+\end{enumerate}
+
+
+\textit{Доказательство:}
+
+В общем, основная идея доказательства состоит в том, чтобы доказать, что любая точка из образа является внутренней, тогда по определению открытого множества мы докажем и вывод.
+$\forall x_0 \in O: \dbl y_0 = F(x_0)$. 
+
+По лемме выше, $\exists C > 0, \exists \delta > 0: \forall h \in \overline{B(0, \delta)}: |F(x_0 + h) - F(x_0)| \ge C|h|$. Не стоит смущаться при виде замкнутого шара, это мы просто провели двойную бухгалтерию. Причём, как видно на картинке, граница нашей области отображается куда-то далеко (аж на константу) больше, чем просто на $\delta$.
+
+\image{sohr_obl_2.png}
+
+Заведём расстояние $dist(x, A) = \inf_{y \in A} \rho(x, y)$ между точкой и множеством. Пусть $r = \frac{1}{2} \cdot dist(y_0, \underbrace{F(\underbrace{S(x_0, \delta)}_{\text{компакт}})}_{\text{непр. } \Rightarrow \text{ компакт}})$. Так как у нас там всё компакты то минимум достигается, и, что важнее всего, всё это больше нуля.
+
+Теперь самое интересное: докажем, что $B(y_0, r) \subset F(O): \forall y \in B(y_0, r) \dbl \exists x \in B(x_0, \delta): F(x) = y$. Это докажет нам всё остальное.
+
+$\forall y \in B(y_0, r): \rho(y, F(S(x, \delta))) > r$. Это очевидно, на рисунке всё видно. Рассмотрим $g(x) := |F(x) - y|^2, x \in B(x_0, \delta)$. Как было сказано выше, мы доказываем, что у нас $\exists x \Leftrightarrow g(x) = 0$ возможно. Ну, очевидно, что, видимо, в если там и есть ноль, то это экстремум функции (модуль же, лол).
+
+\[g(x_0) = |F(x_0) - y|^2 = |y_0 - y|^2 \underset{\text{очевидно по рисунку}}{\le} r^2\]
+
+Также, по рисунку очевидно, что для всех $x$ с границы, наша функция отправляет их сильно дальше.
+\[\forall x \in S(x, \delta) \quad g(x) \ge r^2\]
+
+Получается, наш минимум лежит где-то внутри сферы. Поищем его. По определению евклидовой нормы:
+
+\[g(x) = (F_1(x) - y_1)^2 + (F_2(x) - y_2)^2 + \ldots + (F_m(x) - y_m)^2\]
+
+По необходимому условию экстремума, $\nabla F(x) = 0 \Rightarrow \forall i \in [1, m]: \frac{\partial f}{\partial x_i} = 0$
+
+\[g'(x) = 2(F_1(x) - y_1)\frac{\partial f}{\partial x_1} + 2(F_2(x) - y_2)\frac{\partial f}{\partial x_2} + \ldots + 2(F_m(x) - y_m)\frac{\partial f}{\partial x_m} = 0\]
+
+Или в векторной форме:
+\[2 \cdot (F(x) - y) \cdot F'(x) = 0\]
+
+Однако, по условию у нас производный оператор невырожденный! Следовательно, остаётся только $F(x) = y$. А это то, что мы и искали!!!!
+
+ч. т. д.
+
+
+\subsubsection{Следствие о сохранении области для отображений в пространство меньшей размерности}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^l$
+    \item $O$ --- открыто
+    \item $l < m$    
+    \item $F \in C^1(O)$
+    \item $\forall x \in O: \rank(F') = l$
+\end{itemize}
+
+Тогда $F(O)$ --- открыто
+
+\textit{Доказательство:}
+
+Зафиксируем $x_0 \in O$. Так как у нас матрица производного оператора теперь имеет вид не квадратный, а прямоугольный ($l \times m$), просто так применить предыдущую теорему не получится. Поэтому, не умаляя общности, давайте считать, что вот этот ЛНЗ набор векторов в матрице реализуется на позициях $1 \ldots l$.
+Тогда мы можем посчитать определитель этой матрицы: $$\det \left(\frac{\partial F_i}{\partial x_j}\right)_{1 \le i, j \le l}(x_0) \neq 0$$
+При этом, так как мы потребовали непрерывность, немножко пошевелив $x_0$ всё также будет работать:
+
+\[\exists U(x_0): \forall x \in U(x_0) \quad \det \left(\frac{\partial F_i}{\partial x_j}\right)_{1 \le i, j \le l}(x) \neq 0\]
+
+Мы уже доказали, что $F(x_0)$ --- внутренняя в $F(U(x_0))$ (по предыдущей теореме). Осталось немного пошаманить, чтобы доказать, что действительно из пространства большей в меньшую всё корректно отобразится.
+
+\image{sohr_obl_men_raz.png}
+
+Давайте заведём такую окрестность $U_l = {(t_1, t_2, \ldots, t_l): (t_1, t_2, \ldots, t_l, (x_0)_{l + 1}, \ldots, (x_0)_m)}$. Как видно на рисунке, это такая проекция в пространстве большей размерности на пространство меньшей. Теперь заведём $\widetilde{F}: U_l \rightarrow \mathbb{R}^l$ и посмотрим на её матрицу производных: $$\frac{\partial \widetilde{F}_i}{\partial t_j} = \left(\frac{\partial F_i}{\partial x_j}(t_1, t_2, \ldots, t_l, (x_0)_{l + 1}, \ldots, (x_0)_m)\right)$$
+
+И вот теперь, по непрерывности $\widetilde{F}$ и прошлой теореме, всё по идее работает.
+
+ч. т. д.
+
+\subsubsection{Теорема о гладкости обратного отображения}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m$
+    \item $F$ --- обратимо
+    \item $F \in C^r(O), r \in 1, 2, \ldots$
+    \item $\forall x \in C: \det F'(x) \neq 0$
+\end{itemize}
+
+Тогда $F^{-1} \in C^r, \quad ((F^{-1}(y))' = (F'(x))^{-1})$ при $F(x) = y$
+
+\textit{Доказательство:}
+
+Докажем по индукции по $r$. Замое запарное --- база.
+
+\textbf{База:}
+
+Пусть $x_0 \in O, \quad F(x_0) = y_0$. $S := F^{-1}$. Заметим, что $S$ --- непрерывно по теореме о сохранении области и теореме о топологическом определении непрерывности (типа для любого открытого из прообраза образ тоже открыт)
+
+\image{glad_obr.png}
+
+По лемме о ``почти'' локальной инъективности:
+\[\exists C, \delta > 0: \forall x \in B(x_0, \delta) \quad |F(x) - F(x_0)| \ge C|x - x_0| \Rightarrow |x - x_0| \le \frac{1}{C}|F(x) - F(x_0)|\]
+
+Запишем определение дифференцируемости для $F$ и сразу распишем всё в терминах $y$:
+
+\[A = F'(x_0), \quad \underbrace{F(x) - F(x_0)}_{y - y_0} = A(\underbrace{x - x_0}_{S(y) - S(y_0)}) + \alpha(\underbrace{x}_{S(y)})|x - x_0|\]
+
+Выражаем $(S(y) - S(y_0)))$:
+
+\[S(y) - S(y_0) = A^{-1}(y - y_0) - \underbrace{A^{-1}\alpha(S(y))|S(y) - S(y_0)|}_{\beta(y) \underset{???}{=} o(|y - y_0|)}\]
+
+Получилось вполне себе нормальное определение для дифференцируемости $S$. Надо лишь доказать ``о''-шку при $y \rightarrow y_0$. Оценим её с помощью вывода из леммы выше и стандартной оценки операторной нормы (не забываем, что мы как-бы управляем $y$ ???):
+
+\begin{align*}
+    |x - x_0| = |S(y) - S(y_0)| < \delta \underset{\text{при }y\text{ близких к }y_0}{\Rightarrow} |\beta(y)| &= |A^{-1}\alpha(S(y))|\cdot|S(y) - S(y_0)| \\
+    &\le \underbrace{\frac{||A^{-1}||}{C}}_{\const}\cdot\underbrace{|y - y_0|}_{|F(x) - F(x_0)|}\cdot|\alpha(S(y))| \\
+    &= o(|y - y_0|)
+\end{align*}
+
+Фактически ``о''-шка доказана по определению. Тем самым доказана дифференцируемость. А что с непрерывностью производной то? Этого мы ещё не доказывали. Построим цепочку непрерывных отображений:
+
+\[y \mapsto S(y) = x \mapsto A(x) \mapsto A^{-1}(x) = S'(y)\]
+
+Непрерывность дифференцирования обратного производного оператора доказывается маханием руками на тему отдельнызх производных в матрице. Тем самым база доказана.
+
+\textbf{Переход}
+
+Достаточно тривиальный. Посмотрим при $m = 1: (f^{-1}(y))' = \frac{1}{f(x(y))}$. То есть, пусть $f \in C^{r + 1}$, тогда надо доказать, что $f' \in C^r$. Ну там вот это и написано, обратная функция вообще $C^\infty, f'(x) \in C^r$ --- очев. Для многомерного случая всё тоже самое, только формула выглядит пафоснее $\ldots = (F'(x(y)))^{-1}$
+
+ч. т. д.
+
+\subsubsection{Теорема о задании гладкого многообразия системой уравнений}
+\textit{Формулировка:}
+
+$M \subset \mathbb{R}^m, 1 \le k \le m, 1 \le r \le \infty$
+
+Тогда следующие утверждения эквивалентны:
+
+\begin{enumerate}
+    \item $\exists U(p) \in \mathbb{R}^m: M \cap U(p)$ --- гладкое $k$-мерное $C^r$-гладкое многообразие
+    \item $\exists \widetilde{U}(p) \in \mathbb{R}^m: \exists (F_1, F_2, \ldots, F_{m - k}): \widetilde{U} \rightarrow \mathbb{R}, F_i \in C^r$ \begin{enumerate}
+        \item $\forall x \in \widetilde{U} \cap M \Leftrightarrow F_1(x) = F_2(x) = \ldots = F_{m - k} = 0$
+        \item $\grad F_1, \grad F_2, \ldots, \grad F_{m - k}$ --- ЛНЗ
+    \end{enumerate}
+\end{enumerate}
+\textit{Доказательство (оставь надежду всяк сюда идущий):}
+
+\textbf{(1) $\Rightarrow$ (2)}
+
+\image{glad_mnogoobr.png}
+
+Нам дано многобразие. А что это значит? $\Phi: O \subset \mathbb{R}^k \rightarrow \mathbb{R}^m \in C^r$ --- гомеоморфизм. Давайте посмотрим на неё в смысле координатных функций: $\exists \Phi = (\varphi_1, \varphi_2, \ldots, \varphi_l), p = \Phi(t^0), \rank \Phi'(t^0) = k$. Всё по определнию. 
+
+У нас тут ЛНЗ набор (ранг $k$), поэтому давайте опять считать, что он реализуется на первых $k$ векторов, поэтому: 
+\[\left(\det \frac{\partial \Phi_i}{\partial t_j}\right)_{i = 1 \ldots k} = 0\]
+
+Теперь давайте, во-первых, примем за $\mathbb{R}^m = \mathbb{R}^{m - k} \times \mathbb{R}^k$ (на рисунке справа, всё логично). И заведём $L: \mathbb{R}^m \rightarrow \mathbb{R}^k: (x_1, x_2, \ldots, x_m) \mapsto (x_1, x_2, \ldots, x_k)$ --- просто проекция первых $k$ координат. Тогда заметим, что $(L \circ \Phi)'(t^0)$ --- невырожденный оператор: всё просто, он мапит первые $k$ координат, а оператор по ним невырожден по определению многообразия, вон, наверху написано. Значит, это локальный диффеоморфизм (по соответствующей теореме). А если $W(t^0)$ --- окрестность, то $L \circ \Phi: W \rightarrow V \subset \mathbb{R}^k \in C^r$ --- диффеорморфизм (класс гладкости сохраняется).
+
+Тогда давайте введём ещё парочку отображений: $\Psi: V \rightarrow W := (L \circ \Phi)$ --- обратное отображение, также диффеоморфизм, т. к. оно там всё диффеоморфизм, следовательно биекция сохраняется. Также, получается, раз у нас биекция, над $V$ множество в $R^{m - k}$ это график какого-то отображения. Оно точно существует, ведь $L$ --- биективно. Назовём его $H: V \rightarrow \mathbb{R}^{m - k}$
+
+При $x' \in V: (\underbrace{x'}_{1 \ldots k}, \underbrace{H(x')}_{k + 1 \ldots m - k}) = \Phi\Psi(x')$ --- это правда, просто проехались по путям и вернулись. В $L$ у нас только первые $k$ координат, а $H$ нам дорисовывает остальные $m - k$ штук. Ну и вот, в правой стороне равенства у нас диффеоморфизмы, слева проекция (там вообще всё гуд) и $H \Rightarrow$ это тоже диффеоморфизм класса $C^r$. 
+
+Почти всё. Осталось чётко определить, на какой окрестности будут определены наши функции. Смотрите, вообще наш график $H$ может в принципе быть и шире, чем $W(t^0)$, и тогда $L($\textit{график} $H)$ может быть больше, чем $V$, и мы не хотим со всем этим разбираться --- зачем? Поэтому давайте аккуратненько всё подрежем. $V \times \mathbb{R}^{m - k}$ --- открытое, такой типа цилиндр вверх. $\Phi$ --- гомеоморфизм, поэтому $\Phi(W)$ --- открытое. Но в $M$ --- это важно! Оно может и не быть открыто во всём $\mathbb{R}^m$, а конкретно на $M$ с индуцированной метрикой точно открыто. Тогда вспоминаем теорему из 1-го семестра об открытом множестве в пространстве и подпространстве: $M \subset \mathbb{R}^m, \Phi(W) \subset M$ --- открытое, тогда $\exists G \subset \mathbb{R}^m: G \cap M = \Phi(W), G$ --- открытое. И тогда пусть область определения $\widetilde{U}(p) = G \cap \{V \times \mathbb{R}^{m - k}\}$ --- открытое в $\mathbb{R}^m$, отрезали всё лишнее. 
+
+Ну всё, совсем немного осталось. Надо задать такие функции, что они будут нулевыми при $x \in \widetilde{U} \cap M$. Пусть $F_j(x) = H_j(L(x)) - x_{j + k}$. Что тут написано: мы берём $x$, отпрявляем его в $L$, оставляя только первые $k$ координат. Потом $H$ отправляем его обратно наверх, причём конкретно $H_j$ вернёт нам $x_{k + j}$-ю координату, ведь, как мы писали выше, точки из графика $H$ выглядят как $(\underbrace{x'}_{1 \ldots k}, \underbrace{H(x')}_{k + 1 \ldots m - k})$. Ну всё, \textsc{(a)} выполнено автоматически. А что там с градиентами? Давайте просто их построим и увидим, что в конце будет просто $-E$, что и даст нам $m - k$ независимых векторов (ну, ранг такой).
+
+\textbf{(2) $\Rightarrow$ (1)}
+
+Тут нам сильно помогут наработки предков. Давайте подгоним наше условие под условие теоремы о неявном отображении (в смысле системы уравнений). У нас там была система из уравнений $F(x, y) = 0$, где $x$ --- ``переменные'', а $y$ --- ``функции'' и решение $(x^0, y^0)$, такое что при $\forall x \in P(x^0), y \in Q(y^0): F(x, y) = 0 \Leftrightarrow \exists \varphi: P \rightarrow Q: \phi(x) = y$. Давайте назначим первые $k$ координат переменными, а следующие $m - k$ --- функциями. Опять же, у нас ЛНЗ лабор этих градиентов этих функций, а именно: 
+
+\[\left(\det \frac{\partial F_i}{\partial x_{j + k}}\right)_{1 \le i, k \le m - k}(x^0, y^0) \neq 0\]
+
+Значит, условие теоремы выполнено, и параметризация есть ничто иное, как $\Phi: U(p_1, p_2, \ldots, p_k) \rightarrow \mathbb{R}^m \quad x' \mapsto (x', \varphi(x'))$ на $x \in M \cap \widetilde{U} \cap \{P \times Q\}$ (по сути график $\varphi$). В том числе это и гомеоморфизм, так как в одну сторону всё непрерывно, так как функции непрервыны $(x', \varphi(x'))$, а обратно --- это по сути проекция, так что всё тоже непрерывно. Классы гладкости тоже переезжают из прошлой теоремы.
+
+ч. т. д.
+
+\subsubsection{Следствие о двух параметризациях}
+\textit{Формулировка:}
+
+$M \subset \mathbb{R}^m$ --- $k$-мерное $C^r$-гладкое многообразие в $\mathbb{R}^m$
+
+\begin{enumerate}
+    \item $\exists \Phi_1: O_1 \subset \mathbb{R}^k \rightarrow \mathbb{R}^m$
+    \item $\exists \Phi_2: O_2 \subset \mathbb{R}^k \rightarrow \mathbb{R}^m$
+\end{enumerate}
+
+--- гладкие параметризации.
+
+Тогда $\exists \Theta: O_1 \rightarrow O_2: \Phi_1 = \Phi_2 \circ \Theta$ --- диффеоморфизм класса $C^r$
+
+\textit{Доказательство:}
+
+\image{sl_o_2_param.png}
+
+Продолжаем повествование из прошлой теоремы. Гомеоморфизм $O_1 \rightarrow O_2$, вообще говоря, существует тривиально: $\Phi_2^{-1} \circ \Phi_1$. Однако, так говорить не совсем правильно, потому что для корректного взятия обратной функции, необходимо сузить образ $\Phi_2$ на его реальную область значений. Поэтому давайте поступим умнее: нарисуем возможные пути точки (крестика) на рисунке (кстати, важно заметить, что разные параметризации могут отправлять точки в разные пространства $\mathbb{R}^k$, ведь ранг может реализоваываться на произвольных строчках матрицы произвожного опреатора; поэтому у нас народилось 2 пространства и соответствующие отображения между ними (см. картинку)).
+
+\[\Phi_1 = \Phi_2 \circ (\Psi_2 \circ L_2 \circ \Phi_1) = \Psi_2 \circ \Theta\]
+
+Супер, гомеоморфизм есть. А обратим ли он? Да пожалуйста:
+
+\[\Theta^{-1} = \Psi_1 \circ L_1 \circ \Psi_2\]
+
+А всякие гладкости и классы приходят просто из предыдущих отображений, всё там супер.
+
+ч. т. д.
+
+\subsubsection{Лемма о корректности определения касательного пространства}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $M \subset \mathbb{R}^m$ --- простое $k$-мерное $C^r$-гладкое многообразие в $\mathbb{R}^m$
+    \item $p \in M$
+    \item $\Phi: O \subset \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- параметризация $M \cap U(p)$
+    \item $t^0 \in O: \Phi(t^0) = p$
+    \item $\Phi'(t^0): \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- линейный оператор
+\end{itemize}
+
+Тогда образ $\Phi'(t^0)$ --- линейное подпространство в $\mathbb{R}^m$, не зависящее от $\Phi$.
+
+\textit{Доказательство:}
+
+Так как $\Phi$ --- параметризация, $\rank \Phi = k$. Ну и тогда всё очевидно по знаниям из линейной алгебры, размерность пространства определяется количеством ЛНЗ столбцов.
+
+По поводу независимости, по следствию о двух параметризациях:
+
+\[\Phi_2 = \Phi \circ \Theta \Rightarrow \Phi_2' = \Phi' \Theta'\]
+
+$\Theta$ --- диффеоморфизм, следовательно $\Theta'(t^0)$ --- невырожденный. Поэтому образ $\Phi_2' = \Phi'$ (см. картинку)
+
+\image{lemm_corr_par.png}
+
+ч. т. д.
+
+\subsubsection{Касательное пространство в терминах векторов скорости гладких путей}
+\textit{Формулировка (Лемма):}
+
+$v \in T_p M$
+
+Тогда $\exists $ гладкий $ \gamma: [-\varepsilon, \varepsilon] \rightarrow M: \gamma(0) = p, \gamma'(0) = v$
+
+\textit{Доказательство:}
+
+Раз у нас есть $v$ в образе, значит оно откуда-то пришло. Давайте найдём: $u = (\Phi'(t_0))^{-1} v$.
+
+Тогда предъявим путь в $O: \widetilde{\gamma}(s) = t^0 + su, s \in [-\varepsilon, \varepsilon]$. Типа мы выбрали направление, и гоняем по нему в $O$.
+
+А настоящий путь будет таким: $\gamma(s) = \Phi \circ \widetilde{\gamma}(s)$. Тогда $\gamma'(s) = \Phi' \circ \widetilde{\gamma}(s)$.
+
+Проверим: $\gamma(0) = \Phi (t^0 + 0) = p, \quad \gamma'(0) = \Phi' u = v$
+
+\image{lemm_gl_p.png}
+
+ч. т. д.
+
+\textit{Формулировка:}
+
+$\exists $ гладкий путь $ \gamma: [-1, 1] \rightarrow M, \gamma(0) = p$
+
+Тогда $\gamma'(0) \in T_p M$
+
+\text{Доказательство:}
+
+\image{lemm_sk.png}
+
+Давайте опять прогуляемся по картинке из теоремы о задачи параметризации: 
+
+\[\gamma(s) = \Phi \circ \Psi \circ L \circ \gamma(s)\]
+
+Это очевидно, просто прошли по кругу.
+
+\[\gamma'(0) = \Phi'(t^0)\Psi' L' \gamma'\]
+
+Всё лежит в образе $\Phi'(t^0)$, так что по определению касательного пространства всё супер.
+
+ч. т. д.
+
+\subsubsection{Теорема X-N}
+\textit{Формулировка:}
+
+\textit{Доказательство:}
+
+
+\end{document}
+
+\begin{comment}
+    \subsubsection{Теорема X-N}
+    \textit{Формулировка:}
+
+    \textit{Доказательство:}
+\end{comment}
