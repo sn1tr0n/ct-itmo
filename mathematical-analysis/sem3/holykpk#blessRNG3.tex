@@ -38,6 +38,8 @@
         }
 \def\dbl{\,\,}
 \def\image#1{\includegraphics[width=\linewidth]{static/#1}}
+\def\rsh#1{\underset{#1}{\rightrightarrows}}
+\def\rshe{\rsh{E}}
 
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\const}{const}
@@ -1163,15 +1165,204 @@ $\Phi(U(x^0)) = W, \Phi(x^0) = w_0$. Рассмотрим функцию $\widet
 \section{Период Мезозойский}
 \subsection{Важные определения}
 
+\subsubsection{Равномерная сходимость последовательности функций на множестве}
+
+\begin{itemize}
+    \item $(f_n): \mathbb{N} \rightarrow \mathbb{F}$
+    \item $f_n: E \subset \underbrace{X}_{\text{мн-во}} \rightarrow \mathbb{R}$
+\end{itemize}
+
+Если $\exists f(x)$:
+
+\[\forall \varepsilon > 0 \dbl \exists N: \forall \dbl n > N \dbl \forall x \in E \quad |f(x) - f_n(x)| < \varepsilon\]
+
+--- тогда $f_n$ равномерно сходится к $f$ на $E$ ($f_n \rshe f$).
+
+Это же условие равносильно $M_n := \sup_{x \in E} |f_n(x) - f(x)| \underset{n \rightarrow \infty}{\rightarrow} 0 $
+
 \newpage
 
 \subsection{Определения}
+
+%\subsubsection{Набор функций,  независимый в окрестности точки}
+
+%(???)
+
+\subsubsection{Поточечная сходимость последовательности функций на множестве}
+
+\begin{itemize}
+    \item $(f_n): \mathbb{N} \rightarrow \mathbb{F}$
+    \item $f_n: E \subset \underbrace{X}_{\text{мн-во}} \rightarrow \mathbb{R}$
+\end{itemize}
+
+Если $\exists f(x): \forall x \in E$:
+
+\[\forall \varepsilon > 0 \dbl \exists N: \forall \dbl n > N \quad |f(x) - f_n(x)| < \varepsilon\]
+
+--- тогда $f_n$ поточечно сходится к $f$ на $E$.
+
+
+
 \newpage
 
 \subsection{Важные теоремы}
+
+\subsubsection{Теорема Стокса--Зайдля о непрерывности предельной функций. Следствие для рядов}
+
+\textit{Формулировка (последовательности):}
+
+\begin{itemize}
+    \item $f_n, f: \underbrace{X}_{\text{метрическое пространство}} \rightarrow \mathbb{R}$
+    \item $c \in X: f_n$ --- непрерывно в $c$  
+    \item $f_n \rsh{X} f$
+\end{itemize}
+
+Тогда: $f$ --- непрерывно в $c$
+
+\textit{Следствие:}
+
+$f_n \in C(X), f_n \rsh{X} f \Rightarrow f \in C(X)$ --- доказательства не требует, просто по всем точкам пробегаемся
+
+\textit{Доказательство:}
+
+Зафиксируем $\varepsilon$ из определения равномерной сходимости и распишем гига-неравенство треугольника:
+
+\[|f(x) - f(c)| \le \underbrace{|f(x) - f_n(x)|}_{(1)} + \underbrace{|f_n(x) - f_n(c)|}_{(2)} + \underbrace{|f_n(c) - f(c)|}_{(3)}\]
+
+Оно верно при всех $n$. Но нам дали равномерную сходимость, из чего мы достаём $\sup_{x \in X} |f_n(x) - f(x)| < \varepsilon$. Это обстоятельство с ходу говорит нам, что существует большое $n$, при котором $(1)$ и $(3)$ (то, что они $< \varepsilon$). С другой стороны, раз так, мы можем считать, что в $(2)$ стоит вполне конкретная функция, непрерывная в $c \Leftrightarrow \forall x \in U(c): (2) < \varepsilon$. Ну и всё, получается, что наше неравенство целиком меньше $3 \varepsilon$:
+
+\[|f(x) - f(c)| \le |f(x) - f_n(x)| + |f_n(x) - f_n(c)| + |f_n(c) - f(c)| < 3\varepsilon\]
+
+Ну и вот, по китайской методике в определении непрерывности всё работает.
+
+ч. т. д.
+
+\textit{Бонус:}
+
+\Smiley 
+
+Доказательство работает и в топологических пространствах без единой правки, потому что мы разговариваем на языке окрестностей и метрику не трогаем!
+
+\textit{Формулировка (ряды):}
+
+\begin{itemize}
+    \item $u_n: \underbrace{X}_{\text{метрическое пространство}} \rightarrow \underbrace{Y}_{\text{нормированное пространство}}$
+    \item $c \in X: u_n$ --- непрерывно в $c$ 
+    \item $S_n(x) := \sum^n u_n(x)$
+    \item $S(x) := \sum u_n(x) \rsh{X}$
+\end{itemize}
+
+Тогда $S(x)$ --- непрерывно в $c$
+
+\textit{Доказательство:}
+
+По предыдущей теореме $S_n(x) \rsh{X} S(x), S_n(c)$ --- непрерывно в $c \Rightarrow S(x)$ --- непрерывно в $c$
+
+ч. т. д.
+
 \newpage
 
 \subsection{Теоремы}
+
+\subsubsection{Метрика в пространстве непрерывных функций на компакте, его полнота}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\rho(f, g) = \sup_{x \in X} |f(x) - g(x)|$ --- метрика (это доказывалось на лекции, хз, надо ли тут, но там вроде всё тривиально: аксиомы тождества, симметрии и правило треугольника) 
+    \item $X$ --- компактное метрическое пространство
+\end{itemize}
+
+Тогда $\left(C(X), \rho \right)$ --- полное метрическое пространство
+
+\textit{Доказательство:}
+
+Полное метрическое пространство --- это такое, в котором у любой фундаментальной последовательности есть предел:
+
+\[\forall \varepsilon > 0 \dbl \exists N \dbl \forall n, m > N \dbl \rho(f_n, f_m) = \sup_{x \in X}|f_n(x) - f_m(x)| < \varepsilon\]
+
+Давайте возьмём какой-нибудь $x_0 \in X$ и заметим, что $|f_n(x_0) - f_m(x_0)| < \varepsilon$ (очев, раз супремум меньше, то и отдельный $x_0$ меньше). Значит $n \mapsto f_n(x_0)$ --- фундаментальная \textbf{вещественная} последовательность (просто подставить в определение выше)! Ну а $\mathbb{R}$ --- полное, поэтому у такой последовательности сущесвтует предел: $\lim_{n \rightarrow \infty} f_n(x_0) = f(x_0)$ (к какой-то $f$). Получается, что пототочечно всё норм сходится. Но нам то надо равномерную (в силу того, какую метрику мы выбрали). Давайте немного перепишем определение фундаментальной последовательности:
+
+\[\forall \varepsilon > 0 \dbl \exists N \dbl \forall n, m > N \dbl \forall x \in X |f_n(x) - f_m(x)| < \varepsilon\]
+
+Сделаем предельный переход по $m \rightarrow \infty$ и подставим найдённую предельную функцию: 
+
+\[\forall \varepsilon > 0 \dbl \exists N \dbl \forall n > N \dbl \forall x \in X |f_n(x) - f(x)| \le \varepsilon\]
+
+А это --- определение $f_n \rsh{X} f$. Ну всё, супер, значит фундаментальная последовательность сходится.
+
+А непрерывность приходит из теоремы Стокса-Зайдля. Значит наша фундаментальная последовательность имеет предел, и этот предел лежит в $C(X)$.
+
+ч. т. д. 
+
+\subsubsection{Теорема о предельном переходе под знаком интеграла. Следствие для рядов}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f_n \in C[a, b]$
+    \item $f_n \rsh{[a, b]} f$
+\end{itemize}
+
+Тогда:
+
+\[\int_a^b{f_n(x)dx} \underset{n \rightarrow \infty}{\longrightarrow} \int_a^b{f(x)dx}\]
+
+\textit{Доказательство:}
+
+Тривиалити (скажем, что их разность стремится к 0, т. к. есть равномерная сходимость): 
+
+\begin{align*}
+    \left|\int_a^b{f_n(x)dx} - \int_a^b{f(x)dx}\right|
+ &=  \left|\int_a^b{f_n(x) - f(x)dx}\right| \\
+  &\le \int_a^b \left|f_n(x) - f(x) dx\right| \\ 
+  &\underset{\text{по метрике}}{\le} {\sup_{x \in X} \left|f_n(x) - f(x)\right|}(b - a) \rightarrow 0
+\end{align*}
+
+ч. т. д.
+
+\subsubsection{Правило Лейбница дифференцирования интеграла по параметру}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f: [a, b] \times [c, d] \rightarrow \mathbb{R}, f(x, y)$
+    \item $f, f_y'$ --- непрерывны на $[a, b] \times [c, d]$
+    \item $\Phi(y) = \int_a^b f(x, y) dx$
+\end{itemize}
+
+Тогда $\Phi(y)$ --- дифференцируема и $\Phi(y) = \int_a^b f'_y(x, y) dx$
+
+\textit{Доказательство:}
+
+Ну, давайте попробуем подифференцировать. Возьмём какую-то $t_n \rightarrow 0$ и напишем а-ля определение дифференцируемости и применим теорему Лагранжа (привет, НТР!):
+
+\[\frac{\Phi(y + t_n) - \Phi(y)}{t_n} = \Phi'(y + \Theta_x t_n) = \int_a^b f_y'(x, y + \Theta_x t_n) dx \underset{?}{\longrightarrow} \int_a^b f_y'(x, y) dx\]
+
+Ну и вот, мы теперь хотим понять, а действительно ли оно стремится? Применим ``тяжёлую артиллерию'': теорема Кантора о равномерной непрерывности:
+
+\[f \text{ --- непр. } \in C(K) \text{ (компакт)} \Rightarrow f\text{ --- равномерно непрерывна}\]
+
+\[\forall \varepsilon > 0 \dbl \exists \delta > 0: \rho(x_1, x_2) < \delta \dbl |f(x_1) - f(x_1)| < \varepsilon\]
+
+У нас непрерывная функция на компакте, поэтому давайте подгоним под Кантора наше условие:
+
+\[\exists N \dbl \forall n > N \dbl |t_n| < \delta, \dbl \rho((x, y + \Theta_x t_n), (x, y)) < \delta, \dbl
+\left|f_y'(x, y + \Theta_x t_n) - {f_y'(x, y)}\right| < \varepsilon\]
+
+Тогда: 
+
+\[\left|\int_a^b{f_y'(x, y + \Theta_x t_n) dx} - \int_a^b{f_y'(x, y) dx}\right| \le \varepsilon (b - a)\]
+
+Следовательно, разность между ними меньше $\varepsilon$, тогда всё действительно стремится.
+
+ч. т. д.
+
+\subsubsection{Теорема о предельном переходе под знаком производной. Дифференцирование функционального ряда}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\textit{Доказательство:}
 \newpage
 
 \end{document}
@@ -1179,6 +1370,10 @@ $\Phi(U(x^0)) = W, \Phi(x^0) = w_0$. Рассмотрим функцию $\widet
 \begin{comment}
     \subsubsection{Теорема X-N}
     \textit{Формулировка:}
+
+    \begin{itemize}
+        \item 
+    \end{itemize}
 
     \textit{Доказательство:}
 \end{comment}
