@@ -158,6 +158,34 @@ $M \subset \mathbb{R}^m$ --- простое k-мерное $C^r$-гладкое 
 
 $\Phi$ --- гладкая параметризация.
 
+\subsubsection{Формулировка достаточного условия относительного экстремума}
+\begin{itemize}
+    \item $f: E \subset \mathbb{R}^{m + n} \rightarrow \mathbb{R}, \Phi: E \rightarrow \mathbb{R}^n, \quad f, \Phi \in C^1$
+    \item $M_\Phi \subset E: \{x \dbl | \dbl \Phi(x) = 0\}$
+    \item $a \in E$ --- точка относительного локального экстремума ($\forall x \in U(a) \cap M_\Phi, f(x_0) \le f(x)$ --- это нестрогий максимум, остальное аналогично)
+    \item $\Phi(a) = 0$ --- уравнение связи
+    \item $\rank \Phi'(a) = n$
+\end{itemize}
+
+\textit{это условия из необходимого условия}
+
+\begin{itemize}
+    \item $G(x) = f(x) - \lambda_1\Phi_1(x) - \lambda_2\Phi_2'(x) \ldots \lambda_n\Phi_n(x) = f - \langle \lambda, \Phi \rangle$
+    \item $\lambda$ из необходимого условия
+    \item $h \in \mathbb{R}^{m + n}, h = (h_x, h_y)$
+    \item $\Phi'(a) \cdot h \neq 0 \Rightarrow$ можно выразить $h_y = \Psi(h_x)$
+    \item $Q(h_x) = d^2G(a, (h_x, \Psi(h_x)))$ --- это квадратичная форма
+\end{itemize}
+
+Тогда: 
+
+\begin{enumerate}
+    \item $Q(h_x)$ --- положительно-определённая, тогда $a$ --- точка относительного локального минимума
+    \item $Q(h_x)$ --- отрицательно-определённая, тогда $a$ --- точка относительного локального максимума
+    \item $Q(h_x)$ --- незнако-определённая, тогда $a$ --- не точка относительного локального экстремума
+    \item $Q(h_x)$ --- полу-определённая, тогда информации недостаточно (может быть и так, и так)
+\end{enumerate}
+
 \newpage
 
 \subsection{Определения}
@@ -253,7 +281,7 @@ $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и с
 
 \newpage
 \subsection{Важные теоремы}
-\subsubsection{Достаточное условие дифферецируемости}
+\subsubsection{Достаточное условие экстремума}
 
 \textit{Формулировка:}
 \begin{itemize}
@@ -368,6 +396,63 @@ $df(a, h) = 0, \quad  d^2f(a,h) = 2h_1^2$
 \[(x, y) = \Psi\Phi(x, y) = \Psi(x, 0) = (x, H(x, 0)) = (x, \varphi(x))\]
 
 ч. т. д.
+
+\subsubsection{Необходимое условие относительного локального экстремума}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f: E \subset \mathbb{R}^{m + n} \rightarrow \mathbb{R}, \Phi: E \rightarrow \mathbb{R}^n, \quad f, \Phi \in C^1$
+    \item $M_\Phi \subset E: \{x \dbl | \dbl \Phi(x) = 0\}$
+    \item $a \in E$ --- точка относительного локального экстремума ($\forall x \in U(a) \cap M_\Phi, f(x_0) \le f(x)$ --- это нестрогий максимум, остальное аналогично)
+    \item $\Phi(a) = 0$ --- уравнение связи
+    \item $\rank \Phi'(a) = n$
+\end{itemize}
+
+Тогда $\lambda \in \mathbb{R}^n (\lambda_1, \lambda_2, \ldots, \lambda_n): \begin{cases}
+    f'(a) + \lambda\Phi'(a) = 0 \\
+    \Phi(a) = 0
+\end{cases}$
+
+Второе условие бесплатное, оно из условия.
+
+\textit{Доказательство:}
+
+Так как у нас ранг $n$ на матрице производного оператора $\Phi'$, давайте считать, что он достигается на $m + 1 \ldots m + n$ ($n$ штук) столбцах матрицы (это матрица $n$ строк $\times \dbl (m + n)$ столбцов). Тогда в стиле всех предыдущих теорем а-ля ``неявное отображение'' разделим переменные: $(x_1, x_2, \ldots, x_m), (x_{m + 1}, x_{m + 1}, \ldots, x_{m + n}) \mapsto (x, y)$. Точку $a$ тоже: $(a_x, a_y)$. 
+
+Запускаем теорему о неявном отображении: $\Phi(a) = 0, \frac{\partial \Phi}{\partial y}$ --- невырожденный оператор. Тогда существует $! \varphi: U(a_x) \rightarrow P(a_y), \Phi(x, \varphi(x)) = 0$. Замечаем, что $x \mapsto (x, \varphi(x))$ --- параметризация простого гладкого $m$-мерного многобразия в $M_\Phi \cap \{U(a_x) \times P(a_y)\}$.
+
+Тогда для $g(x) = f(x, \varphi(x))$ точка $a_x$ --- просто точка локального экстремума. Почему? Управляя теперь точкой $x$, мы с помощью $g$ попадаем в $M_\Phi$, внутри которого $\Phi(x) = 0$ всегда! Поэтому внутри хорошего (в рамках этой задачи) множества мы и ищем экстремум. Это можно легко понять, если представить поиск экстремума на какой-то области графика (ради этого всё и делается же).
+
+Хорошо, давайте его искать. По необходимому условию экстремума, ЧП $g$ должны быть равны нулю ($\varphi'$ бывает только по $x$):
+
+\[f_x'(a) + f_y'(a)\cdot\varphi'(a_x) = 0 \qquad (\in \mathbb{R}^m)\]
+
+Начииная с этого места опускаем подстановку точек, но они там есть! Вспоминаем, что у нас есть $\Phi(x, \varphi(x)) = 0$. Также дифференцируем: 
+
+\[\Phi_x' + \Phi_y'\varphi' = 0 \qquad (\in Mat(n, m))\]
+
+\[\forall \lambda \in \mathbb{R}^m: \qquad \lambda\Phi'_x + \lambda\Phi_y'\varphi' = 0 \qquad (\in \mathbb{R}^m)\]
+
+Тогда можно вычесть из уравнения с $f$ уравнение с $\Phi$ --- размерности сошлись:
+
+\[f_x' - \lambda\Phi_x' + (f_y' - \lambda\Phi_y')\varphi' = 0\]
+
+Пусть $f_y' - \lambda\Phi_y' = 0$. Тогда:
+
+\[\lambda = f_y' \cdot \left(\Phi_y'\right)^{-1}\]
+
+Если мы берём это $\lambda$ (а нас и просят её предъявить), то наше предположение верно. Раз разность 0, то и иксовая разность равна нулю:
+
+\[\begin{cases}
+    f_y' - \lambda\Phi_y' = 0\\
+    f_x' - \lambda\Phi_x' = 0
+\end{cases}\]
+
+Это векторная запись точек, которые мы когда-то разъединили. Давайте соединим обратно: 
+
+\[f' - \lambda\Phi' = 0 \qquad \lambda = f_y' \cdot \left(\Phi_y'\right)^{-1}\]
+
+ч. т. д. 
 
 \newpage
 
@@ -1015,9 +1100,26 @@ $\exists $ гладкий путь $ \gamma: [-1, 1] \rightarrow M, \gamma(0) = 
 Итого:
 \[-\sum_{i = 1}^{m - 1} \frac{f_{x_i}'}{f_{x_m}'}(x^0)(x_i - x^0_i) - (x_m - x^0_m) = 0 \qquad | \cdot -f_{x_m}'\]
 
- ч. т. д.
+ч. т. д.
 
- 
+\subsubsection{Вычисление нормы линейного оператора с помощью собственных чисел}
+\textit{Формулировка:}
+
+$A: \mathbb{R}^m \rightarrow \mathbb{R}^n$
+
+Тогда $||A|| = \max {\sqrt{\lambda}}, \lambda \in \sigma(A^TA)$ --- множество собственных чисел. 
+
+\textit{Доказательство:}
+
+Рассмотрим $x \in S^{m - 1}: \{y \in \mathbb{R}^m: |y| = 1\}$.
+
+\[||A||^2 = \sup_{x \in S^{m - 1}}|Ax|^2 = \sup_{x \in S^{m - 1}}\langle Ax, Ax \rangle = \sup_{x \in S^{m - 1}}\langle \underbrace{A^TA}_{\text{симметричная}}x, x \rangle = \sup_{x \in S^{m - 1}, \lambda \in \sigma(A^TA)} \lambda |x|^2 = \max_{\lambda \in \sigma(A^TA)} \lambda\]
+
+Немного контекста: собственное число, это такое число, что $A$ отображает $x$ в $\lambda x$. Матрица $A^TA$ --- симметричная $(m \times n) \times (n \times m) = m \times m$. Так как у нас эта матрица вещественная, то и собственные числа у неё вещественные. Ну и значит, что максимальный вектор, который может получится, это вектор, домноженный на максимальное собственное число.
+
+ч. т. д.
+
+
 \end{document}
 
 \begin{comment}
