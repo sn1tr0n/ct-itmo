@@ -1201,7 +1201,41 @@ $\Phi(U(x^0)) = W, \Phi(x^0) = w_0$. Рассмотрим функцию $\widet
 
 --- тогда $f_n$ поточечно сходится к $f$ на $E$.
 
+\subsubsection{Формулировка критерия Больцано--Коши для равномерной сходимости}
 
+\[f_n \rsh{X} f \Leftrightarrow \forall \varepsilon > 0 \dbl \exists n \dbl \forall p \dbl \forall x \in X \dbl \left|f_{n + p}(x) - f_n(x)\right| < \varepsilon \]
+
+\subsubsection{Равномерная сходимость функционального ряда}
+
+$f_n: E \subset X \rightarrow \mathbb{R}, \sum_{k = 1}^{\infty} f_k(x)$ --- функциональный ряд
+
+$S_N(x) = \sum_{k = 1}^N f_k(x)$ --- частичная сумма
+
+\[\sum_{k = 1}^{\infty} f_k(x) \rsh{E} S(x) \Leftrightarrow S_N(x) \rshe S(x)\]
+
+\[\forall \varepsilon > 0 \dbl \exists N \dbl \forall n > N \dbl \forall x \in X \dbl \left|S_N(x) - S(x)\right| < \varepsilon\]
+
+\textit{Замечания:}
+
+\begin{enumerate}
+    \item равномерная сходимость $\Rightarrow$ поточечная
+    \item $R_N(x) = \sum_{k = N + 1}^{\infty} f_k(x)$ --- остаток ряда. $S_N(x) + R_N(x) = S(x)$. $\Rightarrow \sum f_n \rshe \Leftrightarrow R_N(x) \rshe 0$
+    \item $\sum f_n \rshe \Rightarrow f_n \rshe, f_n = R_{N} - R_{N - 1}$
+\end{enumerate}
+
+\subsubsection{Формулировка критерия Больцано--Коши для равномерной сходимости рядов}
+
+\[\sum_{k = 1}^{\infty} f_k \rshe \Leftrightarrow \forall \varepsilon > 0 \dbl \exists n \dbl \forall p \dbl \forall x \in E \dbl \left|\sum_{k = n}^{n + p} f_k(x)\right| < \varepsilon \]
+
+\subsubsection{Признак Абеля равномерной сходимости функционального ряда}
+
+\begin{itemize}
+    \item $a_n, b_n: X \rightarrow \mathbb{R}$
+    \item $\sum a_n(x)$ --- равномерно ограничена ($\exists C_a > 0 \dbl \forall x \in X \dbl \forall n \in \mathbb{N} \dbl |a_n(x)| \le C_a$) и монотонна по $n$ при любом $x$
+    \item $\sum b_n \rsh{X}$
+\end{itemize}
+
+Тогда $\sum a_n(x) b_n(x) \rsh{X}$
 
 \newpage
 
@@ -1277,6 +1311,50 @@ $f_n \in C(X), f_n \rsh{X} f \Rightarrow f \in C(X)$ --- доказательс�
 Доказательство более-менее тривиально. Распишем определение равномерной сходимости:
 
 \[n \rightarrow \infty: \quad \sup_{x \in X} \left| \sum_{k = n + 1}^{\infty} u_n(x) \right| \le \sup_{x \in X} \sum_{k = n + 1}^{\infty} \left| u_n(x) \right| \le \sum_{k = n + 1}^{\infty} c_n \longrightarrow 0\]
+
+ч. т. д.
+
+\subsubsection{Признак Дирихле равномерной сходимости функционального ряда}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\sum a_n(x) b_n(x), \quad a_n, b_n: X \rightarrow \mathbb{R}$
+    \item $\sum a_n$ --- равномерно ограничена ($\exists C_a \dbl \forall n \in \mathbb{N} \dbl \forall x \in X \dbl \left|\sum_{k = 1}^{n}(x)\right| \le C_a$)
+    \item $\sum b_n(x) \rsh{X}$
+    \item $b_n$ --- монотонны по $n \dbl \forall x \in X$
+\end{itemize}
+
+Тогда $\sum a_n(x) b_n(x) \rsh{X}$
+
+\textit{Доказательство:}
+
+Пусть $A_n = \sum_{k = 1}^n a_k$. Рассмотрим такую сумму (опустим $(x)$, но они там есть): 
+
+\[
+    \sum_{N \le K \le M} {a_K b_K} = A_Mb_M - A_{N - 1}b_{N - 1} + \sum_{N \le K \le M - 1} {(b_K - b_{K - 1})A_K}
+\]
+
+Если взять всё под модуль и применить неравенство треугольника, то получится выдержка из критерия Коши: 
+
+\[
+    \left|\sum_{N \le K \le M} {a_K b_K}\right| \le |A_Mb_M| - |A_{N - 1}b_{N - 1}| + \sum_{N \le K \le M - 1} {\left|b_K - b_{K - 1}\right| \cdot \left|A_K\right|} \qquad (*)
+\]
+
+Вспоминаем, что $b_n$ монотонна, поэтому можно раскрыть модуль внутри суммы и домножить всю сумму на ``знак монотонности'' (1, если возрастающая и -1, если убывающая). И потом просто оценить эту сумму сверху наибольшим членом и взять его с плюсом (оцениваем жеж). Ну и ещё оценим все $A_i$-шки константой из условия (у нас есть равномерная ограниченность):
+
+\[
+    (*) \le C_a \left( |b_M| + |b_{N - 1}| + |b_{K}| + |b_{K - 1}|\right) \qquad (**)    
+\]
+
+И ещё вспоминаем, что у нас ряд из $b_n$ равномерно сходится, что значит (с небольшой китайской бухгалтерией): 
+
+\[ \forall \varepsilon > 0 \dbl \exists k \dbl \forall n > k \dbl \sup_{x \in X} |b_n(x)| < \frac{\varepsilon}{4 \cdot C_a} \]
+
+Тогда при достаточно больших $N, M$:
+
+\[(**) \dbl C_a \cdot \left(\frac{\varepsilon}{4 \cdot C_a} + \frac{\varepsilon}{4 \cdot C_a} + \frac{\varepsilon}{4 \cdot C_a} + \frac{\varepsilon}{4 \cdot C_a} \right) < \varepsilon\]
+
+Критерий выполнен, всё хорошо.
 
 ч. т. д.
 
@@ -1489,10 +1567,38 @@ $f_n \in C(X), f_n \rsh{X} f \Rightarrow f \in C(X)$ --- доказательс�
 
 А равномерная сходимость ряда $\sum \widetilde{u}_n$ доказывается так:
 
-\[(*): \sup_{x \in E \cap \{x_\}} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right| = \max\{\sup_{x \in E} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right|, \sum_{k = n + 1}^\infty a_n\} \le \underbrace{\sup_{x \in E} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right|}_{\rightarrow 0} + \underbrace{\sum_{k = n + 1}^\infty a_n}_{\rightarrow 0} \longrightarrow 0\]
-
+\[(*): \sup_{x \in E \cup \{x_\}} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right| = \max\{\sup_{x \in E} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right|, \sum_{k = n + 1}^\infty a_n\} \le \underbrace{\sup_{x \in E} \left|\sum_{k = n + 1}^\infty \widetilde{u}_k \right|}_{\rightarrow 0} + \underbrace{\sum_{k = n + 1}^\infty a_n}_{\rightarrow 0} \longrightarrow 0\]
 
 ч. т. д.
+
+\subsubsection{Теорема о перестановке двух предельных переходов}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f_n: E \subset X \rightarrow \mathbb{R}$
+    \item $x_0 \in X$ --- предельная точка $E$
+    \item $\forall n \in \mathbb{N}: \exists$ конечный $\lim_{x \rightarrow x_0} f_n(x) = A_n$
+    \item $f_n(x) \rshe S(x)$ при $n \rightarrow \infty$
+\end{itemize}
+
+Тогда: 
+
+\begin{enumerate}
+    \item $\exists \lim_{n \rightarrow \infty} A_n \in \mathbb{R}$
+    \item $S(x) \underset{x \rightarrow x_0}{\longrightarrow} A$
+\end{enumerate}
+
+\[\lim_{x \rightarrow x_0} \underbrace{\lim_{n \rightarrow \infty}f_n(x)}_{\text{равномерный, } S(x)} =  \lim_{n \rightarrow \infty} \underbrace{\lim_{x \rightarrow x_0} f_n(x)}_{A_n}\]
+
+\textit{Доказательство:}
+
+Это такая попытка сделать двойной предел и для функций. Подгоняем под предыдущую теорему: $u_1 = f_1, u_n = f_n - f_{n - 1}, \quad a_1 = A_1, a_n = A_n - A_{n - 1}$. $\sum_{k = 1}^n u_k = f_n \rshe S(x)$, то есть $\sum u_n \rshe$. Супер, предыдущая теорема запущена. Пожинаем плоды ($\sum a_n$ сходится):
+
+\[\sum_{k = 1}^n A_n \text{ --- имеет конечный предел}\]
+
+\[\lim_{x \rightarrow x_0} \sum_{k = 1}^{\infty} u_k(x) = \lim_{x \rightarrow x_0} S(x) = A\]
+
+ч. т. д. 
 
 \newpage
 
