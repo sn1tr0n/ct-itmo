@@ -236,7 +236,7 @@ $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и с
 
 Тогда $\exists U(x_0): F|_{U(x_0)}$ --- диффеоморфизм
 
-\subsubsection{Формулировка теоремы о  гладкости обратного отображения в терминах систем уравнений}
+\subsubsection{Формулировка теоремы о гладкости обратного отображения в терминах систем уравнений}
 
 \begin{itemize}
     \item $F = (f_1, f_2, \ldots, f_m)$
@@ -259,7 +259,7 @@ $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и с
 \begin{itemize}
     \item $F = (x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n)$
     \item $\begin{cases}
-        f_1(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0\\
+        f_1(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) ,= 0\\
         f_2(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0\\
         \vdots\\
         f_n(x_1, x_2, \ldots, x_m, y_1, y_2, \ldots, y_n) = 0
@@ -282,6 +282,17 @@ $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и с
 
 Причём важно, что это пространство не обязано проходить через точку $p$. Это просто пространство касательных векторов, откладываемых от начала координат (???). 
 
+\subsubsection{Набор функций, независимый в окрестности точки}
+
+% https://youtu.be/AWZbCBfOlt4?t=805
+
+Набор функций $f_1 \ldots f_n: O \subset \mathbb{R}^m \rightarrow \mathbb{R}$ называется независимым в окрестности $x_0$, если:
+
+$F := (f_1 \ldots f_n): O \rightarrow \mathbb{R}^n$
+
+$F(x_0) := y_0$
+
+$\forall$ достаточно малой окрестности $V(y_0)$ $\forall$ непрерывного G: $V(y_0) \rightarrow \mathbb{R}$ равенство $G(f_1(x) \ldots f_n(x)) \equiv 0 $ в $ U(x_0)$ выполняется только если $G \equiv 0$.
 
 \newpage
 \subsection{Важные теоремы}
@@ -1206,10 +1217,6 @@ $\Phi(U(x^0)) = W, \Phi(x^0) = w_0$. Рассмотрим функцию $\widet
 \newpage
 
 \subsection{Определения}
-
-%\subsubsection{Набор функций,  независимый в окрестности точки}
-
-%(???)
 
 \subsubsection{Поточечная сходимость последовательности функций на множестве}
 
