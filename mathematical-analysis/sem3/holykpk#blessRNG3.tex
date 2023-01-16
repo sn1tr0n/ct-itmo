@@ -36,7 +36,8 @@
        }%
         }
 \def\dbl{\,\,}
-\def\image#1{\includegraphics[width=\linewidth, height=0.95\textheight]{static/#1}}
+\def\image#1{\includegraphics[width=\linewidth]{static/#1}}
+\def\imageh#1{\includegraphics[width=\linewidth, height=0.95\textheight]{static/#1}}
 \def\images#1#2{\begin{center}\includegraphics[width=#1\linewidth]{static/#2}\end{center}}
 
 \def\rsh#1{\underset{#1}{\rightrightarrows}}
@@ -2334,35 +2335,88 @@ $(2)$ уже сразу $< \varepsilon$, т. к. $n - (N_1 - 1)$ очевидн�
 
 \textit{Я с ума сойду техать этот раздел...}
 
-\image{loc_lapl_1.jpg}
+\imageh{loc_lapl_1.jpg}
 
-\image{loc_lapl_2.jpg}
+\imageh{loc_lapl_2.jpg}
 
 \subsubsection{Метод Лапласа}
 
-\image{met_lapl_1.jpg}
+\imageh{met_lapl_1.jpg}
 
-\image{met_lapl_2.jpg}
+\imageh{met_lapl_2.jpg}
 
-\image{met_lapl_3.jpg}
+\imageh{met_lapl_3.jpg}
 
 \subsubsection{Формула Стирлинга для гамма-функции}
 
-\image{stirl_gamm.jpg}
+\imageh{stirl_gamm.jpg}
 
 \subsubsection{Теорема Вейерштрасса о приближении непрерывной функции многочленами}
 
-\image{veiersht_lap.jpg}
+\imageh{veiersht_lap.jpg}
 
 \subsubsection{Лемма о каноническом виде функции в окрестности стационарной точки}
 
-\image{kanon_vd.jpg}
+\imageh{kanon_vd.jpg}
 
 \subsubsection{Лемма Ватсона}
 
-\image{watson_l.jpg}
+\imageh{watson_l.jpg}
 
+\newpage
 
+\section{Период Кайнозойский}
+\subsection{Важные определения}
+
+\subsubsection{Полукольцо, алгебра, сигма-алгебра}
+
+Дизъюнктный набор множеств $A_1, A_2, \ldots, A_n$ такой, что $\bigcap_{1 < i, j < n} A_i A_j = \O$. Значит, что дизъюнктное объединение это: $\bigsqcup_{1 < i < n} A_i$
+
+Это такие системы множеств над $X$ с разными прикольными свойствами: 
+
+\begin{enumerate}
+    \item $\mathcal{P} \subset 2^X$ --- полукольцо, если: 
+        \begin{enumerate}
+            \item $\O \in \mathcal{P}$
+            \item $\forall A, B \in \mathcal{P}: A \cup B \in \mathcal{P}$
+            \item $\forall A, B \in \mathcal{P}: \exists D_1, D_2, \ldots, D_n$ --- дизъюнктные, такие что: $A \setminus B = \bigsqcup_{i} D_i$
+        \end{enumerate}
+        
+        Свойства: 
+        \begin{enumerate}
+            \item $A \in \mathcal{P} \nRightarrow A^c \in \mathcal{P}$
+            \item $A, B \in \mathcal{P} \nRightarrow (A \cup B | A \vartriangle B | A \setminus B) \in \mathcal{P}$
+            \item Аксиома $3^M$: $\forall A, B_1, B_2, \ldots, B_k \in \mathcal{P} \exists D_1, D_2, \ldots D_n$ --- дизъюнктные. Тогда $A \setminus \left(\bigcup_{i = 1}^{k} B_i\right) = \bigsqcup_{i = 1}^{n} D_i$. Доказывается индукцией.
+        \end{enumerate}
+
+    \item $\mathcal{A} \subset 2^X$ --- алгебра, если: 
+        \begin{enumerate}
+            \item $X \in \mathcal{A}$
+            \item $A, B \in \mathcal{A} \quad A \setminus B \in \mathcal{A}$
+        \end{enumerate}
+
+        Свойства: 
+        \begin{enumerate}
+            \item $\O = X \setminus X \in \mathcal{A}$
+            \item $A, B \in \mathcal{A} \quad A \cap B = A \setminus (A \setminus B) \in \mathcal{A}$
+            \item $A^C = X \setminus A \in \mathcal{A}$
+            \item $A \cup B = (A^C \cap B^C)^C$
+            \item $A_1, A_2, \ldots, A_{n} \in \mathcal{A}, \bigcup_{i = 1}^{n} A_i \in \mathcal{A}, \bigcap_{i = 1}^{n} A_i \in \mathcal{A}$ --- ну тоже тривиально
+            \item Всякая алгебра есть полукольцо
+        \end{enumerate}
+    
+    \item $\textfrak{A} \subset 2^X$ --- $\sigma$-алгебра --- это просто алгебра, с аксиомой 3: $\forall A_1, A_2, \ldots \in \textfrak{A}$ --- счётный набор, тогда $\bigcup A_i \in \textfrak{A}$
+\end{enumerate}
+
+\newpage
+
+\subsection{Определения}
+\newpage
+
+\subsection{Важные теоремы}
+\newpage
+
+\subsection{Теоремы}
 \newpage
 
 \end{document}
