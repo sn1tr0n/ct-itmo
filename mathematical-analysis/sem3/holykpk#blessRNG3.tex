@@ -277,10 +277,9 @@ $F: O \subset \mathbb{R}^m \rightarrow \mathbb{R}^m, O$ --- открыто и с
     \item $p \in M$
     \item $\Phi: O \subset \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- параметризация $M \cap U(p)$
     \item $t^0 \in O: \Phi(t^0) = p$
-    \item $\Phi'(t^0): \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- линейный оператор
 \end{itemize}
 
-Тогда образ $\Phi'(t^0)$ --- линейное подпространство в $\mathbb{R}^m$, не зависящее от $\Phi$. Ну вот оно и называется \textit{касательным пространством} ($T_p M$).
+Тогда $\Phi'(t^0): \mathbb{R}^k \rightarrow \mathbb{R}^m$ --- линейный оператор, образ $\Phi'(t^0)$ --- линейное подпространство в $\mathbb{R}^m$, не зависящее от $\Phi$. Ну вот оно и называется \textit{касательным пространством} ($T_p M$).
 
 Причём важно, что это пространство не обязано проходить через точку $p$. Это просто пространство касательных векторов, откладываемых от начала координат (???). 
 
@@ -564,7 +563,7 @@ $F: [a, b] \rightarrow \mathbb{R}^n, F$ --- дифференцируема на 
 
 $B$ --- очевидно инъективен, т.к. любой ненулевой вектор у нас отправляется в разные точки $\Rightarrow$ биекция $\Rightarrow$ обратимый $\Rightarrow \exists B^{-1}$
 
-Теперь пусть $y = B^{-1}x \Rightarrow |Bx| = |y| \ge c|x| = c |B^{-1}y| \Rightarrow |B^{-1}y| \le \frac{1}{c} \cdot |y| \underset{\text{по замечанию 3}}{\Rightarrow} ||B^{-1}|| \le \frac{1}{c}$
+Теперь пусть $x = B^{-1}y \Rightarrow |Bx| = |y| \ge c|x| = c |B^{-1}y| \Rightarrow |B^{-1}y| \le \frac{1}{c} \cdot |y| \underset{\text{по замечанию 3}}{\Rightarrow} ||B^{-1}|| \le \frac{1}{c}$
 
 ч.т.д.
 
@@ -714,7 +713,7 @@ $Q$ --- положительно определённая квадратична
 
 А давайте так: $$\gamma_Q := \min_{|x| = 1}{Q(x)}$$. Он достигается, так как мы гоняем по компакту (сфере), следовательно по Вейерштрассу всё хорошо.
 
-Для $x = 0$ всё тривиально, поэтому при $x \neq 0: Q(x) = |x|^2Q(\frac{x}{|x|}) \underset{\frac{x}{|x|}\text{ от 0 до 1!}}{\ge} \gamma_Q|x|^2$
+Для $x = 0$ всё тривиально, поэтому при $x \neq 0: Q(x) = |x|^2Q(\frac{x}{|x|}) \underset{\frac{x}{|x|}\text{по модулю равен 1 (сфера)}}{\ge} \gamma_Q|x|^2$
 
 \textit{Формулировка (Лемма об эквивалентных нормах):}
 
@@ -726,7 +725,13 @@ $p: \mathbb{R}^m \rightarrow \mathbb{R}$ --- норма
 
 То же самое: $$C_1 := \min_{|x| = 1}{p(x)}, \quad C_2 := \max_{|x| = 1}{p(x)}$$
 
-Для минимума: $\forall x: p(x) = |x| \cdot p(\frac{x}{|x|}) \ge C_1|x|$, для максимума аналогично.
+почти локальной инъективностиДля минимума: $\forall x: p(x) = |x| \cdot p(\frac{x}{|x|}) \ge C_1|x|$, для максимума аналогично.
+
+Осталось лишь доказать, что норма непрерывна, чтобы максимум и минимум достигался. Оценим (разложим по базису $\{e_i\}_{i = 1}^{n}$):
+
+\[p(x, y) \le p\left(\sum (x_i - y_i)e_i\right) \underset{\text{неравенство треугольника}}{\le} \sum|x_i - y_i|p(e_i) \underset{\text{КБШ}, M = \sqrt{\sum p^2(e_k)}}{\le} M \cdot |x - y|\]
+
+Ну всё, фигня, изменяется всего на какую-то константу, значит непрерывно.
 
 ч. т. д.
 
@@ -747,7 +752,7 @@ $p: \mathbb{R}^m \rightarrow \mathbb{R}$ --- норма
 \begin{enumerate}
     \item Если $F$ --- линейное отображение, то рассмотрим: $|h| = |F^{-1}Fh| \le ||F^{-1}|| \cdot |Fh|$. По линейности: 
     \[|F(x_0 + h) - F(x_0)| = |Fh| \ge \underbrace{\frac{1}{||F^{-1}||}}_{C}|h| \quad \forall \delta\]
-    \item В противном случае, запишем определение дифферецируемости: $|F(x_0 + h) - F(x_0)| = |\underbrace{F'(x_0)h}_{> 0} + |h| \cdot \underbrace{\alpha(h)}_{\text{б. м.}}| \underset{\text{нер-во треугольника}}{\ge} \underbrace{C}_{\text{из пункта 1}}|h| + \alpha(h) \cdot |h|$. Давайте выберем $\delta$ так, чтобы $\alpha(h) < \frac{C}{2}$
+    \item В противном случае, запишем определение дифферецируемости: $|F(x_0 + h) - F(x_0)| = |\underbrace{F'(x_0)h}_{> 0} + |h| \cdot \underbrace{\alpha(h)}_{\text{б. м.}}| \underset{\text{нер-во треугольника}}{\ge} \underbrace{C}_{\text{из пункта 1}}|h| - \alpha(h) \cdot |h|$. Давайте выберем $\delta$ так, чтобы $\alpha(h) < \frac{C}{2}$
     
     \[\ldots\ge \frac{C}{2}|h|\]
 \end{enumerate}
@@ -2429,11 +2434,140 @@ $\mu: \mathcal{P} \rightarrow \overline{\mathbb{R}}$ --- конечно-адди
 
 Это такой параллелепипед: $[a, b) \subset \mathbb{R}^m = \{x \dbl | \dbl a_i \le x_i < b_i\}$
 
+Кубическая ячейка: $a \in \mathbb{R}^m, r \in \mathbb{R}, \quad Q(a, r) = [a_1 - r, a_1 + r) \times [a_2 - r, a_2 + r) \times \ldots \times [a_m - r, a_m + r]$
+
 \subsubsection{Мера, пространство с мерой}
 
 Если $\mu: \mathcal{P} \rightarrow \overline{\mathbb{R}}$ --- объём, счётно-аддитивна (в том смысле, что аддитивная не только для конечного, но и счётного множества подмножеств $\forall A, \underbrace{A_1, A_2, \ldots}_{\text{дизъюнктны, НЧСЧ}}, \bigsqcup_{i = 1}^{\infty} A_i \Rightarrow \mu A = \sum_{i = 1}^{\infty} \mu A_i$), то $\mu$ --- мера.
 
 $(\underbrace{X}_{\text{множество}}, \underbrace{\textfrak{A}}_{\sigma-\text{алгебра}}, \underbrace{\mu}_{\text{мера на } \textfrak{A}})$ --- пространство с мерой
+
+\subsubsection{Сигма-конечная мера}
+
+Если $\mathcal{P}$ --- полукольцо, $\mu$ --- мера на $\mathcal{P}$: 
+
+\[\exists P_1, P_2, \ldots \in \mathcal{P} \quad \forall k \dbl \mu P_k < + \infty \quad \bigcup P_k = X\]
+
+то $\mu$ --- $\sigma$-конечная
+
+\subsubsection{Мера Лебега, измеримое по Лебегу множество}
+
+\textit{Мера Лебега} --- лебеговское продолжение классического объёма. 
+
+$\mathfrak{M}^m$ --- $\sigma$-алгебра измеримых по Лебегу множеств размерности $m$.
+
+$\lambda, \lambda_m$ --- мера Лебега. 
+
+
+\textit{Свойства: }
+
+\begin{enumerate}
+    \item $\mathfrak{M}^m$ содержит все ячейки, их пересечения и объединения. В том числе и точки, которые имеют меру $0$ (оцениваются с помощью одной кубичской ячейки радиуса $\frac{1}{n}$). Ещё, если $A_n \in \mathfrak{M}^m, \lambda A_n = 0 \dbl \bigcup A_n \Rightarrow \lambda \bigcup A_n = 0$. 
+    \item Содержит все открытые и (следовательно) замкнутые множества
+    \item Канторово множество несчётно
+    \item Существуют неизмеримые множества
+    \item $A$ --- ограничено и измеримо $\Rightarrow \lambda A < + \infty$
+    \item $A$ --- открыто, $\lambda A > 0$
+    \item $E$ --- измеримо, $\lambda E = 0 \Rightarrow$ у $E$ нет внутренних точек
+    \item $A \in \mathfrak{M}^m, \forall \varepsilon > 0$:
+        \begin{enumerate}
+            \item $\exists$ открытое $G_{\varepsilon}: A \subset G_{\varepsilon}: \lambda (G_{\varepsilon} \setminus A) < \varepsilon$
+            \item $\exists$ замкнутое $F_{\varepsilon}: G_{\varepsilon} \subset A: \lambda (A \setminus F_{\varepsilon}) < \varepsilon$
+        \end{enumerate}
+
+    \item Парадокс Хаусфорда-Банаха-Тарского --- нельзя создать меру уже для $\mathbb{R}^3$, покрывающую все подмножества и устойчивую к преобразованиям (конгруэнтным?).
+\end{enumerate}
+
+\subsubsection{Измеримая функция}
+
+$f: E \subset X \rightarrow \overline{\mathbb{R}}, a \in \mathbb{R}$
+
+\textit{Лебеговы множества} функции $f$ (*):
+
+\begin{itemize}
+    \item $E(f < a) = \{x \in E \dbl | \dbl f(x) < a\}$
+    \item $E(f \le a) = \{x \in E \dbl | \dbl f(x) \le a\}$
+    \item $E(f > a) = \{x \in E \dbl | \dbl f(x) > a\}$
+    \item $E(f \ge a) = \{x \in E \dbl | \dbl f(x) \ge a\}$
+\end{itemize}
+
+\textit{Замечани: }
+
+\begin{itemize}
+    \item \[E(f > a) = (E(f \le a))^{C} \quad \text{дополнение в }E\]
+    \item \[E(f \le a) = \bigcap_{n \in \mathbb{N}} E(f < a + \frac{1}{n})\]
+\end{itemize}
+
+Тогда: 
+
+\begin{itemize}
+    \item $(X, \textfrak{A}, \mu)$ --- пространство с мерой
+    \item $f: E \subset X \rightarrow \overline{\mathbb{R}}, E \in \textfrak{E}$
+\end{itemize}
+
+$f$ --- \textit{измерима на множестве} $E$, если $\forall a \in \mathbb{R} \quad E(f < a)$ --- измерима
+
+\textit{Пример:}
+
+$X = \mathbb{R}^m, \textfrak{A} = \mathfrak{M}^m, f: \mathbb{R}^m \rightarrow \mathbb{R}$ --- непрерывная на $X \Rightarrow f$ --- измерима
+
+\textit{Замечания: }
+
+\begin{itemize}
+    \item $f$ --- измерима = $f$ --- измерима на $X$
+    \item $X = \mathbb{R}^m, \textfrak{A} = \mathfrak{M}^m, f$ --- измерима по Лебегу, если она измерима на $X = \mathbb{R}^m$
+    \item Эквивалентны все 4 (*) определения измеримых множеств по Лебегу для $\forall a \in \mathbb{R}$ (следует из предыдущего замечания)
+    \item $f$ --- измерима $\Rightarrow \forall a \in \mathbb{R} \quad E(f = a) = E(f \ge a) \cap E(f \le a)$ --- измеримо (обратное неверно)
+    \item $f$ --- измерима $\Rightarrow (-)$ --- измеримо   
+        \begin{itemize}
+            \item $\alpha f (\alpha \in \mathbb{R}), -f$
+            \item на $(E_k)$, то и на $\bigcup_{k} E_k$
+            \item на $E$, $E' \subset E$, то и на $E'$
+            \item при $f \neq 0$, то и $\frac{1}{f}$
+            \item при $f \ge 0$, на $E$, то и на $\forall \alpha \in \mathbb{R} \dbl f^{\alpha}$
+        \end{itemize}
+\end{itemize}
+
+
+\subsubsection{Сходимость почти везде}
+
+Даны $f_n, f: E \rightarrow \overline{\mathbb{R}}$, тогда $f_n \rightarrow f$ \textit{почти везде (п. в.)}, если $\exists e \subset E, \mu e =0, \forall x \in E \setminus e \quad f_n \rightarrow f$ всюду.
+
+\textit{Пример: }
+
+$x^n \rightarrow 0$ почти везде на $[0, 1]$
+
+\textit{Свойства: }
+
+\begin{enumerate}
+    \item $f_n, f: X \rightarrow \overline{\mathbb{R}}, f_n$ --- измерима, $f_n \rightarrow f$ почти всюду. Тогда $f$ --- измерима. Доказывается отбрсыванием плохих точек меры 0.
+    \item $g, f: X \rightarrow \overline{\mathbb{R}}, f = g$ почти всюду, тогда $g$ --- измерима на $X$
+    \item $\mu$ --- необязательно полная. $f: X \setminus e \rightarrow \overline{\mathbb{R}}, \mu e = 0, f$ --- измерима на $X \setminus e$. Тогда $\exists g: X \rightarrow \overline{\mathbb{R}}$, измеримая на $X$, такая что $f = g$ почти всюду
+    \item $f \sim g$, если $f = g$ почти всюду
+\end{enumerate}
+
+
+\subsubsection{Интеграл неотрицательной измеримой функции}
+
+$f \ge 0$ --- измерима
+
+\[\int_{X} f d \mu = \sup \{\int_{X} g d \mu, g\text{ --- ступенчатые}, 0 \le g \le f\}\]
+
+\textit{Замечания:}
+
+\begin{enumerate}
+    \item если $f$ --- ступенчатая, то интеграл равен интегралу ступенчатой
+    \item $0 \le \int_{X} f d \mu \le + \infty$
+    \item ступенчатая $g \le f \Rightarrow \int_{X} g d \mu \le \int_{X} f d \mu$
+\end{enumerate}
+
+\subsubsection{Суммируемая функция}
+
+$E \subset X$ --- измеримо, $f$ --- измерима на $X, f$ --- суммируема на $E$, если:
+
+\[\int_{X} f^{+} \chi_{E} < + \infty, \int_{X} f^{-} \chi_{E} < + \infty\]
+
+
 \newpage
 
 \subsection{Определения}
@@ -2446,9 +2580,173 @@ $(\underbrace{X}_{\text{множество}}, \underbrace{\textfrak{A}}_{\sigma-
 
 Про аддитивность там помахали руками, сказали дробить на мелкие кусочки и всё получится.
 
+\subsubsection{Формулировка теоремы о непрерывности меры снизу}
+
+\textit{Формулировка:}
+
+$\textfrak{A}$ --- алгебра, $\mu: \textfrak{A} \rightarrow \overline{\mathbb{R}}$ --- объём. Тогда следующие утверждения эквивалентны: 
+
+\begin{itemize}
+    \item $\mu$ --- мера (то есть счётно-аддитивна)
+    \item $\mu$ --- непрерывна снизу, то есть: 
+    \[\forall A_1, A_2, \ldots \in \textfrak{A}, \quad A_1 \subset A_2 \subset \ldots, \quad A = \bigcup_{i = 1}^{\infty} A_i \Leftrightarrow A = \lim_{i \rightarrow \infty} A_i\]
+\end{itemize}
+
+\subsubsection{Полная мера}
+
+Если $\textfrak{A}$ --- $\sigma$-алгебра, $\mu$ --- мера на $\textfrak{A}$. Тогда $\mu$ --- полная, если $\forall A \subset B, B \in \textfrak{A}, \mu B = 0 \Rightarrow A \in \textfrak{A}, \mu A = 0$
+
+
+\subsubsection{Формулировка теоремы о лебеговском продолжении меры}
+
+$X$ --- множество, $\mathcal{P}$ --- полукольцо подмнжеств в $X$, $\mu_0$ --- $\sigma$-конечная мера на $\mathcal{P}$.
+
+Тогда существуют $\textfrak{A}$ --- $\sigma$-алгебра и $\mu$ --- мера на $\textfrak{A}$, такие что:
+
+\begin{enumerate}
+    \item $\mathcal{P} \subset \textfrak{A}, \mu|_{\mathcal{P}} = \mu_0$
+    \item $\mu$ --- полная мера
+    \item Если $\mu_1$ --- мера на $\sigma$-алгебре $\textfrak{A}_1 \supset \mathcal{P}$, полная, $\mu_1|_{\mathcal{P}} = \mu_0$, то $\textfrak{A}_1 \supset \textfrak{A}$ и $\mu_1|_{\textfrak{A}} = \mu$
+    \item Если $\mu_2$ --- мера на алгебре $\textfrak{A}_2 \subset \textfrak{A}$, $\mathcal{P} \subset \textfrak{A}_2$, $\mu_2|_{\mathcal{P}} = \mu_0$, то $\mu|_{\textfrak{A}_2} = \mu_2$
+    \item $\forall A \in \textfrak{A}: \quad \mu A = \inf\left(\sum \mu P_k, A \subset \bigcup_{k = 1}^{\infty} P_k, P_k \in \mathcal{P}\right)$
+\end{enumerate}
+
+\subsubsection{Болерелевская $\sigma$-алгебра}
+
+$\textfrak{B}$ --- борелевская $\sigma$-алгбера в $\mathbb{R}^m$ --- минимальная $\sigma$-алгебра, содержащая все открытые множества (ячейки).
+
+\textit{Следствия:}
+
+\begin{enumerate}
+    \item $\forall A \subset \mathfrak{M}^m \dbl \exists B, C$ --- борелевские, такие что $B \subset A \subset C, \lambda_m(C \setminus A) = \lambda_m(A \setminus B) = 0$. Доказывается по 8 свойству меры Лебега.
+    \item $\forall A \in \mathfrak{M}^m$ представимо в виде $A = B \cup \mathcal{N}$, где $B$ --- борелевское, а $\mu \mathcal{N} = 0$
+    \item Регулярность меры Лебега
+\end{enumerate}
+
+\subsubsection{Теорема о мерах, инвариантных относительно сдвигов}
+
+\begin{itemize}
+    \item $\mu$ --- мера на $\mathfrak{M}^m$
+    \item $\mu$ --- инвариантна относительно сдвигов 
+    
+    \[\forall a \in \mathbb{R}^m \dbl \forall E \in \mathfrak{M}^m \quad \mu(a + E) = \mu(E)\]
+
+    \item $\mu$ --- любого ограниченного множества конечна
+\end{itemize}
+
+Тогда:
+
+\[\exists k \in [0, +\infty), \quad \mu = k \cdot \lambda \quad \Leftrightarrow \quad \forall E: \mu E = k \cdot \lambda E\]
+
+\subsubsection{Ступенчатая функция}
+
+$f: X \rightarrow \mathbb{R}$ называется \textit{ступенчатой}, если существует \textit{разбиение} (конечное), такое что $X = \bigsqcup_{i = 1}^{n} e_i, \quad \forall k \dbl f|_{e_k} = \const_k$
+
+\textit{Пример:}
+
+Характеристическая функция множества $e_k$: 
+\[\chi_{e_k}(x) = \begin{cases}
+    1, x \in e_k \\
+    0, x \notin e_k
+\end{cases}\]
+
+\textit{Общий вид ступенчатой функции:}
+
+\[f(x) = \sum_{i = 1}^{n} c_i \chi_{e_i}(x)\]
+
+\textit{Замечание:}
+
+Если $\exists f, g$ --- ступенчатые, то можно разбиения подразбить на конечное число кусочков, чтобы оно было общим для обоих функций ($\exists$ разбиение $X = \bigsqcup_{i = 1}^{n} e_i$, такое что $f|_{e_i} = \const, g|_{e_i} = \const$)
+
+\subsubsection{Разбиение, допустимое для ступенчатой функции}
+
+См. выше
+
+\subsubsection{Свойство, выполняющееся почти везде}
+
+$W(x)$ --- высказывание (true или false), вычисляемое относительно точки
+
+Говорят, что утверждение $W(x)$ \textit{выполнено почти всюду (почти везде) на $E$}, если $\exists e \subset E, \mu E = 0$, и для $\forall x \in E \setminus e \dbl W(x) == true$
+
+\textit{Важный принцип:}
+
+Если есть последовательность высказываний $W_n(x)$, тогда утверждение ``$\forall n \dbl W_n(x)$ --- истинно'' выполнено при почти всех $x$.
+
+\subsubsection{Сходимость по мере}
+
+$f_n, f: X \rightarrow \overline{\mathbb{R}}$ почти везде конечны, измеримы. Тогда $f_n \underset{\mu}{\Longrightarrow} f$ сходится по мере (при $n \rightarrow \infty$), если: 
+
+\[\forall \varepsilon > 0 \quad \mu X(|f_n - f| > \varepsilon) \underset{n \rightarrow \infty}{\longrightarrow} 0\]
+
+\subsubsection{Теорема Егорова о сходимости почти везде и почти равномерной сходимости}
+
+\begin{itemize}
+    \item $\mu X < + \infty$
+    \item $f_n, f$ --- измеримы, почти везде конечны
+    \item $f_n \rightarrow f$ почти везде
+\end{itemize}
+
+Тогда:
+
+\[\forall \varepsilon > 0 \dbl \exists e \subset X, \dbl \mu e < \varepsilon \quad f_n \rsh{X \setminus e} f\]
+
+\subsubsection{Интеграл ступенчатой функции}
+
+$f \ge 0, f = \sum_{i = 1}^{n} \lambda_i \chi_{E_i}(x)$ --- ступенчатая, $\bigsqcup_{i = 1}^{k} E_{i} = X$ --- допустимое разбиение
+
+\[\int_{X} f d \mu = \sum_{i = 1}^{n} \lambda_i \mu E_i \] 
+
+\textit{Свойства: }
+
+\begin{enumerate}
+    \item Не зависит от представления $f$ (можно передробить кусочки и получить то же самое)
+    \item Монотонен $f \le g \Rightarrow \int_{X} f d \mu \le \int_{X} g d \mu$
+\end{enumerate}
+
+
+\subsubsection{Интеграл суммируемой функции (интеграл Лебега)}
+
+Пусть $f$ --- измеримая функция, и при этом хотя бы один из этих интегралов конечен $\int_{X} f^{+}, \int_{X} f^{-}$, тогда \textit{интеграл Лебега это}:
+
+\[\int_{X} f d \mu := \int_{X} f^{+} d \mu - \int_{X} f^{-} d \mu\]
+
+Если оказалось, что оба интеграла конечны, то функция называется \textit{суммируемой}.
+
+\textit{Замечания: }
+\begin{enumerate}
+    \item $f \ge 0$ --- измерима, тогда интеграл Лебега равен интегралу неотрицательной измеримой функции
+    \item \[\int_{E} f d \mu := \int_{E} f \chi_{E} d \mu\]
+    \item \[f = \sum \lambda_{k} \chi_{E_{k}}, \quad \int_{E} f = \sum \lambda_k \mu(E_{k} \cap E)\]
+    \item $f \ge 0$ --- измерима
+        \[\int_{E} f d \mu = \sup \{\int_{E} g d \mu, 0 \le g \le f, g\text{ --- ступенчатые}\}\]
+    \item $\int_{E} f d \mu$ --- не зависит от значений вне $E$
+\end{enumerate}
+
 \newpage
 
 \subsection{Важные теоремы}
+
+\subsubsection{Регулярность меры Лебега}
+
+\images{0.95}{reg_mer_leb.jpg}
+
+\subsubsection{Теорема о преобразовании меры Лебега при линейном отображении}
+
+\images{0.95}{iz_lin_otob.jpg}
+
+\subsubsection{Характеризация измеримых функций с помощью ступенчатых. Следствия}
+
+\images{0.95}{harakt_iz_st_1.jpg}
+
+\images{1}{harakt_iz_st_2.jpg}
+
+\subsubsection{Теорема Леви}
+
+\images{0.95}{t_levi_1.jpg}
+
+\images{1}{t_levi_2.jpg}
+
+
 \newpage
 
 \subsection{Теоремы}
@@ -2554,7 +2852,181 @@ $\mu: \mathcal{R} \rightarrow \overline{\mathbb{R}}$ --- объём. Тогда 
 ч. т. д.
 
 
-\newpage
+\subsubsection{Теорема о непрерывности меры сверху}
+
+\textit{Формулировка:}
+
+$\textfrak{A}$ --- алгебра, $\mu: \textfrak{A} \rightarrow \mathbb{R}$ --- объём. Тогда следующие утверждения эквивалентны: 
+
+\begin{itemize}
+    \item $\mu$ --- мера (то есть счётно-аддитивна)
+    \item $\mu$ --- непрерывна сверху, то есть: 
+    \[\forall A_1, A_2, \ldots \in \textfrak{A}, \quad A_1 \supset A_2 \supset \ldots, \quad A = \bigcap_{i = 1}^{\infty} A_i \Leftrightarrow A = \lim_{i \rightarrow \infty} A_i\]
+\end{itemize}
+
+\textit{Доказательство:}
+
+\textbf{$(1) \Rightarrow (2)$}
+
+Давайте рассмотрим $B_k = A_k \setminus A_{k + 1}$: 
+
+\images{0.3}{nepr_mera_sv.png}
+
+Очевидно, что все такие $B_i$ дизъюнктны относительно друг друга. Тогда очевидно (из рисунка), что:
+
+\[A_1 = \bigsqcup_{i = 1}^{\infty} B_i \sqcup A\]
+
+Т. к. нам дана мера, давайте применим её (сработала счётная аддитивность): 
+
+\[\mu A_1 = \sum_{i = 1}^{\infty} \mu B_i + \mu A\]
+
+Но нам то интересно, что будет при $i \rightarrow \infty$, поэтому смотрим, что будет для $i$-го: 
+
+\[\mu A_i = \sum_{k = i}^{\infty} \mu B_k + \mu A\]
+
+Ну а теперь в пределе $i \rightarrow \infty$ (вспоминаем, что по условию $\mu A_1 < + \infty$ и $\sum \mu B_k$ --- сходится (т.к. на дизъюнктном объединении)):
+
+\[\lim_{i \rightarrow \infty} \mu A_i = 0 + \mu A\]
+
+\textbf{$(2) \Rightarrow (1)$}
+
+Ну а тут всё по накатанной. Проверяем счётную аддитивность: $C = \bigsqcup_{i = 1}^{\infty} C_i \underset{?}{\Rightarrow} \sum_{i = 1}^{\infty} \mu C_i$. Соорудим $C_i$:
+
+\[A_i = \bigcup_{k = i}^{\infty} C_k\]
+
+Тогда у нас будет работать условие $A_1 \supset A_2 \supset \ldots$, однако работать с этим не супер удобно. Давайте запишем по-другому: 
+
+\[A_i = \bigcup_{k = i}^{\infty} C_k = C \setminus \left(\bigsqcup_{k = 1}^{i} C_k\right)\]
+
+Супер, такое мы любим, это по 3й аксиоме полукольца лежит в $\textfrak{A}$. Заметим также (так как дизъюнктное разбиение в конце ничего не останется): 
+
+\[A_1 \supset A_2 \supset A_3 \supset \ldots A = \bigcap_{i = 1}^{\infty} A_i = \O \quad \Rightarrow \mu A_i \underset{i \rightarrow \infty}{\longrightarrow} 0 = \mu A\]
+
+Перезапишем теперь посылку в терминах $C$ и $A_i$:
+
+\[C = \bigsqcup_{k = 1}^{i - 1} C_k \sqcup A_i\]
+
+И по конечной аддитивности:
+
+\[\mu C = \sum_{k = 1}^{i - 1} \mu C_k + \mu A_i\]
+
+Ну а в пределе $i \rightarrow \infty$:
+
+\[\mu C = \sum_{k = 1}^{\infty} \mu C_k + 0\]
+
+Посылка доказана. 
+
+ч. т. д. 
+
+
+\subsubsection{Счетная аддитивность классического объема}
+\textit{Формулировка:}
+
+$\mathcal{P}^m$ --- множемтво всех ячеек на $\mathbb{R}^m$, $\mu$ --- классический объём.
+
+Тогда $\mu$ --- $\sigma$-конечная мера.
+
+\textit{Доказательство:}
+
+$\sigma$-конечность очевидна по определению, просто рисуем ячейки (клеточки), вот тепе и покрытие.
+
+Гораздо интереснее, как сейчас будем разбираться со счётной аддитивностью. Изначально у нас задана мера $\mu[a, b) = \prod_{i = 1}^{m} |b_i - a_i|$. Пусть $P = [a, b), P_n = [a_n, b_n)$, и проверяем на счётную аддитивность, а точнее, на счётную полуаддитивность, ведь мы раньше доказали, что они эквивалентны! 
+
+\[P \subset \bigcup P_n \quad ? \mu P \le \sum \mu P_n\]
+
+Будем оценивать каждую часть неравенства. Во-первых, можно считать, что $P \neq \O$. Потом, давайте подгоинм под определение компактности (неожиданно): возьмём сначала $b'$ чуть ``меньше'' $b$ (вообще-то это векотра), чтобы $[a, b'] \subset [a, b)$. Тогда пусть это ``меньше'' описывается так:
+
+\[\forall \varepsilon > 0 \dbl \exists b' \dbl: \mu P - \mu [a, b') < \varepsilon \quad \Leftrightarrow \quad \mu(P \setminus [a, b')) < \varepsilon\]
+
+Это мы оценили $P$. Теперь $P_n$: берём $a_n'$ чуть ``больше'', чем $a_n$, чтобы $(a_n', b_n) \subset [a_n, b_n)$:
+
+\[\mu (a_n', b_n) - \mu [a_n, b_n) < \frac{\varepsilon}{2^n} \quad \Leftrightarrow \quad \mu((a_n', b_n) \setminus [a_n, b_n)) < \frac{\varepsilon}{2^n}\]
+
+Ну всё, супер: 
+
+\[[a, b'] \subset \bigcup_{i = 1}^{\infty} (a', b)\]
+
+По определению компакта (отрезка), существует конечное открытое подпокрытие: 
+
+\[[a, b') \subset \underbrace{[a, b'] \subset \bigcup_{i = 1}^{N} (a_n', b_n)} \subset \bigcup_{i = 1}^{N} [a_n', b_n)\]
+
+Класс. Значит запускаем на этом конечном подпокрытии свойство конечной полуаддитвности и оцениваем:
+
+\[ \mu P - \varepsilon \le \underbrace{\mu [a, b') \le \sum_{i = 1}^{N} \mu [a_i', b_i)} \le \sum_{i = 1}^{N} \mu [a_i, b_i) + \frac{\varepsilon}{2^i}\]
+
+\[\mu P - \varepsilon \le \sum_{i = 1}^{N} \mu [a_i, b_i) + \varepsilon\]
+
+Устремляем $ N \rightarrow \infty$: 
+
+\[\mu P - \varepsilon \le \sum_{i = 1}^{\infty} P_i + \varepsilon\]
+
+Полуаддитивность доказана, занчит всё хорошо.
+
+ч. т. д. 
+
+
+
+\subsubsection{Лемма о структуре открытых множеств и множеств меры 0}
+
+\images{0.95}{o_str_otkr_0_1.jpg}
+
+\images{1}{o_str_otkr_0_2.jpg}
+
+
+\subsubsection{Пример неизмеримого по Лебегу множества}
+
+\images{0.95}{pr_neiz_leb_mn.jpg}
+
+
+\subsubsection{Лемма о сохранении измеримости при непрерывном отображении}
+
+\images{0.93}{soh_nepr_otob.jpg}
+
+\subsubsection{Лемма о сохранении измеримости при гладком отображении. Инвариантность меры Лебега относительно сдвигов}
+
+\images{0.93}{soh_gl_otob.jpg}
+
+\subsubsection{Инвариантность меры Лебега при ортогональном преобразовании}
+
+\images{0.95}{inv_mer_leb_ort.jpg}
+
+\subsubsection{Лемма ``о структуре компактного оператора''}
+
+\images{0.95}{str_komp_op.jpg}
+
+\subsubsection{Теорема об измеримости пределов и супремумов}
+
+\images{0.95}{iz_sup.jpg}
+
+\subsubsection{Измеримость функции непрерывной на множестве полной меры}
+
+\images{0.95}{iz_mn_mer_0.jpg}
+
+\subsubsection{Теорема Лебега о сходимости почти везде и сходимости по мере}
+
+\images{0.95}{teor_leb.jpg}
+
+\subsubsection{Теорема Рисса о сходимости по мере и сходимости почти везде}
+
+\images{0.95}{teor_rissa.jpg}
+
+\subsubsection{Простейшие свойства интеграла Лебега}
+
+\images{0.95}{pr_sv_int_leb_1.jpg}
+
+\images{0.95}{pr_sv_int_leb_2.jpg}
+
+\subsubsection{Счетная аддитивность интеграла (по множеству)}
+
+\images{0.95}{sch_add_1.jpg}
+
+\images{0.95}{sch_add_2.jpg}
+
+\subsubsection{Линейность интеграла Лебега}
+
+\images{0.95}{lin_int_leb.jpg}
+
+\newpage 
 
 \end{document}
 
