@@ -5,3 +5,11 @@
 ## 3 семестр
 ### Математический анализ 
 >  Полный конспект [PDF](/mathematical-analysis/sem3/holykpk%23blessRNG3.pdf) [TeX](/mathematical-analysis/sem3/holykpk%23blessRNG3.tex)
+
+## 2 семестр
+### Математический анализ
+>  Полный конспект [PDF](/mathematical-analysis/sem2/Sem2.pdf) [TeX](/mathematical-analysis/sem2/Sem2.tex)
+
+## 1 семестр
+### Математичский анализ
+>  Полный конспект [PDF](/mathematical-analysis/sem1/Sem1.pdf) [TeX](/mathematical-analysis/sem1/Sem1.tex)
