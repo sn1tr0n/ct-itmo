@@ -80,10 +80,10 @@
     Или как не сдохнуть на 1 семе из-за матана \\
     \vspace*{2\baselineskip}
     Разработали \\[\baselineskip]
-    {\Large Тимофей Белоусов\quad @imodre \\ Никита Варламов\quad @snitron\par}
+    {\Large Тимофей Белоусов\quad @imodre \\ Никита Варламов\quad @snitron \\ Тимофей Цорин \quad @thefattestowl\par}
     \vfill
-    v1.2\\
-    {\scshape Январь 2022} \par
+    v1.3\\
+    {\scshape Январь 2022-2023} \par
 \end{titlepage}
 
 \textbf{Заметки авторов}
@@ -92,37 +92,30 @@
 \begin{enumerate}
     \item @imodre
     \item @snitron
+    \item @thefattestowl
 \end{enumerate}
-По любым вопросам и предложениям/улучшениям обращаться в телеграмм к соответвующему автору.
+По любым вопросам и предложениям/улучшениям обращаться в телеграмм к соответвующему автору, или создать Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}.
 
 \textbf{Known Issues}
 
 В данном конспекте отсутвуют следующие теоремы:
 \begin{enumerate}
-\item Равносильность двух определений производной. Правила дифференцирования.
 \item Дифференцирование композиции и обратной функции
-\item Непрерывность синуса и арксинуса, замечательный предел, производная синуса.
 \item Выражение произвольной показательной функции через экспоненту. Два следствия
 \item Показательная функция от произведения
 \item Теорема о свойствах логарифма
 \item Замечательные пределы
-\item Теорема Дарбу. Следствия
 \item Несчетность отрезка.
 \item Континуальность множества бинарных последовательностей
-\item Следствие об оценке сходимости многочленов Тейлора к функции. Примеры
 \item Метод Ньютона
 \item Теорема о разложении рациональной функции на простейшие дроби
-\item Критерий монотонности функции. Следствия
 \item Теорема о необходимом и достаточном условиях экстремума
 \item Лемма о трех хордах
 \item Теорема об односторонней дифференцируемости выпуклой функции
-\item Описание выпуклости с помощью касательных
-\item Дифференциальный критерий выпуклости
 \item Иррациональность числа $e^2$
-\item Теорема Кантора о равномерной непрерывности
 \item Теорема Брауэра о неподвижной точке
 \end{enumerate}
-Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов. Ваше авторство также будет указано, с вашего разрешения.
+Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов, или создав Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}. Ваше авторство также будет указано, с вашего разрешения.
 \newpage
 
 \begin{flushright}
@@ -2006,6 +1999,111 @@ $$
 \end{enumerate}
 $\lhd$
 
+\subsubsection{Равносильность двух определений производной. Правила дифференцирования.\texorpdfstring{$^3$}{}}
+
+\paragraph{Равносильность определений дифференцируемости}
+
+\textit{Формулировка: }
+
+Определения дифференцируемости  (внезапно) равносильны
+
+\begin{proof}
+\item{$2 \Rightarrow 1$}
+т.е. $f(x) = f(x_0) + A(x-x_0) + \varphi(x)(x-x_0)$, где $\varphi(x) \xrightarrow[x\to x_0]{}0$
+Теперь все это разносим в разные стороны, делим на $x - x_0$ и получаем 
+\begin{equation}
+\frac{f(x) - f(x_0)} {x - x_0} = A + \varphi(x) \xrightarrow[x\to x_0]{} A \notag
+\end{equation}
+Что равносильно определению 1.
+\item {$1 \Rightarrow 2$}
+Обратно, обозначим 
+\begin{equation}
+\varphi(x) = \frac{f(x) - f(x_0)} {x - x_0} - A \notag
+\end{equation}
+Тогда $\varphi(x) \xrightarrow[x\to x_0]{}0$ и выполнено определение 2.
+\end{proof}
+
+\paragraph{Производная сумммы и разности}
+
+\textit{Формулировка: }
+
+$(f\pm g)' = f' \pm g'$
+
+\begin{proof}
+\begin{equation}
+(f\pm g)' = \frac{(f+g)(x+\Delta x) - (f+g)(x)}{\Delta x} = \frac{f(x + \Delta x) - f(x)}{\Delta x} + \frac{g(x + \Delta x - g(x)} {\Delta x} \xrightarrow[\Delta x \to 0]{} f' \pm g' \notag
+\end{equation}
+\end{proof}
+
+\paragraph{Производная сумммы и разности}
+
+\textit{Формулировка: }
+
+$(fg)'(x) = f'(x)g(x) + f(x)g'(x)$
+
+\begin{proof}
+\begin{eqnarray}
+\frac{(fg)(x + \Delta x) - (fg)(x)} {\Delta x} = \frac{f(x + \Delta x) - f(x)} {\Delta x} g(x + \Delta x)+ \notag\\
++ f(x) \frac{g + \Delta x) - g(x)} {\Delta x} \xrightarrow[h\to 0] f'(x)g(x) + f(x)g'(x)\notag
+\end{eqnarray}
+\end{proof}
+
+\paragraph{Производная частного}
+
+\textit{Формулировка: }
+
+$\left(\frac{f}{g}\right)' = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}$
+
+\begin{proof}
+\begin{eqnarray}
+\frac{\frac{f}{g}(x + \Delta x) - \frac{f}{g}(x)}{\Delta x}=\frac{1}{g(x + \Delta x)(g(x)} \big(\frac{f(x + \Delta x) - f(x)} {\Delta x} g(x) - f(x) \frac{g(x+ \Delta x) - g(x)} {\Delta x}\big) \xrightarrow[h\to 0]{}\notag \\
+\xrightarrow[h\to 0]{} \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}\notag
+\end{eqnarray}
+\end{proof}
+
+\paragraph{Производная композиции}
+
+\textit{Формулировка: }
+
+$(f \circ g)'(x) = g'(f(x)) * f'(x)$
+
+\begin{proof}
+Из определения 2 можно записать
+\begin{eqnarray}
+&f(x + \Delta x)=f(x) + f'(x)\Delta x + \alpha(\Delta x)\Delta x \notag \\
+&g(y + \Delta y)=g(y) + g'(y)\Delta y + \beta(\Delta y)\Delta y \notag
+\end{eqnarray}
+где $\alpha$ и $\beta$ в нуле непрерывны и равны нулю. Во второе уравнение подставим\\ $\Delta y = f'(x)\Delta x + \alpha(\Delta x)\Delta x = \tau(\Delta x)$
+\begin{eqnarray}
+g(f(x + \Delta x)) &=& g(f(x)) + g'(f(x))\big(f'(x)\Delta x + \alpha(\Delta x)\Delta x\big) + \beta(\tau(\Delta x))\tau(\Delta x) =\notag\\
+&=& g(f(x)) + g'(f(x))f'(x)\Delta x + \gamma(\Delta x)\Delta x \notag
+\end{eqnarray}
+где
+\begin{equation}
+\gamma (\Delta x) = g'(y)\alpha(\Delta x) + \beta(\tau(\Delta x)) \big(f'(x) + \alpha(\Delta x)\big)\notag
+\end{equation}
+Ясно, что $\gamma(0) = 0, \gamma$ непрерывна в нуле, следовательно, $f \circ g$ дифференцируема в 0 и выполняется требуемое в условии.
+\end{proof}
+
+\paragraph{Производная обратной функции}
+
+\textit{Формулировка: }
+$(f^{-1})'(f(x)) = \frac{1} {f'(x)}$
+
+\begin{proof}
+Вот здесь начинается веселье. Из предыдущих теорем курса мы знаем, что$ f^{-1}$ существует, определена на $P$, строго монотонна и непрерывна. Пусть $y = f(x)$, возьмем $\Delta y \neq 0: y + \Delta y \in P$, положим $\Delta x = f^{-1}(y + \Delta y) - f^{-1}(y) = \tau(\Delta y)$. Тогда $\Delta x \neq 0, x = f^{-1}(y),  x + \Delta x = f^{-1}(y + \Delta y)$ и $f(x + \Delta x) - f(x) = \Delta y$. Составим разностное отношение
+\begin{equation}
+\frac{f^{-1}(y + \Delta y) - f^{-1}(y)} {\Delta y} = \frac{\tau(\Delta y)} {f(x + \tau(\Delta y)) - f(x)} \notag
+\end{equation}
+и найдем его предел при $\Delta y \to 0$. По условию ($f$ - дифференцируема)
+\begin{equation}
+\frac{\Delta x} {f(x + \Delta x) - f(x)} \xrightarrow[h\to 0]{} \frac{1} {f'(x)}\notag
+\end{equation}
+Но $\tau(k) \xrightarrow[k\to 0]{} 0$ по непрерывности $f^{-1}$ в точке $y$ 	 . Следовательно, по теореме о пределе композиции
+\begin{equation}
+\frac{f^{-1}(y + \Delta y) - f^{-1}(y)} {\Delta y} \xrightarrow[k\to 0]{} \frac{1} {f'(x)}\notag
+\end{equation}
+\end{proof}
 
 \subsubsection{Теорема Ферма (с леммой)\texorpdfstring{$^2$}{}}
 
@@ -2084,6 +2182,64 @@ $\rhd$
 
 $\lhd$
 
+\subsubsection{Непрерывность синуса и арксинуса, замечательный предел, производная синуса.\texorpdfstring{$^3$}{}}
+
+\paragraph{Лемма}
+
+\textit{Формулировка: }
+
+$\forall x \in \mathbb{R}$
+\begin{equation}
+|\sin{x}| \leq |x| \notag
+\end{equation}
+
+\paragraph{Непрерывность синуса}
+
+\textit{Формулировка: }
+
+Синус непрерывен на $\mathbb{R}$
+
+\begin{proof}
+$\forall x+0 \in \mathbb{R}$
+\begin{equation}
+\left|\sin{x} - \sin{x_0}\right| = \left|2\sin{\frac{x - x_0} {2}} \cos{\frac{x + x_0} {2}}\right| \leq 2 *  \frac{|x - x_0|} {2} * 1 = |x - x_0| \xrightarrow[x\to x_0] {} 0\notag
+\end{equation}
+\end{proof}
+
+$\arcsin{}: [-1, 1] \xrightarrow{\text{на}} \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$ непрерывна по теореме о непрерывности обратной функции
+
+\paragraph{Первый замечательный предел}
+
+\textit{Формулировка: }
+
+\begin{equation}
+\lim_{x\to 0} \frac{\sin{ x}} {x} = 1 \notag
+\end{equation}
+
+\begin{proof}
+При $x \in \left( 0, \frac{\pi}{2}\right)$
+\begin{equation}
+\sin{x} < x < \tg{x}\notag
+\end{equation}
+Делим это все на $\sin{x}$ и берем обратные, из-за чего неравенство переворачивается, и получаем
+\begin{equation}
+\cos{x} < \frac{\sin{x}}{x} < 1\notag
+\end{equation}
+т.к. все части этого неравенства --- четные функции, то такой переход легитимен. А т.к. $\cos{x}$ стремится к 1 при $ x\to 0$, то по теореме о зажатой функции --- победа.
+\end{proof}
+
+\paragraph{Производная синуса}
+
+\textit{Формулировка: }
+
+$(\sin{x})' = \cos{x}$
+
+\begin{proof}
+Пользуемся замечательным пределом выше и непрерывностью косинуса
+\begin{equation}
+\frac{\sin{x + \Delta x} - \sin{x}} {\Delta x} = \frac{2\sin{\frac{\Delta x} {2}} \cos{\left( x + \frac{\Delta x} {2} \right)}} {\Delta x} \xrightarrow[\Delta x \to 0] {} \cos{x} \notag
+\end{equation}
+\end{proof}
 \newpage
 
 
@@ -2113,7 +2269,7 @@ $$
 $$
 
 
-\subsubsection{Выпуклая функция\texorpdfstring{$^1$}{}}
+\subsubsection{Выпуклая функция и касательная\texorpdfstring{$^{1 \ 3}$}{}}
 $f : \langle a, b\rangle \rightarrow \mathbb{R}$ - выпуклая $\Leftrightarrow$
 $$
 \forall x, y \in \langle a, b \rangle \quad \forall \alpha \in (0, 1) \quad f(\alpha x + (1-\alpha)y) \le \alpha f(x)+(1-\alpha) f(y)
@@ -2125,6 +2281,60 @@ $$
 
 Также, можем ввести "строго выпуклую функцию". Определение такое же, но хорда должна быть строго выше.
 
+\subsubsection{Теорема Дарбу. Следствия\texorpdfstring{$^3$}{}}
+
+\paragraph{Теорема Дарбу}
+
+\textit{Формулировка: }
+    $f$ -  дифференцируема на $[a, b] \Rightarrow \forall C \in (f'(a), f'(b)) \exists c \in (a, b): f'(c) = C$
+
+    \begin{proof}
+    \item{1. $f'(a)$ и $f'(b)$ разных знаков, $C = 0$.\\}
+    НУО $f'(a) < 0 < f'(b)$. Т.к. $f$ непрерывна на $[a, b]$ то по Вейерштрассу $\exists c \in [a, b]: f(c) = \min_{x\in [a,b]} f(x)$. Если $c\in (a, b)$, то из Ферма $f'(c) = 0$ --- победа. Проверим, что $c \neq b$ и $c \neq a$. Если $c = a$, то $\forall x \in (a, b] \frac{f(x) - f(a)}{x - a} \geq 0 \Rightarrow f'(a) \geq 0$. Противоречие с условием. Аналогично, $c \neq b$
+    \item{2. Общий случай\\}
+    НУО  $f'(a) < C < f'(b)$. $\varphi(x) = f(x) - Cx$. Тогда 
+    \begin{equation}
+    \varphi'(a) = f'(a) - C < 0 < f'(b) - C = \varphi'(b) \notag
+    \end{equation}
+    Из 1. $\Rightarrow \exists c \in (a, b): \varphi'(c) = 0$, т.е. $f'(c) = C$ 
+    \end{proof}
+
+\paragraph{Лемма о характеристике промежутков}
+
+\textit{Формулировка: }
+
+    $E \subset \mathbb{R}$. Тогда следующие утверждения равносильны.
+
+    \begin{enumerate}
+        \item E --- промежуток
+        \item $\forall x,y \in E, [x, y] \subset E$
+    \end{enumerate}
+
+    \begin{proof}
+    \item{$1. \Rightarrow 2.$} 
+    Очевидно
+    \item{$2. \Rightarrow 1.$}
+    Пусть $E \neq \emptyset$. Обозначим $m$ = inf $E$, $M$ = sup $E$. Очевидно, $E \subset [m, M]$. Покажем, что $(m, M) \subset E$. Пусть $m < z < M$. Тогда из определения граней $\Rightarrow \exists x, y \in E: x < z < y$ По условию $z \in E$
+    \end{proof}
+
+    \paragraph{Следствие 1}
+
+    \textit{Формулировка: }
+
+    $f$ --- дифференцируема на $\langle a, b\rangle \Rightarrow f'(\langle a, b\rangle)$ --- промежуток.
+
+    \begin{proof}
+    Следует из леммы о характеристике промежутков
+    \end{proof}
+
+    \paragraph{Следствие 2}
+
+    \textit{Формулировка: }
+    Производная дифференцируемой на промежутке функции не может иметь на нем разрывов второго рода
+
+    \begin{proof}
+    Аналогично доказательству теоремы о непрерывности монотонной функции
+    \end{proof}
 
 \newpage
 \subsection{Определения}
@@ -2240,6 +2450,140 @@ $$
 
 \subsection{Теоремы}
 
+\subsubsection{Следствие об оценке сходимости многочленов Тейлора к функции. Примеры\texorpdfstring{$^3$}{}}
+\paragraph{Лемма}
+
+\textit{Формулировка: }
+
+Пусть выполнены условия для существования формулы Тейлора с остатком в форме Лагранжа, $M > 0, \forall t\in \langle x, x_0\rangle|f^{(n+1)}(t)| \leq M$. Тогда 
+\begin{equation} \label{eq_a}
+|R_{n, x_0} f(x)| \leq \frac{M|x - x_0|^{n+1}} {(n+1)!} 
+\end{equation}
+
+\begin{proof}
+Прямо следует из формы Лагранжа остаточного члена.
+\end{proof}
+
+\paragraph{Следствие}
+
+\textit{Формулировка: }
+
+Пусть $f \in C^{(\infty)} \langle a, b\rangle$, и существует $M > 0: \forall n \in \mathbb{N} \text{ и } t \in \langle a, b\rangle$ выполняется неравенство $| f^{(n)}(t)| \leq M$. Тогда $\forall x, x_0 \in \langle a, b\rangle$
+\begin{equation} \label{eq_b}
+T_{n, x_0} f(x) \xrightarrow[n\to\infty]{}f(x)
+\end{equation}
+
+\begin{proof}
+Т.к. $\forall K \in \mathbb{R}$ $ \frac{K^n} {n!} \xrightarrow[n\to\infty]{} 0$ и \eqref{eq_a} выполняется для всех $n$ одновременно, получаем $R_{n, x_0}f(x) \xrightarrow[n \to\infty]{} 0 \Leftrightarrow \eqref{eq_b}$
+\end{proof}
+
+\paragraph{Пример 1}
+
+\textit{Формулировка: }
+
+Остаток для $e^x$
+
+\begin{proof}
+Так как $(e^x)^{(k)} = e^x; (e^x)^{(k)} \arrowvert_{x=0} = 1$, верны равенства
+\begin{eqnarray}
+e^x = \sum_{k=0}^n \frac{x^k} {k!} + o(x^n) = 1 + x + \frac{x^2} {2} + \frac{x^3} {6} + \frac{x^4} {24} + \dots + \frac{x^n} {n!} + o(x^n),\notag\\
+e^x = \sum_{k=0}^n \frac{x^k} {k!} + \frac{e^{\theta x}}{(n+1)!} x^{n+1}, \quad \theta \in(0, 1) \notag
+\end{eqnarray}
+В частности при $x = 1$
+\begin{equation}
+e = \sum_{k = 0}^n \frac{1} {k!} + \frac{e^\theta} {(n + 1)!}, \quad \theta \in (0, 1) \notag
+\end{equation}
+Отсюда получаем оценки 
+\begin{eqnarray}
+\left|e^x - \sum_{k=0}^n\frac{x^k}{k!}\right| \leq \frac{max\{e^x, 1\}} {(n+1)!} |x|^{n+1},\notag\\
+\frac{1} {(n+1)!} < e - \sum_{k=0}^n \frac{1}{k!} < \frac {e} {(n+1)!} < \frac{3} {(n+1)!}\notag
+\end{eqnarray}
+Следовательно, $\forall x \in \mathbb{R}$
+\begin{equation}
+e^x = \lim_{n\to\infty} \sum_{k = 0}^n \frac{x^k} {k!}\notag
+\end{equation}
+и, в частности,
+\begin{equation}
+e = \lim_{n\to\infty}\sum_{k=0}^n \frac{1}{k!} \notag
+\end{equation}
+\end{proof}
+
+\paragraph{Пример 2}
+
+\textit{Формулировка: }
+
+Остаток для $\sin{x}$
+
+\begin{proof}
+Из формулы 
+\begin{equation}
+(\sin{x})^{(m)} = \sin{\left(x + \frac{m\pi} {2}\right)}\notag
+\end{equation}
+при $k \in \mathbb{Z}_+$
+\begin{equation}
+(\sin{x})^{(2k)} \arrowvert_{x=0} = 0 \qquad (\sin{x})^{(2k + 1)} \arrowvert_{x=0} = (-1)^k\notag
+\end{equation}
+Поэтому 
+\begin{eqnarray}
+\sin{x} = \sum_{k=0}^n \frac{(-1)^k} {(2k+1)!} x^{2k+1} + o(x^{2n+2}) = x - \frac{x^3} {6} + \frac{x^5} {120} - \dots + \frac{(-1)^n} {(2n + 1)!} x^{2n+1} + o(x^{2n+2}),\notag \\
+\sin{x} = \sum_{k=0}^n \frac{(-1)^k} {(2k+1)!} x^{2k+1} + \frac {\sin{\alpha}} {(2n+3)!} x^{2n+3}\notag
+\end{eqnarray}
+где $\alpha = \theta x + \frac{(2n + 3)\pi} {2}, \theta \in (0, 1)$.
+Отсюда получаем оценку остатка
+\begin{equation}
+|R_{2n+2, 0} (sin, x )| \leq \frac{|x|^{2n + 3}} {(2n+3!)} \notag
+\end{equation}
+Поэтому $\forall x \in \mathbb{R}$
+\begin{equation}
+\sin{x} = \lim_{n\to\infty}\sum_{k=0}^n \frac{(-1)^k} {(2k+1)!} x^{2k+1}\notag
+\end{equation}
+\end{proof}
+
+\paragraph{Пример 3}
+
+\textit{Формулировка: }
+
+Остаток для $\cos{x}$
+
+\begin{proof}
+\begin{equation}
+(\cos{x})^{(m)} = \cos{\left(x + \frac{m\pi} {2}\right)}\notag
+\end{equation}
+\begin{equation}
+(\cos{x}^{(2k)}\arrowvert_{x=0} = (-1)^k, \qquad (\cos{x})^{(2k + 1)} \arrowvert_{x=0} = 0\notag
+\end{equation}
+\begin{equation}
+\cos{x} = \sum_{k=0}^n \frac{(-1)^k} {(2k)!} x^{2k} + o(x^{2n+1}) = 1 - \frac{x^2} {2} + \frac {x^4} {24} - \frac{x^6} {720} + \dots + \frac{(-1)^n} {(2n)!} x^{2n} + o(x^{2n+1}),\notag
+\end{equation}
+\begin{equation}
+\cos{x} = \sum_{k=0}^n \frac{(-1)^k} {(2k)!} x^{2k} + \frac {\cos{\beta}} {(2n+2)!} x^{2n+2}\notag
+\end{equation}
+где $\beta = \theta x + \frac{(2n+2)\pi} {2}, theta \in (0, 1)$. Отсюда
+\begin{equation}
+|R_{2n+1, 0} (cos, x)| \leq \frac{|x|^{2n+2}}{(2n+2)!}\notag
+\end{equation}
+Поэтому, $\forall x \in \mathbb{R}$
+\begin{equation}
+\cos{x} = \lim_{n \to\infty}\sum_{k=0}^n \frac{(-1)^k} {(2k)!} x^{2k}\notag
+\end{equation}
+\end{proof}
+
+\paragraph{Пример 4}
+
+\textit{Формулировка: }
+Остаток для $\ln{\left(1 + x\right)}$
+
+\begin{proof}
+Т.к. $\forall k \in \mathbb{N}$
+\begin{equation}
+(\ln{\left(1 + x\right)})^{(k)} = \frac{(-1)^{k-1}(k-1)!}{(1+x)^k}, \qquad (\ln{\left(1 + x\right)})^{(k)}\arrowvert_{x=0} = (-1)^{k-1}(k-1)!\notag
+\end{equation}
+а $\ln{1} = 0$, получаем
+\begin{equation}
+\ln{\left(1 + x\right)} = \sum_{k=1}^n \frac{(-1)^{k-1}}{k} x^k + o(x^n) = x - \frac{x^2} {2} + \frac{x^3} {3} - \frac{x^4} {4} + \dots + \frac{(-1)^{n-1} }{n} x^n + o(x^n)\notag
+\end{equation}
+\end{proof}
+
 \subsubsection{Теорема о свойствах показательной функции\texorpdfstring{$^1$}{}}
 Формулировка:
 \begin{enumerate}
@@ -2299,4 +2643,187 @@ $$
     $\tilde f(r_k) = f(r_k)$\\
     $\tilde f(r_k) \rightarrow \tilde f(x); f(r_k) \rightarrow f(x) \implies f(x) = \tilde f(x)$
 \end{enumerate}
+
+\subsubsection{Критерий монотонности функции. Следствия\texorpdfstring{$^3$}{}}
+
+
+\textit{Формулировка: }
+
+Пусть функция $f$ непрерывна на $\langle a, b\rangle$ и дифференцируема на $(a, b)$. Тогда $f$ возастает на $\langle a, b\rangle \Leftrightarrow \forall x \in (a, b) f'(x) \geq 0$
+
+\begin{proof}
+\item{$\Rightarrow$}
+Пусть $f$ возрастает, $x \in (a, b)$, тогда $\forall y \in (x, b\rangle f(y) \geq f(x) $, тогда
+\begin{equation}
+f'(x) = f_+'(x) = \lim_{y\to x+} \frac{f(y) - f(x)}{y - x} \geq 0 \notag
+\end{equation}
+\item{$\Leftarrow$}
+Пусть $\forall x \in \langle a, b\rangle f'(x) \geq 0$. Возьмем $x_1, x_2 \in x \in \langle a, b\rangle$. Покажем, что $f(x_1) \leq f(x_2)$. Из Лагранжа $\exists c \in (x_1, x_2):$
+\begin{equation}
+f(x_2) - f(x_1) = f'(c)(x_2 - x_1) \geq 0 \notag
+\end{equation}
+Для убывающей функции все точно также, только вместо $f$ возьмем $(-f)$
+\end{proof}
+
+\textit{Формулировка (следствие 1, Критерий постоянства функции): }
+
+$f:\langle a, b\rangle \rightarrow \mathbb{R}$, тогда $f$ постоянна на $\langle a, b\rangle \Leftrightarrow f \in C\langle a, b\rangle$ и $ \forall x \in (a, b) f'(x) = 0$
+
+\begin{proof}
+\item{$\Rightarrow$} Очевидно.
+\item{$\Leftarrow$} Из теоремы следует, что $f$ одновременно и возрастает и убывает $\Rightarrow f$ постоянна. 
+\end{proof}
+
+\textit{Формулировка (следствие 2, Критерий постоянства функции): }
+Пусть функция $f$ непрерывна на$ \langle a, b\rangle$ и дифференцируема на $(a, b)$. Тогда $f$ строго возрастает на 
+$\langle a, b\rangle \Leftrightarrow$:
+
+\begin{enumerate}
+    \item $\forall x \in (a, b) f'(x) \geq 0$
+    \item $f'(x) $ не тождественный $ 0 $ на любом промежутке
+\end{enumerate}
+
+\begin{proof}
+\item{$\Leftarrow$}
+Из следствия 1 условие 2) означает, что $f$ не постоянна ни на каком интервале $\Rightarrow $ из строго возрастания следует 2), из теоремы следует 1)
+\item{$\Rightarrow$}
+$\forall x \in (a, b) f'(x) \geq 0 \Rightarrow f -$ возрастает. Если возрастание нестрогое, то $\exists x_1, x_2 \in \langle a, b\rangle: x_1<x_2, f(x_1) = f(x_2) \Rightarrow f $ постоянна на $[x_1, x_2]$. Противоречие с 2).
+\end{proof}
+
+\subsubsection{Описание выпуклости с помощью касательных\texorpdfstring{$^3$}{}}
+
+\textit{Формулировка:}
+
+Пусть $f$ дифференцируема на $\langle a, b\rangle$. Тогда $f$ выпукла вниз на $\langle a, b\rangle$ в том и только том случае, когда график $f$ лежит не ниже любой своей касательной, то есть $\forall x, x_0 \in \langle a, b\rangle$
+\begin{equation}\label{eq_a}
+f(x) \geq f(x_0) + f'(x_0)(x-x_0)
+\end{equation}
+
+\begin{proof}
+\item{$\Rightarrow$}
+Пусть $f$ выпукла вниз, $x_0, x \in \langle a, b\rangle$.
+Если $x > x_0$, то по лемме о трех хордах $\forall \eta \in (x_0, x)$
+\begin{equation}
+\frac{f(\eta) - f(x_0)} {\eta - x_0} \leq \frac{f(x) - f(x_0)} {x - x_0} \notag
+\end{equation}
+Устремим $\eta$ к $x_0$ справа, получаем неравенство
+\begin{equation}
+f'(x_0) \leq \frac{f(x) - f(x_0)} {x -x_0} \notag
+\end{equation}
+что равносильно \eqref{eq_a}.
+Если $x < x_0$, то по лемме о трех хордах $\forall \xi \in (x, x_0)$
+\begin{equation}
+\frac{f(\xi) - f(x_0)} {\xi - x_0} \geq \frac{f(x) - f(x_0)} {x - x_0}\notag
+\end{equation}
+Устремляя $\xi$ к $x_0$ слева, получаем неравенство
+\begin{equation}
+f'(x_0) \geq \frac{f(x) - f(x_0)} {x - x_0}\notag
+\end{equation}
+равносильное \eqref{eq_a}
+\item{$\Leftarrow$}
+Пусть $\forall x, x_0 \in \langle a, b\rangle$ верно неравенство \eqref{eq_a}. Возьмем $x_1, x_2 \in \langle a, b\rangle: x_1 < x_2$, и $x \in (x_1, x_2)$. Применяя \eqref{eq_a} сначала к точкам $x_1$ и $x$, а затем --- к $x_2$ и $x$, получаем
+\begin{equation}
+f(x_1) \geq f(x) + f'(x)(x_1 - x), \qquad f(x_2) \geq f(x) + f'(x)(x_2 - x)\notag
+\end{equation}
+$\Leftrightarrow$
+\begin{equation}
+\frac{f(x) - f(x_1)} {x - x_1} \leq f'(x) \leq \frac{f(x_2) - f(x)} {x_2 - x_1}\notag
+\end{equation}
+Крайние части равносильны \eqref{eq_a}
+\end{proof}
+
+\subsubsection{Дифференциальные критерии выпуклости\texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+
+\begin{enumerate}
+    \item Пусть $f$ непрерывна на $\langle a, b\rangle$ и дифференцируема на $(a, b)$. $f$ выпукла вниз на  $\langle a, b\rangle \Leftrightarrow f'$ строго возрастает на $(a, b)$.
+    \item Пусть $f$ непрерывна на $\langle a, b\rangle$ и дважды дифференцируема на $(a, b)$.  $f$ выпукла вниз на $\langle a, b\rangle \forall x \in (a, b) \Leftrightarrow f''(x) \geq 0$
+    \end{enumerate}
+    \begin{proof}
+    \item{1. $\Rightarrow$}
+    Возьмем $x_1, x_2 \in (a, b): x_1 < x_2$. По теореме о выпуклости и касательных
+    \begin{equation}
+    f'(x_1) \leq \frac{f(x_2) - f(x_1)} {x_2 - x_1} \leq f'(x_2)\notag
+    \end{equation}
+    что и означает возрастание $f'$
+    \item{$\Leftarrow$}
+    Возьмем $x_1, x_2 \in \langle a, b\rangle: x_1 < x_2$, и $x \in (x_1, x_2)$. По теореме Лагранжа $\exists c_1\in(x_1, x) \text{ и } c_2\in(x, x_2)$ такие что
+    \begin{equation}
+    \frac{f(x) - f(x_1)} {x -x_1} = f'(c_1) \qquad \frac{f(x_2) - f(x)} {x_2 -x} = f'(c_2)\notag
+    \end{equation}
+    Тогда $x_1 < c_1 < x < c_2 < x_2$, а $f'$ по условию возрастает, поэтому $f'(c_1) \leq f'(c_2)$, то есть 
+    \begin{equation}
+    \frac{f(x) - f(x_1)} {x-x_1} \leq \frac{f(x_2) - f(x)} {x_2 - x}\notag
+    \end{equation}
+    что равносильно определению выпуклости.
+    \item{2.}
+    Выпуклость $f \Leftrightarrow f' - \text{возрастает} \Leftrightarrow f'' \geq 0$
+    \end{proof}
+
+\subsubsection{Теорема об односторонней дифференцируемости выпуклой функции\texorpdfstring{$^3$}{}}
+
+\textit{Формулировка: }
+
+    Пусть $f$ выпукла вниз на $\langle a, b\rangle$. Тогда $\forall x \in (a, b) \exists$ конечные $f^{'}_{-} (x), f^{'}_{+} (x)$, причем $f_{-}^{'}(x) \leq f_{+} ^{'} (x)$
+
+    \begin{proof}
+    Пусть $x \in (a, b)$. Положим 
+    \begin{equation}
+    g(\xi) = \frac{f(\xi) - f(x)} {\xi - x}, \xi \in\langle a, b \rangle \setminus \{x\} \notag
+    \end{equation}
+    По лемме о трех хордах $g$ возрастает на $\langle a, b \rangle \setminus \{x\} \Rightarrow$, если $ a < \xi < x < \eta < b$, то $g(\xi) \leq g(\eta)$, то есть
+    \begin{equation}
+    \frac{f(\xi) - f(x)} {\xi - x} \leq \frac{f(\eta) - f(x)} {\eta - x}\notag
+    \end{equation}
+    Что в итоге? $g$ ограничена на $\langle a, x)$ сверху и на $(x, b\rangle$ ---снизу, По теореме о пределе монотонной функции $\exists g(x-), g(x+)$ --- конечные, которые по определению еще до кучи являются односторонними производными $ f^{'}_{-} (x), f^{'}_{+} (x)$ сооветственно. Устремляем $\xi$ к $x$ слева, а $\eta$ --- справа, получаем, что $ f^{'}_{-} (x) \leq f^{'}_{+} (x)$ --- победа
+    \end{proof}
+
+\subsubsection{Лемма о трех хордах\texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+
+Пусть $f$ выпукла вниз на $\langle a, b\rangle, x_1, x_2, x_3 \in \langle a, b\rangle, x_1<x_2<x_3$. Тогда 
+\begin{equation} \label{th_a}
+\frac{f(x_2) - f(x_1)} {x_2 - x_1} \leq \frac{f(x_3) - f(x_1)} {x_3 - x_1} \leq \frac{f(x_3) - f(x_2)} {x_3 - x_2}
+\end{equation}
+
+\begin{proof}
+По определению выпуклости 
+\begin{equation}
+f(x_2) \leq t f(x_1) + (1-t)f(x_3) \notag
+\end{equation}
+где $t = \frac{x_3 - x_2} {x_3 - x_1}$, $1 - t = \frac{x_2 - x_1} {x_3 - x_1}$. Теперь следим за руками
+\begin{equation}
+f(x_2) \leq f(x_1) + (1-t)\left(f(x_3) - f(x_1)\right) = f(x_1) + (x_2 - x_1) \frac{f(x_3) - f(x_1)} {x_3 - x_1} \notag
+\end{equation}
+это равносильно левому неравенству в \eqref{th_a}. Теперь 
+\begin{equation}
+f(x_2) \leq f(x_3) - t\left(f(x_3) - f(x_1)\right) = f(x_3) - (x_3 - x_2) \frac{f(x_3) - f(x_1)} {x_3 - x_1} \notag
+\end{equation}
+а вот это равносильно правому неравенству в \eqref{th_a}.
+\end{proof}
+
+\subsubsection{Теорема Кантора о равномерной непрерывности\texorpdfstring{$^3$}{}}
+
+\textit{Формулировка: }
+    
+Непрерывное на компакте отображение равномерно непрерывно
+
+\begin{proof}
+От противного. Пусть отображение $f$ непрерывно на компакте X, но не является равномерно непрерывным, тогда должно выполняться отрицание определения равномерной непрерывности:
+\begin{equation} \label{1}
+\exists \varepsilon>0 \forall \delta \exists x,\bar{x}: \rho(x, \bar{x}) < \delta \Rightarrow \rho(f(x), f(\bar{x})) \geq \varepsilon
+\end{equation}
+Зафиксируем это $ \varepsilon$ и возьмем для него $\delta = \frac{1}{n}$
+По теореме о характеристике компактов в метрических пространствах X --- секвенциально компактно (можно выбрать подпоследовательность, имеющую предел в X $\exists \{x_{n_k}\} \rightarrow c \in X$)
+\begin{equation}
+0 \leq \rho(\bar{x}_{n_k}, c) \leq \rho(\bar{x}_{n_k}, x_{n_k}) + \rho(x_{n_k}, c) < \frac{1}{n_k} +\rho(x_{n_k}, c) \rightarrow 0. \notag
+\end{equation}
+Т.к. $f$ непрерывна в $c$, то
+\begin{equation}
+f(x_{n_k}) \rightarrow f(c), f(\bar{x}_{n_k}) \rightarrow f(c) \notag
+\end{equation}
+Следовательно, $\rho(f(x_{n_k}), f(\bar{x}_{n_k})) \rightarrow 0$, что будет противоречить \eqref{1}
+\end{proof}
+
+
 \end{document}
