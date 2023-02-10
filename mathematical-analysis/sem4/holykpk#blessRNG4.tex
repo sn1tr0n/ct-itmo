@@ -1,0 +1,251 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{arcs}
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage[left=3cm,right=3cm,top=3cm,bottom=3cm]{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{stackrel}
+\usepackage{xcolor}
+\usepackage{epigraph}
+\usepackage{tikz}
+\usepackage{amsthm}
+\usepackage{graphics}
+\usepackage{draftwatermark}
+\usepackage{ marvosym }
+\usepackage{physics}
+\usepackage{pdfpages}
+
+
+
+\def\letus{%
+\mathord{\setbox0=\hbox{$\exists$}%
+         \hbox{\kern 0.125\wd0%
+               \vbox to \ht0{%
+                  \hrule width 0.75\wd0%
+                  \vfill%
+                  \hrule width 0.75\wd0}%
+               \vrule height \ht0%
+               \kern 0.125\wd0}%
+       }%
+        }
+\def\dbl{\,\,}
+\def\image#1{\includegraphics[width=\linewidth]{static/#1}}
+\def\imageh#1{\includegraphics[width=\linewidth, height=0.95\textheight]{static/#1}}
+\def\images#1#2{\begin{center}\includegraphics[width=#1\linewidth]{static/#2}\end{center}}
+
+\def\rsh#1{\underset{#1}{\rightrightarrows}}
+\def\rshe{\rsh{E}}
+\def\eqby#1{\underset{#1}{=}}
+\def\rinf{\overline{\mathbb{R}}}
+\def\goesto#1{\underset{#1}{\longrightarrow}}
+\def\toinf#1{\goesto{#1 \rightarrow \infty}}
+\def\ntoinf{\toinf{n}}
+
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\const}{const}
+\DeclareMathOperator{\segm}{Segm}
+
+
+\newcommand*\lateraleye{%
+       \scalebox{0.15}{
+    \tikzset{every picture/.style={line width=0.75pt}} 
+    \begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+    \draw  [line width=1.5]  (300,100.33) .. controls (326,122) and (352,135) .. (378,139.33) .. controls (352,143.67) and (326,156.67) .. (300,178.33) ;
+    \draw  [fill={rgb, 255:red, 0; green, 0; blue, 0 }  ,fill opacity=1 ] (308.94,116.33) .. controls (313.87,116.33) and (317.86,125.51) .. (317.85,136.83) .. controls (317.84,148.15) and (313.84,157.33) .. (308.91,157.33) .. controls (303.99,157.32) and (300,148.14) .. (300.01,136.82) .. controls (300.02,125.5) and (304.02,116.32) .. (308.94,116.33) -- cycle ;
+    \draw  [draw opacity=0][line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) -- (331.14,139.55) -- cycle ; \draw  [line width=1.5]  (314.84,166.6) .. controls (311.87,164.64) and (309.14,162.18) .. (306.76,159.24) .. controls (295.12,144.82) and (296.6,124.33) .. (310.07,113.45) .. controls (311.48,112.32) and (312.96,111.33) .. (314.5,110.49) ;
+    \draw  [fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ] (304.43,124.2) .. controls (306.09,124.25) and (307.32,128.01) .. (307.18,132.6) .. controls (307.05,137.19) and (305.59,140.88) .. (303.93,140.83) .. controls (302.27,140.78) and (301.03,137.02) .. (301.17,132.43) .. controls (301.31,127.83) and (302.76,124.15) .. (304.43,124.2) -- cycle ;
+    \end{tikzpicture}
+    }\,}
+    
+\def\D{\,\mathrm{d}}
+
+\let\vanillaparagraph\paragraph
+\let\vanillasubparagraph\subparagraph
+\renewcommand{\paragraph}[1]{\vanillaparagraph{#1}\mbox{}\\}
+\renewcommand{\subparagraph}[1]{\vanillasubparagraph{#1}\mbox{}\\}
+
+\graphicspath{{./images/}}
+
+\setlength{\parindent}{0pt}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\SetWatermarkText{$\underset{\text{@imodre @snitron}}{\text{ПРОДАМ ГАРАЖ}}$}
+\SetWatermarkScale{2}
+\SetWatermarkLightness{0.9}
+
+\begin{document}
+\DraftwatermarkOptions{stamp=false}
+\begin{titlepage}
+    \centering
+    \vspace*{\baselineskip}
+    \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
+    \rule{\textwidth}{0.4pt}\\[\baselineskip]
+    {\LARGE СВЯТОЙ КПК\\ [0.3\baselineskip] \#BlessRNG}\\[0.2\baselineskip]
+    \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
+    \rule{\textwidth}{1.6pt}\\[\baselineskip]
+    \scshape
+    Или как не сдохнуть на 4 семе из-за матана \\
+    \vspace*{2\baselineskip}
+    Разработал \\[\baselineskip]
+    {\Large Никита Варламов\quad @snitron}
+        \vspace*{2\baselineskip}\par
+    Почётный автор \\[\baselineskip]
+    {\Large Тимофей Белоусов\quad @imodre}
+    \vfill
+    v0.0\\
+    {\scshape Февраль-??? 2023} \par
+\end{titlepage}
+
+Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов, или создав Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}. Ваше авторство также будет указано, с вашего разрешения.
+
+\newpage
+
+\begin{flushright}
+\emph{Ah shit\\
+Here we go again!\\
+And again...\\
+Oh, fuck.}
+\end{flushright}
+
+
+\tableofcontents
+
+
+\setlength{\parskip}{6pt}%
+\newpage
+\DraftwatermarkOptions{stamp=false}
+
+
+\section{Период Палеозойский}
+\subsection{Важные определения}
+
+\newpage
+
+\subsection{Определения}
+\newpage
+
+\subsection{Важные теоремы}
+\newpage
+
+\subsection{Теоремы}
+
+\subsubsection{Теорема об интегрировании положительных рядов}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $u_n: X \rightarrow \rinf, u_n \ge 0$ (при почти всех $x$ ?)
+    \item $u_n$ --- измеримы на $E \in \mathfrak{A}$
+\end{itemize}
+
+Тогда: 
+
+\[\int_{E} \left(\sum_{n = 1}^{\infty} u_n(x)\right)d\mu(x) = \sum_{n = 1}^{\infty} \left(\int_{E} u_n(x) d\mu(x)\right)\]
+
+\textit{Доказательство:}
+
+Подгоним под теорему Леви 3 (3 семестр). Пусть $S_{N}(x) = \sum_{n = 1}^{N} u_n(x)$ --- последовательность частичных сумм. Очевидно, что эта последовательность --- монотонно неубывающая (так как функции у нас неотрицательные): 
+
+\[0 \le S_{N} \le S_{N + 1} \le S_{N + 2} \le \ldots\]
+
+Тогда, делаем предельный переход (вот тут есть вопрос, почему должен существовать предел, но если подумать: если его не существует, вообще вся эта теорема не имеет смысла (ну бесконечности, чел, смысл их интегрировать)). А так же, измеримость сохраняется, так как у нас исходные функции все были измеримы (ну и по теореме о пределе измеирмых функций): 
+
+\[S_{N}(x) \toinf{N} S(x)\]
+
+Ну и всё, значи, по теореме Леви можем перейти к предельному преходу интегралов: 
+
+\[\int_{E} S_{N}(x) d\mu(x) \toinf{N} \int_{E} S(x) d\mu(x)\]
+
+Левую часть можно расписать по линейности интеграла (там у нас конечное число членов): 
+
+\[\int_{E} S_{N}(x) d\mu(x) = \sum_{n = 1}^{N} \int_{E} u_n(x) d\mu(x)\]
+
+Ну, а раз интграл суммы стремится к интегралу предельной функции, то и сумма интегралов обязана туда стремиться.
+
+\[\sum_{n = 1}^{N} \int_{E} u_n(x) d\mu(x) \toinf{N} \sum_{n = 1}^{\infty} \int_{E} u_n(x) d\mu(x)\]
+
+ч. т. д. 
+
+
+\textit{Следствие: }
+
+\begin{itemize}
+    \item $u_n: X \rightarrow \mathbb{R}$, измеримы на $E \in \mathfrak{A}$
+    \item $\sum \int_{E} |u_n(x)| d\mu < +\infty$ (конечна)
+\end{itemize}
+
+Тогда $\sum u_n(x)$ --- абсолютно сходящийся при почти всех $x$
+
+\textit{Доказательство: }
+
+Пусть: 
+
+\[S(x) = \int_{n = 1}^{\infty} \left|u_n(x)\right|\]
+
+Тогда, по предыдущей теореме: 
+
+\[\int_{E} S(x) d\mu = \sum_{n = 1}^{\infty} \left(\int_{E} |u_n(x)| d\mu\right) < +\infty\]
+
+Раз интеграл конечен, значит $S(x)$ --- суммируема, а это значит, что $S(x)$ --- почти везде конечна. Ну значит и сходится.
+
+ч. т. д.
+
+\textit{Пример: }
+
+\begin{itemize}
+    \item $(x_n)$ --- вещественная последовательность
+    \item $\sum a_n$ --- абсолютно сходящийся числовой ряд
+\end{itemize}
+
+Тогда функциональный ряд $\sum \frac{a_n}{\sqrt{|x - x_n|}}$  --- абсолютно сходится при почти всех $x$ (в $\mathbb{R}$ по мере Лебега)
+
+\textit{Доказательство: }
+
+Во-первых, можно доказать, что если для $\forall A$ на $[-A, A]$ абсолютно сходится почти везде, то и везде (на $\mathbb{R}$) почти везде сходится (лол). Счётное количество п. в. $\Rightarrow$ п. в. (чтобы количество отрезков было счётным, надо чтобы $A$ были хотя бы рациональными. Кажется, что это не сильная проблема, так как отрезки включают в себя и все вещественные числа на отрезке тоже).
+
+Попробуем подогнать под предыдущую теорему: 
+
+\[\int_{[-A, A]}\frac{|a_n|}{\sqrt{|x - x_n|}} d\lambda = |a_n| \int_{-A}^{A} \frac{dx}{\sqrt{|x - x_n|}} \le\]
+
+Так, стоп. А как мы перешли к определённому интегралу? Оказывается, что так можно делать, на доказано это будет позже (в курсе).
+
+\[\underset{x := x - x_n}{\le} |a_n| \int_{-A - x_n}^{A - x_n} \frac{dx}{\sqrt{|x|}} \le |a_n| \int_{-A}^{A} \frac{dx}{\sqrt{|x|}} \le\]
+
+Почему верен последний переход? Посмотрим на картинке: 
+
+\images{0.5}{sh_pol_r.png}
+
+Ну, по ней очевидно, что мы откусили кусочек поменьше, а добавили побольше. Тогда оценим модуль: 
+
+\[ \le 2 \cdot |a_n| \int_{0}^{A}\frac{dx}{\sqrt{|x|}} = 4 \cdot \sqrt{A} \cdot |a_n|\]
+
+Всё, абсолютный интеграл ограничен, значит сходится (при почти всех $x$).
+
+ч. т. д. 
+
+
+\newpage
+
+
+\end{document}
+
+\begin{comment}
+    \subsubsection{Теорема X-N}
+    \textit{Формулировка:}
+
+    \begin{itemize}
+        \item 
+    \end{itemize}
+
+    \textit{Доказательство:}
+\end{comment}
