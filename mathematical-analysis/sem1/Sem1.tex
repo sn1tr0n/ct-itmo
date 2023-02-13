@@ -103,7 +103,6 @@
 \item Выражение произвольной показательной функции через экспоненту. Два следствия
 \item Показательная функция от произведения
 \item Теорема о свойствах логарифма
-\item Замечательные пределы
 \item Несчетность отрезка.
 \item Континуальность множества бинарных последовательностей
 \item Метод Ньютона
@@ -1137,6 +1136,100 @@ $$
 y = f'(x_0)(x - x_0) + f(x_0)
 $$
 
+\subsubsection{Замечательные пределы\texorpdfstring{$^3$}{}}
+\paragraph{Первый замечательный предел}
+\begin{equation}
+\lim_{x\to 0} \frac{\sin{x}} {x} = 0 \notag
+\end{equation}
+\begin{proof}
+см. \ref{first_lim}
+\end{proof}
+\paragraph{Следствия}
+\begin{eqnarray}
+\lim_{x\to 0} \frac{1 - \cos{x}} {x^2} = \frac{1}{2} \notag\\
+\lim_{x\to 0} \frac{\arcsin{x}} {x} = 1 \notag \\
+\lim_{x\to 0} \frac{\tg{x}} {x} = 1 \notag \\
+\lim_{x\to 0} \frac{\arctg{x}} {x} = 1 \notag
+\end{eqnarray}
+
+\paragraph{Второй замечательный предел}
+\begin{equation}
+\lim_{x\to\infty} \left( 1 + \frac{1} {x} \right) ^x = e\notag
+\end{equation}
+\begin{proof}
+Вспоминаем, что число $e$ определялось как предел последовательности:
+\begin{equation}
+e = \lim_{n\to\infty}\left(1 + \frac{1} {n} \right) ^n \notag
+\end{equation}
+Теперь возьмем $\{x_n\}: x_n \to \infty$ и докажем, что 
+\begin{equation}\label{second_lim}
+f(x_n) \to e.
+\end{equation}
+\item 1. Пусть $\forall n$ $ x_n \in \mathbb{N}$. Возьмем $\varepsilon > 0$ и по определению $e$ найдем $K$ такое, что $\forall k > K |f(k) - e| < \varepsilon$, но, начиная с некоторого номера, $x_n > K$, тогда $|f(x_n) - e| < \varepsilon$ означает выполнение \eqref{second_lim}.
+\item 2. Пусть $x_n \to +\infty$, тогда, начиная с некоторого номера $x_n \geq 1$, т.е. не умалая общности можно считать, что все $x_n \geq 1$. Уменьшая или увеличивая основание и показатель степени, получим неравенства
+\begin{equation}
+\left(1 + \frac{1}{[x_n] + 1}\right)^{[x_n]} \leq \left( 1 + \frac{1}{x_n}\right)^{x_n} \leq \left( 1 + \frac{1} {[x_n]}\right)^{[x_n] + 1},\notag
+\end{equation}
+которые перепишем в  виде
+\begin{equation}
+\frac{f([x_n] )+ 1} {1 + \frac{1}{[x_n] + 1}} \leq f(x_n) \leq \left( 1 + \frac{1}{[x_n]}\right)f([x_n])\notag
+\end{equation}
+Так как $\{[x_n]\}$ и $\{[x_n] + 1\}$ - последовательные натуральные числа, стремящиеся к $+\infty$, то по пункту 1 $f([x_n]) \to e $ и $f([x_n]) + 1 \to e$. Следовательно, крайние части в неравенстве выше стремятся к $e$, значит и $f(x_n) \to e$
+\item 3. Пусть $x_n \to -\infty$, тогда $y_n = -x_n \to +\infty$ и $y_n - 1 \to +\infty$. Теперь пользуемся предыдущими пунктами
+\begin{equation}
+f(x_n) = \left(1 + \frac{1} {-y_n}\right)^{-y_n} = \left(\frac{y_n} {y_n - 1}\right)^{y_n} = \left(1 + \frac{1} {y_n - 1}\right) f(y_n - 1) \to e \notag
+\end{equation}
+\item 4. Пусть $x_n \notin [-1, 0], x_n \to \infty$, а в остальном последовательность произвольна. Если число отрицательных (положительных) членов последовательности конечно, то $x_n \to +\infty (-\infty)$, то уже доказано, что $f(x_n) \to e$. Теперь, если в последовательности бесконечно много и положительных и отрицательных членов, то разобьем натуральный ряд на две подпоследовательности $\{n_k\}$ и $\{m_l\}: x_{n_k} > 0, x_{m_l}< -1$. По доказанному $f(x_{n_k})\to e, f(x_{m_l})\to e$. Следовательно, $f(x_n) \to e$.
+\end{proof}
+\paragraph{Третий замечательный предел}
+\begin{equation}
+\lim_{x\to 0} \frac{\log_a (1+x)}{x} = \frac{1} {\ln x}, \qquad a > 1, a \neq 0 \notag
+\end{equation}
+В частности,
+\begin{equation}
+\lim_{x\to 0} \frac{\ln(1 + x)} {x} = 1 \notag
+\end{equation}
+\begin{proof}
+Т.к. $\log_a(1+x) = \frac{\ln(1+x)} {\ln a}$, достаточно доказать равенство только для натурального логарифма.
+\begin{equation}
+\lim_{x\to 0} \frac{\ln(1 + x)} {x} = \lim_{x\to 0} \ln(1+x)^{1/x} = \ln \lim_{x\to 0}(1 + x)^{1/x} = \ln e = 1\notag
+\end{equation}
+\end{proof}
+\paragraph{Четвертый замечательный предел}
+\begin{equation}
+\lim_{x\to 0} \frac{(1 + x)^\alpha - 1} {x} = \alpha, \qquad \alpha \in \mathbb{R} \notag
+\end{equation}
+\begin{proof}
+\item $\alpha = 0$ --- тривиально.
+\item $\alpha \neq 0.$ Возьмем последовательность $\{x_n\}: x_n \to 0, x_n \neq 0$. НУО $|x_n| < 1$. В силу непрерывности и строгой монотонности степенной функции $y_n = (1+ x_n)^\alpha - 1 \to 0, y_n \neq 0.$ При этом
+\begin{equation}
+\alpha \ln{(1 + x_n)} = \ln{(1 + y_n)}\notag
+\end{equation}
+Теперь используем доказанный замечательный предел
+\begin{equation}
+\frac{(1 + x_n)^\alpha - 1} {x_n} = \frac{y_n} {x_n} = \frac{y_n} {\ln{( 1 + y_n)}} \alpha \frac{\ln{(1 + x_n)}} {x_n} \to \alpha. \notag
+\end{equation}
+\end{proof}
+
+\paragraph{Пятый замечательный предел}
+\begin{equation}
+\lim_{x\to 0} \frac{a^x - 1} {x} \ln{a} \qquad a > 0\notag
+\end{equation}
+В частности, 
+\begin{equation}
+\lim_{x\to 0} \frac{e^x - 1} {x} = 1\notag
+\end{equation}
+\begin{proof}
+\item $a = 0$ --- тривиально.
+\item $a \neq 0$. Возьмем последовательность $\{x_n\}: x_n \to 0, x_n \neq 0$. НУО $|x_n| < 1$. В силу непрерывности и строгой монотонности степенной функции  $y_n = a^{x_n} - 1\to 0, y_n \neq 0$. При этом
+\begin{equation}
+x_n\ln{a} = \ln{(1 + y_n)}\notag
+\end{equation}
+Снова врубаем замечательные пределы выше
+\begin{equation}
+\frac{a^{x_n} - 1} {x_n} = \frac{y_n} {x_n} = \frac{y_n} {\ln{(1 + y_n)}} \ln{a} \to \ln{a}. \notag
+\end{equation}
+\end{proof}
 
 \newpage
 \subsection{Важные теоремы}
@@ -2205,7 +2298,7 @@ $\forall x+0 \in \mathbb{R}$
 
 $\arcsin{}: [-1, 1] \xrightarrow{\text{на}} \left[ -\frac{\pi}{2}, \frac{\pi}{2}\right]$ непрерывна по теореме о непрерывности обратной функции
 
-\paragraph{Первый замечательный предел}
+\paragraph{Первый замечательный предел} \label{first_lim}
 
 \textit{Формулировка: }
 
