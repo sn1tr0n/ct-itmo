@@ -132,10 +132,6 @@
     \item Изучение интеграла $\int_1^{\infty} \frac{\sin x\,dx}{x^p}$ на сходимость и абсолютную сходимость
     \item Признак Абеля--Дирихле сходимости несобственного интеграла
     \item Интеграл Дирихле
-    \item Неравенство Коши (для сумм и для интегралов)
-    \item Неравенство Гельдера для сумм
-    \item Неравенство Гельдера для интегралов
-    \item Неравенство Минковского
     \item Дифференцирование композиции
     \item Дифференцирование "произведений"
     \item Теорема Лагранжа для векторнозначных функций
@@ -1571,9 +1567,23 @@ Note: $b = \sum_i(\alpha_i \cdot b)$, так как сумма $\alpha_i = 1$
 
 
 \subsubsection{Неравенство Гельдера для интегралов\texorpdfstring{$^2$}{}}
+\textit{Формулировка}
 
-\includepdf[pages={-}]{../images/Gel_inr.pdf}
-
+Пусть $f, g \in C[a, b]; \frac{1} {p} + \frac{1} {q} = 1$. Тогда
+\begin{equation*}
+\left|\int_a^b fg\right| \leq \left(\int_a^b |f|^p\right)^{1/p} \left(\int_a^b |g|^q\right)^{1/q}
+\end{equation*}
+\begin{proof}
+Распишем интегральные суммы: $x_k := a + k\frac{b - a} {n}; \Delta x_k = \frac{b - a} {n}$. Пусть $a_i = f(x_k) (\Delta x_k)^{1/p}, b_i = g(x_k) (\Delta x_k)^{1/q}$, тогда, по неравенству Гёльдера для сумм:
+\begin{align*}
+\left|\sum f(x_k) g(x_k) (\Delta x_k)^{\frac{1} {p} + \frac{1} {q}} \right| &\leq \left(\sum|f(x_k)|^p \Delta x_k\right)^{1/p} \left(\sum|g(x_k)|^q \Delta x_k\right)^{1/q}\\
+\left|\sum f(x_k) g(x_k)  \right| &\leq \left(\sum|f(x_k)|^p \right)^{1/p} \left(\sum|g(x_k)|^q \right)^{1/q}
+\end{align*} 
+Осталось лишь сделать предельный переход при $n \to \infty$
+\begin{equation*}
+\left|\int_a^b fg\right| \leq \left(\int_a^b |f|^p\right)^{1/p} \left(\int_a^b |g|^q\right)^{1/q}
+\end{equation*}
+\end{proof}
 
 \subsubsection{Признак сравнения сходимости положительных рядов\texorpdfstring{$^1$}{}}
 \paragraph{Лемма о сходимости положительных рядов}
@@ -1779,17 +1789,115 @@ $$
 Note: $b = \int_a^b\alpha(t) \cdot b \D t$, так как сумма $\alpha_i = 1$
 
 \subsubsection{Неравенство Коши (для сумм и для интегралов)\texorpdfstring{$^2$}{}}
+\paragraph{Неравенство для сумм}
+\textit{Формулировка}
 
-\includepdf[pages={-}]{../images/Koshi_ineq.pdf}
+$a_i > 0; \frac{1} {n} \sum a_i \geq \sqrt[n]{a_1 \ldots a_n}$
+\begin{proof}
+Напишем неравенство Йенсена для $\alpha_i = \frac{1} {n}; f(x) = \ln{x}$ - вогнутой:
+\begin{align*}
+\ln{\left(\frac{1} {n} a_1 + \frac{1} {n} a_2 + \ldots +  \frac{1} {n} a_n\right)} &\geq \frac{1} {n} \ln{a_1} + \frac{1} {n} \ln{a_2} + \ldots + \frac{1} {n} \ln{a_n}\\
+\ln{\left(\frac{a_1 + a_2 + \ldots + a_n} {n} \right)} &\geq \frac{1} {n}\ln{(a_1 a_2 \dots a_n)}\\
+\ln{\left(\frac{a_1 + a_2 + \ldots + a_n} {n} \right)} &\geq \ln{(a_1 a_2 \dots a_n)}^\frac{1} {n}
+\end{align*}
+Осталось только проэкспоненцировать получившееся неравенство:
+\begin{equation*}
+\frac{a_1 + a_2 + \ldots + a_n} {n} \geq \sqrt[n] {a_1 a_2 \dots a_n}
+\end{equation*}
+\end{proof}
+
+\paragraph{Неравенство для интегралов}
+\textit{Формулировка}
+
+Пусть $f \in C[a, b], f > 0$. Тогда 
+\begin{equation*}
+exp\left(\frac{1} {b - a} \int_a^b \ln{f}\right) \leq \frac{1} {b - a} \int_a^b f
+\end{equation*}
+\begin{proof}
+Рассмотрим интегральное неравенство Йенсена:
+\begin{equation*}
+f(\int_a^b x(t) \alpha(t) \D t) \le \int_a^b \alpha(t) f(x(t)) \D t
+\end{equation*}
+для $f(x) = \ln{x}$ - вогнутой, непрерывной. $\alpha(t) = \frac{1} {b - a} = const$. Видно, что $\int_a^b \alpha(t) \D t = 1$. Итого:
+\begin{align*}
+\ln{\left(\int_a^b x(t) \frac{1} {b - a} \D t\right)} &\geq \int_a^b \frac{1} {b - a} \ln{x(t)} \D t\\
+\ln{\left(\frac{1} {b - a} \int_a^b x(t)\D t\right)} &\geq\frac {1}{b - a} \int_a^b \ln{x(t)} \D t
+\end{align*}
+Остается проекспоненцировать и получить требуемое неравенство:
+\begin{equation*}
+exp\left(\frac{1} {b - a} \int_a^b \ln{x(t)} \D t\right) \leq \frac{1} {b - a} \int_a^b x(t) \D t
+\end{equation*}
+\end{proof}
 
 \subsubsection{Неравенство Гельдера для сумм\texorpdfstring{$^2$}{}}
+\textit{Формулировка}
 
-\includepdf[pages={-}]{../images/Gel_sum.pdf}
+Пусть, $p > 1, q: \frac{1} {p} + \frac{1} {q} = 1 \Leftrightarrow q = \frac{p} {p - 1}$
+$a_1, a_2, \dots, a_n, b_1, b_2, \dots, b_n > 0$
+Тогда
+\begin{equation*}
+\sum a_i b_i \leq \left(\sum a_i\right)^\frac{1}{p} \left(\sum b_i\right)^\frac{1} {q}
+\end{equation*}
+\begin{proof}
+Возьмем $x^p$ - строго выпуклая $\Leftrightarrow$ по неравенству Йенсена 
+\begin{equation*}
+\left(\sum \alpha_i x_i\right)^p \leq \sum \alpha_i x_i^p
+\end{equation*}
+Положим
+\begin{align*}
+\alpha_i :&= \frac{b_i^q} {\sum b_j^q}\\
+x_i &= a_i b_i^{-\frac {1} {p - 1}} \sum b_j^q
+\end{align*}
+Тогда 
+\begin{align*}
+\sum \alpha_i x_i &= \sum \frac{b_i^q} {\sum b_j^q} a_i b_i^{-\frac {1} {p - 1}} \sum b_j^q = \\
+&= \sum a_i b_i^{\frac{p} {p - 1} - \frac{1} {p - 1}} = \sum a_i b_i\\
+\sum \alpha_i x_i^p &= \sum \frac{b_i^q} {\sum{b_j^q}} a_i^p b_i^{-\frac{p} {p - 1}}\left( \sum b_j^q\right) ^{p - 1} = \\
+&= \sum a_i^p b_i^0 \left(\sum b_j^q\right)^{p - 1} = \left(\sum b_j^q\right)^{p - 1} \sum a_i^p
+\end{align*}
+Подставляем полученные выражения в неравенство Йенсена:
+\begin{equation*}
+\left(\sum a_i b_i\right)^p \leq \left(\sum b_j^q\right)^{p - 1} \sum a_i^p
+\end{equation*}
+Возводим обе части в степень $\frac{1} {p}$ и получаем требуемое неравенство:
+\begin{equation*}
+\sum a_i b_i \leq \left(\sum a_i^p\right)^\frac{1} {p} \left(\sum b_j^q\right)^\frac{1} {q}
+\end{equation*}
+\end{proof}
 
 \subsubsection{Неравенство Минковского\texorpdfstring{$^2$}{}}
+\textit{Формулировка}
 
-\includepdf[pages={-}]{../images/Mink.pdf}
+Пусть, $p \geq 1$. Тогда
+\begin{equation*}
+\left(\sum(a_i + b_i)^p\right)^\frac{1} {p} \leq \left(\sum a_i^p\right)^\frac{1} {p} + \left(\sum b_i^p\right) ^\frac{1} {p}
+\end{equation*}
+\begin{proof}
+Отображение $(x_1, x_2, \dots, x_n) \mapsto \left( \sum |x_i|^p\right)^\frac{1} {p}$ является нормой, т.е. выполняется неравенство треугольника:
+\begin{equation*}
+\left( \sum|a_i + b_i|^p\right)^\frac{1} {p} \leq  \left( \sum |a_i|^p\right)^\frac{1} {p} + \left( \sum |b_i|^p\right)^\frac{1} {p}
+\end{equation*}
+При $p = 1$ - очевидно.
+Пусть $p > 1$, будем рассматривать только положительные $a_i, b_i$, все остальные будем сводить к ним.
 
+Рассмотрим 
+\begin{equation*}
+\sum |a_i| |a_i + b_i|^{p - 1}, \qquad \sum|b_i| |a_i + b_i|^{p - 1}
+\end{equation*}
+Неравенство Гёльдера делает бррррр:
+\begin{equation*}
+\sum |a_i| |a_i + b_i|^{p - 1} \leq \left(\sum (a_i)^p\right)^\frac{1} {p} \left(\sum(a_i + b_i)^{(p - 1) * q}\right)^\frac{1} {q} = \left(\sum (a_i)^p\right)^\frac{1} {p} \left(\sum (a_i + b_i)^p\right)^\frac{1} {q}
+\end{equation*}
+Аналогично поступаем с $\sum |a_i| |a_i + b_i|^{p - 1} $ и складываем:
+\begin{equation*}
+\sum |a_i + b_i|^p \leq \sum |a_i + b_i| ^{p - 1} |a_i + b_i| \leq \left(\left(\sum|a_i^p|\right)^\frac{1} {p} + \left(\sum|b_i|^p\right)^\frac{1} {p}\right) \left(\sum|a_i + b_i|^p\right)^\frac{1} {q}
+\end{equation*}
+Делим обе части уравнения на $\left(\sum|a_i + b_i|^p\right)^\frac{1} {q}$:
+\begin{align*}
+\left(\sum|a_i + b_i|^p\right) ^{1 - \frac{1} {q}} &\leq \left(\sum|a_i|^p\right)^\frac{1} {p} + \left(\sum|b_i|^p\right)^\frac{1} {p}\\
+\left(\sum|a_i + b_i|^p\right) ^\frac{1} {p} &\leq \left(\sum|a_i|^p\right)^\frac{1} {p} + \left(\sum|b_i|^p\right)^\frac{1} {p}
+\end{align*}
+\end{proof}
 
 \subsubsection{Свойства рядов: линейность, свойства остатка, необх. условие сходимости, критерий Больцано--Коши\texorpdfstring{$^1$}{}}
 \paragraph{Линейность}
