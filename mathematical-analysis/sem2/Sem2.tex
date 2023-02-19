@@ -122,11 +122,8 @@
 
 Следующие теоремы представлены в виде фотографий письменного текста (вынужденная мера в условиях цейтнота). Приветствуются любые контрибуции в сторону исправления ошибок и отцифровки подобного текста в LaTeX:
 \begin{enumerate}
-    \item Правило Лопиталя
     \item Теорема о формуле трапеций, формула Эйлера--Маклорена
     \item Асимптотика степенных сумм
-    \item Асимптотика частичных сумм гармонического ряда
-    \item Формула Стирлинга
     \item Простейшие свойства несобственного интеграла
     \item Признаки сравнения сходимости несобственного интеграла
     \item Изучение сходимости интеграла $\int_{10}^\infty \frac{dx}{x^\alpha (\ln x)^\beta}$
@@ -544,14 +541,40 @@ $$\sum_{i=1}^n \int_{x_{i-1}}^{x_i} \left| f(\xi_i) - f(x) \right| \D x < \sum_{
 $$
 $\lhd$
 
-\subsubsection{Формула Стирлинга\texorpdfstring{$^2$}{}}
+\subsubsection{Формула Стирлинга\texorpdfstring{$^3$}{}}
 \subparagraph{Формулировка:}
 
 $n! \underset{n \rightarrow \infty}{\sim} n^ne^{-n}\sqrt{n}\sqrt{2\pi}$
 
-\subparagraph{Доказательство:}
+\begin{proof}
+Рассмотрим сумму первых натуральных $n$ как аргумент натурального логарифма и запишем формулу Эйлера-Маклорена:
+\begin{equation*}
+\ln{1} + \ln{2} + \ldots + \ln{n} = \frac{\ln{1}} {2}+ \frac{\ln{n}} {2} + \int_1^k \ln{n}\D n - \frac{1} {2} \int_2 ^n \frac{\{x\} ( 1- \{x\})} {x^2} \D x
+\end{equation*}
+Проинтегрируем $\int \ln{n} \D n$ по частям:
+\begin{equation*}
+\int \ln{n} \D n = [u = \ln{n} \Rightarrow u' = \frac{1} {n}; v' = 1 \Rightarrow v = n] = n \ln{n} - \int \frac{1} {n} n\D n = n\ln{n} - n + C
+\end{equation*}
+\begin{align*}
+\frac{\ln{1}} {2}+ \frac{\ln{n}} {2} + \int_1^k \ln{n}\D n - \frac{1} {2} \int_2 ^n \frac{\{x\} ( 1- \{x\})} {x^2} \D x  = 0 + \frac{\ln{n}} {2} + (n\ln{n} - n)\arrowvert^n_1 + C_1 + o(1)=\\ = \frac{\ln{n}} {2} + n\ln{n} - n + C_1 + o(1) = \sum_{i = 1}^n \ln{i} = \ln{n!}
+\end{align*}
+Здесь $ \frac{\{x\} ( 1- \{x\})} {x^2} = C_1$, т.к. возрастает и ограничена. Под $o(1)$ мы спрятали константы.
+\begin{align*}
+\ln{n!} &= \frac{\ln{n}} {2} + n \ln{n} - n + C_1 + o(1)\\
+n! &= e^{\frac{\ln{n}} {2} + n \ln{n} - n + C_1 + o(1)}\\
+n! &= \sqrt{n} n^n e^{-n} e^{C_1 + o(1)}  \underset{n\to \infty}{\sim} C\sqrt{n}n^n e^{-n}
+\end{align*}
+Осталось выяснить, что такое $C_1 + o(1)$. Для этого рассмотрим $\sqrt{\pi}$ по Валлису:
+\begin{equation*}
+\sqrt{\pi} = \lim_{k\to\infty} \frac{(2k)!!} {(2k-2)!!} \frac{1} {\sqrt{k}} = \lim_{k\to\infty} \frac{2^2 4^2\ldots (2k)^2} {1\cdot2\cdot3\cdot4\cdot \ldots\cdot (2k)} \frac{1} {\sqrt{k}} = \lim_{k\to\infty} \frac{2^k (k!))^2} {2k!} \frac{1} {\sqrt{k}}.
+\end{equation*}
+Теперь заменяем на эквивалентные, которые мы вывели выше:
+\begin{equation*}
+\sqrt{\pi} = \lim_{k\to\infty} \frac{(2^k \sqrt{k} k^k e^{-k} C)^2} {\sqrt{2k} (2k)^{(2k)} e^{-2k} C} \frac{1} {\sqrt{k}} = \lim_{k\to\infty} \frac{C} {\sqrt{2}} = \frac{C} {\sqrt{2}}
+\end{equation*}
+$\sqrt{\pi} = \frac{C}{\sqrt{2}} \Rightarrow C = \sqrt{2\pi}$, что и доказывает требуемое равенство
+\end{proof}
 
-\includepdf[pages={-}]{../images/Stir.pdf}
 
 \subsubsection{Признаки сравнения сходимости несобственного интеграла\texorpdfstring{$^2$}{}}
 \subparagraph{Формулировка:}
@@ -621,7 +644,7 @@ $f, g$ имеют $F, G$ на $\langle a, b\rangle$
 
 
 
-\subsubsection{Правило Лопиталя\texorpdfstring{$^2$}{}}
+\subsubsection{Правило Лопиталя\texorpdfstring{$^3$}{}}
 
 \paragraph{Лемма об ускоренной сходимости}
 \subparagraph{Формулировка}
@@ -629,6 +652,19 @@ $f, g$ имеют $F, G$ на $\langle a, b\rangle$
 $f, g: D \rightarrow \mathbb{R}, D \subset \overline{\mathbb{R}}, a$ --- предельная точка $D, a \in \overline{\mathbb{R}}$.
 
 $\exists \dot{V}_a : f, g \neq 0$ на $\dot{V}_a \cap D, \lim_{x \rightarrow a}{f(x)} = 0, \lim_{x \rightarrow a}{g(x)} = 0$
+
+Тогда $\forall x_k: x_k\to a, x_k \in D, x_k \neq a$ $\exists y_k: y_k\to a, y_k \in D, y_k \neq a$ такая, что
+\begin{equation*}
+\lim_{k\to \infty} \frac{g(y_k)}{g(x_k)} = 0, \qquad \lim_{k\to \infty} \frac{f(y_k)} {g(x_k)} = 0
+\end{equation*}
+
+\begin{proof}
+Для всякого $k$ можем подобрать $n$ такое, что
+\begin{equation*}
+\left|\frac{g(x_n)} {g(x_k)}\right| < \frac{1} {k}, \qquad \left|\frac{f(x_n)}{g(x_k)}\right| < \frac{1} {k}.
+\end{equation*}
+Теперь достаточно взять  $y_k := x_n$.
+\end{proof}
 
 \paragraph{Правило Лопиталя}
 \subparagraph{Формулировка:}
@@ -643,9 +679,19 @@ $f, g$ --- дифф., $g^\prime \neq 0$ на $(a, b)$
 Тогда: 
 \[\lim_{x \rightarrow a + 0}{\frac{f(x)}{g(x)}} = L\]
 
-\subparagraph{Доказательство:}
+\begin{proof}
+$g' \neq 0 \Rightarrow g' $ -- постоянного знака $\Rightarrow g$ монотонна $\Rightarrow g \neq 0$. 
 
-\includepdf[pages={-}]{../images/Lopit.pdf}
+По Гейне $x_k: x_k \to a, x_k \in (a, b), x_k \neq a$, построим $y_k$ из леммы. Тогда, по теореме Коши 
+\begin{equation*}
+\frac{f(x_k) - f(y_k)} {g(x_k) - g(y_k)} = \frac{f'(c_k)} {g'(c_k)}
+\end{equation*}
+Будем выражать отсюда $\frac{f(x_k)} {g(x_k)}$:
+\begin{equation*}
+\frac{f(x_k)} {g(x_k)} = \frac{f(y_k)} {g(x_k)} + \frac{f'(c_k)} {g'(c_k)} \left(1 - \frac{g(y_k)}{g(x_k)}\right).
+\end{equation*}
+И т.к. $\frac{f(y_k)} {g(x_k)} \to 0, \frac{g(y_k)}{g(x_k)} \to 0$, то $\frac{f(x_k)} {g(x_k)} \to L$.
+\end{proof}
 
 \subsubsection{Теорема Штольца\texorpdfstring{$^1$}{}}
 \paragraph{Лемма о смешной сумме}
@@ -1311,16 +1357,27 @@ $m, n \in \mathbb{Z}, f \in C^2[m, n]$
 \includepdf[pages={-}]{../images/asym_step.pdf}
 
 
-\subsubsection{Асимптотика частичных сумм гармонического ряда\texorpdfstring{$^2$}{}}
+\subsubsection{Асимптотика частичных сумм гармонического ряда\texorpdfstring{$^3$}{}}
 
 \subparagraph{Формулировка:}
 
 \[1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} = \ldots = \ln{n} + \gamma + o(1), \gamma \in \left[\frac{1}{2}, \frac{1}{2} + \frac{1}{8}\right]\]
 
-\subparagraph{Доказательство:}
-
-\includepdf[pages={-}, clip, pagecommand={\pagestyle{fancy}}]{../images/asym_garm.pdf}
-
+\begin{proof}
+\begin{equation*}
+1 + \frac{1} {2} + \frac{1} {3} + \ldots + \frac{1} {n} = \frac{1} {2}\left(1 + \frac{1} {n}\right) + \ln{n} + \ln{1} + \int_1^n \frac{1}{x^3} \{x\} \{1 - x\} \D x
+\end{equation*}
+Заметим, что правый интеграл возрастает как $f(n)$ и ограничен
+\begin{equation*}
+\int_1^n \frac{1}{x^3} \{x\} \{1 - x\} \D x \leq \frac{1} {4}\int_1 ^n \frac{1} {x^3}\D x \leq \frac{1} {4} \left(-\frac{1} {2} \frac{1} {x^2} \arrowvert^n_1\right) \leq \frac{1} {8} \left(1 - \frac{1} {n^2}\right) \leq \frac{1} {8}
+\end{equation*}
+Первый переход легитимен, т.к. это возрастающая функция. Последний переход справедлив, т.к. $\frac{1} {n^2}$ - возрастающая.
+Таким образом, 
+\begin{equation}
+1 + \frac{1}{2} + \frac{1}{3} + \ldots + \frac{1}{n} = \ldots = \ln{n} + \gamma + o(1)
+\end{equation}
+где $\gamma \in [\frac{1} {2}; \frac{1} {2} + \frac{1} {8}]$ - постоянная Эйлера, оборачивает интеграл и $\frac{1} {2}\left(1 + \frac{1} {n}\right)$. 
+\end{proof}
 
 \subsubsection{Формула Валлиса\texorpdfstring{$^1$}{}}\label{Валлис}
 \subparagraph{Формулировка}
