@@ -630,6 +630,19 @@ $f, g: D \rightarrow \mathbb{R}, D \subset \overline{\mathbb{R}}, a$ --- пре�
 
 $\exists \dot{V}_a : f, g \neq 0$ на $\dot{V}_a \cap D, \lim_{x \rightarrow a}{f(x)} = 0, \lim_{x \rightarrow a}{g(x)} = 0$
 
+Тогда $\forall x_k: x_k\to a, x_k \in D, x_k \neq a$ $\exists y_k: y_k\to a, y_k \in D, y_k \neq a$ такая, что
+\begin{equation*}
+\lim_{k\to \infty} \frac{g(y_k)}{g(x_k)} = 0, \qquad \lim_{k\to \infty} \frac{f(y_k)} {g(x_k)} = 0
+\end{equation*}
+
+\begin{proof}
+Для всякого $k$ можем подобрать $n$ такое, что
+\begin{equation*}
+\left|\frac{g(x_n)} {g(x_k)}\right| < \frac{1} {k}, \qquad \left|\frac{f(x_n)}{g(x_k)}\right| < \frac{1} {k}.
+\end{equation*}
+Теперь достаточно взять  $y_k := x_n$.
+\end{proof}
+
 \paragraph{Правило Лопиталя}
 \subparagraph{Формулировка:}
 
@@ -643,9 +656,19 @@ $f, g$ --- дифф., $g^\prime \neq 0$ на $(a, b)$
 Тогда: 
 \[\lim_{x \rightarrow a + 0}{\frac{f(x)}{g(x)}} = L\]
 
-\subparagraph{Доказательство:}
+\begin{proof}
+$g' \neq 0 \Rightarrow g' $ -- постоянного знака $\Rightarrow g$ монотонна $\Rightarrow g \neq 0$. 
 
-\includepdf[pages={-}]{../images/Lopit.pdf}
+По Гейне $x_k: x_k \to a, x_k \in (a, b), x_k \neq a$, построим $y_k$ из леммы. Тогда, по теореме Коши 
+\begin{equation*}
+\frac{f(x_k) - f(y_k)} {g(x_k) - g(y_k)} = \frac{f'(c_k)} {g'(c_k)}
+\end{equation*}
+Будем выражать отсюда $\frac{f(x_k)} {g(x_k)}$:
+\begin{equation*}
+\frac{f(x_k)} {g(x_k)} = \frac{f(y_k)} {g(x_k)} + \frac{f'(c_k)} {g'(c_k)} \left(1 - \frac{g(y_k)}{g(x_k)}\right).
+\end{equation*}
+И т.к. $\frac{f(y_k)} {g(x_k)} \to 0, \frac{g(y_k)}{g(x_k)} \to 0$, то $\frac{f(x_k)} {g(x_k)} \to L$.
+\end{proof}
 
 \subsubsection{Теорема Штольца\texorpdfstring{$^1$}{}}
 \paragraph{Лемма о смешной сумме}
