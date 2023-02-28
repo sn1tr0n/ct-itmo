@@ -100,15 +100,9 @@
 
 В данном конспекте отсутвуют следующие теоремы:
 \begin{enumerate}
-\item Выражение произвольной показательной функции через экспоненту. Два следствия
-\item Показательная функция от произведения
-\item Теорема о свойствах логарифма
-\item Несчетность отрезка.
-\item Континуальность множества бинарных последовательностей
 \item Метод Ньютона
 \item Теорема о разложении рациональной функции на простейшие дроби
 \item Теорема о необходимом и достаточном условиях экстремума
-\item Иррациональность числа $e^2$
 \end{enumerate}
 Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов, или создав Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}. Ваше авторство также будет указано, с вашего разрешения.
 
@@ -2674,7 +2668,30 @@ e = \lim_{n\to\infty}\sum_{k=0}^n \frac{1}{k!} \notag
 \end{equation}
 \end{proof}
 
+\subsubsection{Несчетность отрезка\texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+Отрезок несчетен: $\nexists \varphi:\mathbb{N} \to [0, 1]$
+
+\begin{proof}
+От противного. Пусть мы занумеровали все точки отрезка:$x_1, x_2, x_3, \ldots, x_n, \ldots$. Построим последовательность отрезков. $\Delta_0 = [0, 1]$. Делим $\Delta_0$ на три отрезка, пусть $\Delta_1$ --- та треть $\Delta_0$, что не содержит $x_1$. Продолжаем делить и брать трети:$\Delta_n$ --- треть $\Delta_{n-1}$, не содержащая $x_n$.
+
+Очевидно, что $\Delta_0 \supset \Delta_1 \supset \ldots \supset \Delta_n \supset\ldots$. Но по теореме о стягивающихся отрезках $\cap \Delta_i = \{a\}$, но $a$ не совпадает ни с одним из $x_i$. Абсурд.
+\end{proof}
+
+\subsubsection{Континуальность множества бинарных последовательностей\texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+
+$Bin$ --- множество всех бесконечных последовательностей из 0 и 1. Тогда $\exists \varphi:[0,1] \to Bin$ --- биекция.
+
+\begin{proof}
+$x \in [0, 1]$ $x = 0.1011000010\ldots$. При отбрасывании целой части получаем бинарную последовательность. Однако существуют $x$, задающиеся двумя бинарными последовательностями: Те, у которых, начиная с $k$-й позиции идут только единицы и те, у которых в $(k-1)$-й позиции 1, а начиная с $k$-й только нули. Но таких последовательностей, очевидно, счетное число. Понятно, что объединение континуального и счетного множества континуально.
+\end{proof}
+
 \subsubsection{Теорема о свойствах показательной функции\texorpdfstring{$^1$}{}}
+\textit {Напоминалка}
+
+Показательная функция $f:\mathbb{R}\to\mathbb{R}$ --- по определению: непрерывна, не тождественный 0, не тождественная 1, и $f(x + y) = f(x) \cdot f(y)$
+
 Формулировка:
 \begin{enumerate}
     \item $\forall x f(x) > 0; f(0) = 1$
@@ -2734,8 +2751,114 @@ e = \lim_{n\to\infty}\sum_{k=0}^n \frac{1}{k!} \notag
     $\tilde f(r_k) \rightarrow \tilde f(x); f(r_k) \rightarrow f(x) \implies f(x) = \tilde f(x)$
 \end{enumerate}
 
-\subsubsection{Критерий монотонности функции. Следствия\texorpdfstring{$^3$}{}}
+\subsubsection{Выражение произвольной показательной функции через экспоненту. Два следствия\texorpdfstring{$^3$}{}}
+\paragraph{Теорема о показательной функции}
+\textit{Формулировка:}
 
+$\exists f_0$ --- показательная функция, которая удовлетворяет $\frac{f_0(x) - 1} {x} \xrightarrow[x\to 0]{} 1$
+
+\begin{proof}
+КПК сказал, что будет где-то в третьем семестре просто предъявлена.
+\end{proof}
+
+\paragraph{Выражение произвольной показательной функции через экспоненту.}
+\textit{Формулировка:}
+
+$f$ --- показательная функция, $f_0$ --- функция из прошлой теоремы. Тогда  $\exists \alpha \in \mathbb{R}: \forall x f(x) = f_0(\alpha x)$
+
+\begin{proof}
+$f(1) = a > 0, a\neq 1$ $\exists \alpha \in \mathbb{R}, \alpha \neq 0: a = f_0(\alpha)$
+
+Осталось проверить, что $g(x) = f(\alpha x)$ --- показательная функция, что вполне очевидно: $g \neq const$,
+\begin{equation*}
+g(x + y) = f(\alpha(x + y)) = f(\alpha x) \cdot f(\alpha y) = g(x) \cdot g(y)
+\end{equation*}
+\end{proof}
+
+\paragraph{Следствие 1}
+\textit{Формулировка:}
+
+$f_0$ --- единственна
+
+\begin{proof}
+От противного. Пусть $f_1$ тоже удовлетворяет теореме о показательной функции. Тогда $\exists \alpha: f_1(x) = f_0(\alpha x)$
+\begin{equation*}
+1 = \lim_{x\to 0} \frac{f_1(x) - 1} {x} = \lim_{x\to 0} \frac{f_0(\alpha x) - 1} {\alpha x} \cdot \alpha = \alpha
+\end{equation*}
+Абсурд.
+\end{proof}
+
+\paragraph{Следствие 2}
+Обозначим $f_0(x) = exp(x)$ и назовем экспонентой.
+
+\textit{Формулировка: }
+
+$\forall a > 0, a\neq 1 \exists!$ показательная фукнция $f: f(1) = a$
+
+\begin{proof}
+Для данного $a$ $\exists \alpha: exp(\alpha) = a\qquad(\alpha \neq 1).$
+
+Достаточно взять $f(x) := exp(\alpha x)$
+\end{proof}
+
+\subsubsection{Показательная функция от произведения\texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+
+$\forall x, y \in \mathbb{R}$ $\forall a > 0, a\neq 1$: $a^{xy} = \left(a^x\right)^y = \left(a^y\right)^x$
+
+\begin{proof}
+\item $x = 0$.
+
+Тривиально
+\item $x\neq 0, y \in \mathbb{Q}$
+
+$a^x = b\quad b\neq 1$. Из пункта 2 теоремы о свойствах показательной функции:
+\begin{equation*}
+\left(a^{xy}\right) = \left(a^x\right)^y = b^y
+\end{equation*}
+\item $x\neq 0, y \in \mathbb{R}$
+
+Для этого сделаем предельный переход для предыдущего пункта. $y_k \in \mathbb{Q}: y_k \to y$
+\begin{equation*}
+a^{x^{y_k}} = b^{y_k}
+\end{equation*}
+Но $a^{x^{y_k}} \to a^{xy}$, а $b^{y_k} \to  \left(a^x\right)^y \Rightarrow$
+\begin{equation*}
+a^{xy} = \left(a^x\right)^y
+\end{equation*}
+Второе равенство доказывается аналогично.
+\end{proof}
+
+\subsubsection{Теорема о свойствах логарифма\texorpdfstring{$^3$}{}}
+\textit{Формулировка:}
+
+$a, b, c > 0$; $a, c \neq 1$
+\begin{enumerate}
+\item $\log_a(xy) = \log_a(x) + \log_a(y)$
+\item $\log_a(b^x) = x\log_a(b)$
+\item $\log_a(x) = \log_a(c)\cdot \log_c(x)$
+\end{enumerate}
+
+\begin{proof}
+$n = v \Leftrightarrow a^n = a^v$
+Таким образом, 
+\begin{enumerate}
+\item $\Leftrightarrow$
+\begin{equation*}
+a^{\log_a x + \log_a y} = a^{\log_a x}\cdot a^{\log_a y} = xy =  a^{\log_a(xy)}
+\end{equation*}
+\item $\Leftrightarrow$
+\begin{equation*}
+b = a^{\log_a b} \qquad b^x = \left(a^{\log_a b}\right)^x = a^{x\log_a b}
+\end{equation*}
+\item $\Leftrightarrow$
+\begin{equation*}
+x = c^{\log_c x} \qquad \log_a x = \log_a\left(c^{\log_c x}\right) = \log_c x \cdot \log_a c
+\end{equation*}
+\end{enumerate}
+\end{proof}
+
+\subsubsection{Критерий монотонности функции. Следствия\texorpdfstring{$^3$}{}}
 
 \textit{Формулировка: }
 
@@ -2913,6 +3036,38 @@ f(x_2) \leq f(x_3) - t\left(f(x_3) - f(x_1)\right) = f(x_3) - (x_3 - x_2) \frac{
 f(x_{n_k}) \rightarrow f(c), f(\bar{x}_{n_k}) \rightarrow f(c) \notag
 \end{equation}
 Следовательно, $\rho(f(x_{n_k}), f(\bar{x}_{n_k})) \rightarrow 0$, что будет противоречить \eqref{1}
+\end{proof}
+
+\subsubsection{Иррациональность числа $e^2$ \texorpdfstring{$^3$}{}}
+\textit{Формулировка: }
+$e^2$ --- иррационально.
+\begin{proof}
+От противного. Пусть $e^2 = \frac{2k} {n} \Leftrightarrow ne = 2k\cdot e^{-1}$. Домножим все на $(2k-1)!$:
+\begin{equation*}
+n(2k-1)!e = (2k)!\cdot e^{-1}
+\end{equation*}
+Докажем, что левая часть чуть больше некоторого целого числа, а правая часть чуть меньше некоторого целого числа.
+
+Вспомним формулу Тейлора с остатком в форме Лагранжа:
+\begin{equation*}
+e^x = 1 + x + \frac{x^2} {2!} + \dots + \frac{x^m} {m!} + \frac{e^c} {(m+1)!} x^{m+1} \qquad c \in (0, x)
+\end{equation*}
+Теперь будем подставлять в эту формулу $x = 1$ и $x = -1$:
+\begin{equation*}
+n(2k-1)!e = n(2k-1)!\left(1 + 1 + \frac{1} {2!} + \dots + \frac{1} {(2k - 1)!}\right) + n(2k-1)!\frac{e^c} {(2k)!}\qquad c \in (0, 1)
+\end{equation*}
+Заметим, что левое слагаемое --- целое число. Оценим остаток:
+\begin{equation*}
+n(2k-1)!\frac{e^c} {(2k)!} = \frac{n}{2k}e^c = e^{c-2} < e^{-1} < \frac{1} {2}
+\end{equation*}
+\begin{equation*}
+(2k)!\cdot e^{-1} = (2k)!\left(1 -1 + \frac{1} {2!} +  \dots + \frac{1} {(2k)!}\right) - \frac{e^c} {(2k + 1)!} \qquad c \in (-1, 0)
+\end{equation*}
+Левое слагаемое, кстати, тоже целое число. $e^2 = \frac{2k} {n}$, тогда, очевидно, $k>1$. Оцениваем остаток:
+\begin{equation*}
+\frac{e^c} {(2k + 1)!} < \frac{1} {2k + 1} < \frac{1} {3}
+\end{equation*}
+Итого, есть целое число, от которого мы смещаемся вправо меньше, чем на $\frac{1} {2}$ и целое число, от которого мы смещаемся влево меньше, чем на $\frac{1} {3}$ и приходим в одно и то же число. Абсурд.
 \end{proof}
 
 \subsubsection{Теорема Брауэра\texorpdfstring{$^3$}{}}
