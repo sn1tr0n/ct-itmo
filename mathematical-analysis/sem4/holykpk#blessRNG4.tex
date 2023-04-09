@@ -132,9 +132,86 @@ Oh, fuck.}
 \newpage
 
 \subsection{Определения}
+\subsubsection{Произведение мер}
+$(X, \mathfrak{A}, \mu)$, $(Y, \mathfrak{B}, \nu)$ --- пространства с мерой.
+
+\textit{Лемма: }
+$\mathcal{A}, \mathcal{B}$ --- полукольца. Тогда $\mathcal{A} \times \mathcal{B} = \{A \times B, A \in \mathcal{A}, B \in \mathcal{B}\}$ --- полукольцо.
+
+Также, множества из $\mathcal{A} \times \mathcal{B}$ являются измеримыми прямоугольниками.
+
+$\mu, \nu$ --- $\sigma$-конечные меры. Тогда стандартное продолжение $m_{0}$ (в смысле теоремы о продолжении меры (?)) с полукольца $\mathfrak{A} \times \mathfrak{B}$, определённой на некоторой $\sigma$-алгебре $\mathfrak{A} \otimes \mathfrak{B}$, и являющееся $\sigma$-конечной полной мерой --- обзначается просто $m$.
+
+И тогда $m$ --- и есть произведение мер $\mu$ и $\nu$ $(\mu \times \nu)$.
+
+\textit{Замечание: }
+
+\[(\mu \times \nu) \times \rho = \mu \times (\nu \times \rho)\]
+
+\subsubsection{Сечения множества}
+
+$X, Y$ --- множества. $C \subset X \times Y$
+
+Тогда: 
+
+\[C_{x} := \{y \in Y: (x, y) \in C\}\]
+
+\[C^{y} := \{x \in X: (x, y) \in C\}\]
+
+--- сечения множества $C$ (1 и 2 рода)
+
+\textit{Замечания: }
+
+\[\left(\bigcup_{\alpha \in A} C_{\alpha}\right)_{x} = \bigcup_{\alpha \in A} \left(C_{\alpha}\right)_{x}\]
+
+\[\left(\bigcap_{\alpha \in A} C_{\alpha}\right)_{x} = \bigcap_{\alpha \in A} \left(C_{\alpha}\right)_{x}\]
+
+\[\left(C \setminus C'\right)_{x} = C_{x} \setminus C'_{x}\]
+
+\subsubsection{Полная мера, сигма-конечная мера}
+
+См. \href{http://gg.gg/holykpksem3}{\color{blue}{конспект прошлого семестра}}
+
 \newpage
 
 \subsection{Важные теоремы}
+
+\subsubsection{Теорема Лебега о мажорированной сходимости для случая сходимости почти везде}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $f_n, f: X \rightarrow \rinf$ --- измеримые
+    \item $f_n \rightarrow f$ почти всюду
+    \item $\exists g: X \rightarrow \rinf$ --- суммируемая, и $\forall n$ и при почти всех $x \dbl |f_n(x)| \le g(x)$
+\end{itemize}
+
+Тогда:
+
+\[\int_{X}|f_n - f| d \mu \dbl \ntoinf \dbl 0\]
+
+И, как очевидное (``уж тем более''):
+
+\[\int_{X} f_n d\mu \dbl \ntoinf \dbl \int_{X} f d\mu\]
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема Лебега о мажорированной сходимости для случая сходимости по мере}
+\textit{Формулировка (то же самое, что и выше, только сходится по мере теперь):}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $f_n, f: X \rightarrow \rinf$ --- измеримые
+    \item $f_n \underset{\mu}{\Longrightarrow} f$
+    \item $\exists g: X \rightarrow \rinf$ --- суммируемая, и $\forall n$ и при почти всех $x \dbl |f_n(x)| \le g(x)$
+\end{itemize}
+
+Тогда:
+
+\[\int_{X}|f_n - f| d \mu \dbl \ntoinf \dbl 0\]
+
+\textit{Доказательство:}
+
 \newpage
 
 \subsection{Теоремы}
@@ -233,6 +310,49 @@ Oh, fuck.}
 
 ч. т. д. 
 
+\subsubsection{Абсолютная непрерывность интеграла}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $f: X \rightarrow \rinf$ --- суммируемая
+\end{itemize}
+
+Тогда:
+
+\[\forall \varepsilon > 0 \dbl \exists \delta > 0, \quad \forall E\text{--- измеримое} \dbl \mu E < \delta \qquad \left|\int_{E} f d \mu\right| < \varepsilon\]
+
+\textit{Доказательство:}
+
+\textit{Следствие:}
+\begin{itemize}
+    \item $(e_n) \in \mathfrak{A}$ --- последовательность (?) множеств\
+    \item $\mu e_n \ntoinf 0$
+    \item $f$ --- суммируемая на $X$
+\end{itemize}
+
+Тогда:
+
+\[\int_{e_n} f d \mu \ntoinf 0\]
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема о произведении мер}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$, $(Y, \mathfrak{B}, \nu)$ --- пространства с мерой
+    \item Зададим $m_0(A \times B) = \mu A \cdot \nu B$
+\end{itemize}
+
+Тогда:
+
+\begin{enumerate}
+    \item $m_0$ --- мера на $\mathfrak{A} \times \mathfrak{B}$
+    \item $\mu, \nu$ --- $\sigma$-конечные меры $\Longrightarrow$ $m_0$ --- $\sigma$-конечная
+\end{enumerate}
+
+\textit{Доказательство:}
 
 \newpage
 
