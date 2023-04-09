@@ -83,7 +83,7 @@
     {\Large Тимофей Белоусов\quad @imodre \\ Никита Варламов\quad @snitron \\ Тимофей Цорин \quad @thefattestowl\par}
     \vfill
     v1.3\\
-    {\scshape Январь 2022-2023} \par
+    {\scshape Март 2022-2023} \par
 \end{titlepage}
 
 \textbf{Заметки авторов}
@@ -95,16 +95,6 @@
     \item @thefattestowl
 \end{enumerate}
 По любым вопросам и предложениям/улучшениям обращаться в телеграмм к соответвующему автору, или создать Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}.
-
-\textbf{Known Issues}
-
-В данном конспекте отсутвуют следующие теоремы:
-\begin{enumerate}
-\item Метод Ньютона
-\item Теорема о разложении рациональной функции на простейшие дроби
-\item Теорема о необходимом и достаточном условиях экстремума
-\end{enumerate}
-Вы в любой момент можете добавить любую недостающую теорему, затехав её и отправив код (фотографии письменного текста запрещены) в телегу любому из указанных авторов, или создав Pull Request в \href{https://github.com/snitron/ct-itmo}{Git-репозиторий конспекта (click)}. Ваше авторство также будет указано, с вашего разрешения.
 
 \newpage
 
@@ -2482,7 +2472,14 @@ $$
 \forall \varepsilon > 0 \hspace{5pt} \exists \delta > 0 \hspace{5pt} \forall x_1, x_2 \in \langle a, b \rangle : \rho(x_1 - x_2) < \delta \quad \rho(f(x_1) - f(x_2)) < \varepsilon 
 $$
 
-
+\subsubsection{Локальный экстремум\texorpdfstring{$^3$}{}}
+$f:D\subset \mathbb{R} \to \mathbb{R}$ $x_0 \in D$
+\begin{enumerate}
+\item $x_0 - $ точка локального максимума, если $\exists U(x_0) \forall x \in U(x_0) \cap D\quad f(x) \leq f(x_0)$
+\item $x_0 - $ точка строгого локального максимума, если $\exists U(x_0) \forall x \in \dot U(x_0) \cap D\quad f(x) < f(x_0)$
+\item Локальный минимум определяется аналогично
+\item Локальный экстремум = локальный максимум или локальный минимум
+\end{enumerate}
 
 \newpage
 \subsection{Важные теоремы}
@@ -2903,6 +2900,45 @@ $\langle a, b\rangle \Leftrightarrow$:
 $\forall x \in (a, b) f'(x) \geq 0 \Rightarrow f -$ возрастает. Если возрастание нестрогое, то $\exists x_1, x_2 \in \langle a, b\rangle: x_1<x_2, f(x_1) = f(x_2) \Rightarrow f $ постоянна на $[x_1, x_2]$. Противоречие с 2).
 \end{proof}
 
+\subsubsection{Теорема о необходимом и достаточном условиях экстремума\texorpdfstring{$^3$}{}}
+
+\textit{Формулировка: }
+
+$f:\langle a, b\rangle \to \mathbb{R}, x_0 \in (a, b), f$ --- дифференцируема на $(a, b)$. Тогда:
+\begin{enumerate}
+\item $x_0$ --- точка экстремума $\Rightarrow f'(x_0) = 0$
+\item $f - n$ раз дифференцируема в $x_0$
+\begin{equation*}
+f'(x_0) = \ldots = f^{(n-1)}(x_0) = 0, \qquad f^{(n)} \neq 0
+\end{equation*}
+\begin{align*}
+&\text{Если } f^{(n)} > 0, \text{ то}
+\begin{cases}
+n  - \text{четное} &\quad x_0 - \text{точка локального минимума}\\
+n  - \text{нечетное} &\quad x_0 - \text{не точка экстремума}
+\end{cases}
+\\
+&\text{Если } f^{(n)} < 0, \text{ то}
+\begin{cases}
+n  - \text{четное} &\quad x_0 - \text{точка локального максимума}\\
+n  - \text{нечетное} &\quad x_0 - \text{не точка экстремума}
+\end{cases}
+\end{align*}
+\end{enumerate}
+
+\begin{proof}
+\item
+\begin{enumerate}
+\item Literally теорема Ферма.
+\item Формула Тейлора с остатком в форме Пеано:
+\begin{equation*}
+f(x) = f(x_0) + \ldots + \frac{f^{(n)}(x_0)} {n!} (x - x_0)^n + o((x - x_0)^n)
+\end{equation*}
+Обзовем последний член многочлена $\alpha$. Тогда существует такая окрестность точки $x_0$, что $\left|\frac{o((x - x_0)^n)} {(x-x_0)^n}\right| < \frac{\alpha} {2}$. Заметим, что при $n$ --- четном нам не важно   какой стороны мы подходим к $x_0$, этот множитель остается положительным, т.е. эта точка является локальным экстремумом в соответсвии с определением. Если же $n$ --- нечетно, то при переходе через $x_0$ будет меняться знак, следовательно, у функции не будет экстремума в $x_0$
+\end{enumerate}
+\end{proof}
+
+
 \subsubsection{Описание выпуклости с помощью касательных\texorpdfstring{$^3$}{}}
 
 \textit{Формулировка:}
@@ -3036,6 +3072,83 @@ f(x_2) \leq f(x_3) - t\left(f(x_3) - f(x_1)\right) = f(x_3) - (x_3 - x_2) \frac{
 f(x_{n_k}) \rightarrow f(c), f(\bar{x}_{n_k}) \rightarrow f(c) \notag
 \end{equation}
 Следовательно, $\rho(f(x_{n_k}), f(\bar{x}_{n_k})) \rightarrow 0$, что будет противоречить \eqref{1}
+\end{proof}
+
+\subsubsection{Теорема о разложении рациональной функции на простейшие дроби\texorpdfstring{$^3$}{}}
+$P, Q$ --- многочлены. $Q(x) = (x-a_1)^{k_1}\ldots(x-a_m)^{k_m}, \qquad a_i \neq a_j, a_i \in \mathbb{R}$
+
+$deg Q(x) = k_1 + k_2 + \ldots + k_m = n;\qquad deg P < n$
+
+Тогда существуют вещественные числа $A_1, \ldots, A_{k_1}, B_1, \ldots, B_{k_2}, \ldots$
+\begin{equation*}
+\frac{P(x)}{Q(x)} = \frac{A_1} {(x - a_1)} + \dots + \frac{A_{k_1}} {(x-a_1)^{k_1}} \frac{B_1} {x - a_2} + \dots + \frac{B_{k_2}} {(x - a_2)^{k_2}} + \dots
+\end{equation*}
+
+\begin{proof}
+Найдем $A_1, \ldots, A_{k_1}$:
+\begin{align*}
+\frac{P}{Q} &= \frac{1} {(x - a_1)^{k_1}} F_1\\
+F_1 &= \sum_{i=0}^{k - 1} \frac{(F_1)^{(i)} (a_1)} {i!} (x - a_i)^i + o((x-a)^{k - 1}) = O((x-a)^k)\\
+\frac{P}{Q} &= \sum_{i=0}^{k_1 - 1} \frac{(F_1)^{(i)} (a_1)} {i!} \frac{1} {(x-a)^{k_1 - i}} + \frac{o((x-a)^{k_1 - 1)}} {(x - a_1)^{k_1}} + O(1)
+\end{align*}
+Итого полагаем $A_j := \frac{F_1^{(a - j)} (a)} {(k-j)!}$
+
+Аналогично определяем $B_1, \ldots B_{k_2}$ и остальные коэффициенты.
+\end{proof}
+
+Теперь докажем, что эти коэффициенты правильные
+
+\begin{proof}
+Расмотрим разницу $\frac{P}{Q} - \left(\frac{A_1} {x - a_1} + \dots + \frac{A_{k_1}} {(x - a_{k_1})^{k_1}} \right)$ = рациональная дробь, ограниченная в $V(a_1)$. Т.е. $(x - a_1)^{k_1}$ полностью сократится. Вычтем теперь все $(x - a_i)$
+\begin{equation*}
+\frac{P}{Q} - \left(\frac{A_1}{(x - a_1)} + \dots\right) - \left(\frac{B_1}{(x - a_2)} + \dots\right) - \dots
+\end{equation*}
+При раскрытии скобок получится правильная рациональная дробь, у которой сократится весь знаменатель, (т.к. разность стремится к $O(1)$)  т.е. будет правильная дробь, являющаяся числом, т.е. останется 0.
+\end{proof}
+
+\subsubsection{Метод Ньютона\texorpdfstring{$^3$}{}}
+Этот метод используется для нахождения решений нелинейных уравнений. Суть метода в том, что берется какая-то функция $f(x)$ и точка $x_0$ достаточно близкая к решению. В точке $x_0$ строится касательная, она пересекает ось $Ox$ в точке $x_1$. Мы строим касательную в точке $x_1$ и повторяем процесс рекурсивно. Получаем некую последовательность $x_1, x_2, \ldots, x_n, \ldots$ и метод Ньютона говорит, что $\lim_{n\to\infty}f(x_n) \to 0$
+
+\begin{center}
+    \includegraphics[scale=0.44]{../images/Newton_method.png}
+\end{center}
+
+Но самое главное здесь - это оценка.
+\begin{proof}
+Уравнение касательной имеет вид
+\begin{equation*}
+y = f(x_0) + f'(x_0)(x-x_0)
+\end{equation*}
+Теперь надо узнать, при каком $x_1$ $y = 0$:
+\begin{align*}
+(x_1 - x_0) &= -\frac{f(x_0)} {f'(x_0)}\\
+x_1 &= x_0 - \frac{f(x_0)}{f'(x_0)}
+\end{align*}
+Теперь запускаем этот процесс рекурсивно:
+\begin{equation*}
+x_{n+1} = x_n - \frac{f(x_n)} {f'(x_n)}
+\end{equation*}
+Посмотрим, насколько быстро мы приближаемся к корню:
+\begin{equation*}
+C - x_{n+1} = C - x_n + \frac{f(x_n)} {f'(x_n)} = \frac{f(x_n) + f'(x_n)(C - x_n)} {f'(x_n)}
+\end{equation*}
+Формула Тейлора в $x_n$
+\begin{equation*}
+f(x) = f(x_n) + f'(x_n)(x - x_n) + \frac{f''(t_n)} {2!} (x - x^n)^2
+\end{equation*}
+При $x:= C$ $f(x) = 0$, первые два слагаемых равны числителю предыдущей формулы. Значит, мы можем ее продолжить:
+\begin{equation*}
+\frac{f(x_n) + f'(x_n)(C - x_n)} {f'(x_n)} = \frac{-\frac{1} {2} f''(t_n)(C - x_n)^2}{f'(x_n)}
+\end{equation*}
+Возьмем $M:= max|f''|; m:= min|f'| >0$. Тогда
+\begin{equation*}
+|C - x_{n+1}| \leq \frac{1} {2} \frac{|f''(t_n)||C -x_n|^2} {f'(x_n)} \leq \frac{M} {2m} |C - x_n|^2
+\end{equation*}
+\begin{align*}
+|C - x_{n+1}| \leq \frac{M} {2m} |C - x_n|^2 \leq \frac{M}{2m}\left|\frac{M}{2m}|C - x_{n-1}|^2\right|^2 &=\\
+= \left(\frac{M}{2m}\right)^{1 + 2} |C - x_{n-1}|^4 \leq \ldots &\leq \left(\frac{M}{2m}\right)^{1 + 2 + \ldots + 2^n} |C - x_1|^{2^n} = \frac{2m} {M} \left(\left(\frac{M}{2m}\right)^2|C - x_1|\right)^{2^n}
+\end{align*}
+Потребуем выбрать начальное приближение так, чтобы скобка была $<1$. Тогда  разница будет убывать ОЧЕНЬ быстро.
 \end{proof}
 
 \subsubsection{Иррациональность числа $e^2$ \texorpdfstring{$^3$}{}}
