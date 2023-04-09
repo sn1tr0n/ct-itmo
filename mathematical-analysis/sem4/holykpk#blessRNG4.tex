@@ -172,6 +172,27 @@ $X, Y$ --- множества. $C \subset X \times Y$
 
 См. \href{http://gg.gg/holykpksem3}{\color{blue}{конспект прошлого семестра}}
 
+\subsubsection{Образ меры при отображении}
+
+Пусть у нас есть $(X, \mathfrak{A}, \mu)$, $(Y, \mathfrak{B}, \_ )$ --- пространства с мерой, $\Phi: X \rightarrow Y$.
+
+\begin{enumerate}
+    \item $\forall \Phi \quad \Phi^{-1}(\mathfrak{B})$ --- $\sigma$-алгебра (это предлагается доказать как уражнение)
+    \item Пусть $\Phi$ --- ``измеримо'' $\left(\Phi^{-1}(\mathfrak{B}) \subset \mathfrak{A}\right)$
+\end{enumerate}
+
+Для $E \in \mathfrak{B}$ зададим $\nu R := \mu\left(\Phi^{-1}(E)\right) = \int_{\Phi^{-1}(E)} 1 d \mu$
+
+$\nu$ --- образ меры $\mu$ при отображении $\Phi$
+
+\textbf{NB: ДОПИСАТЬ НА СЕССИИ, ТУТ ЕЩË ЕСТЬ ДОКАЗАТЕЛЬСТВО, ЧТО ЭТО МЕРА}
+
+\subsubsection{Взвешенный образ меры}
+
+$\omega: X \rightarrow \mathbb{R} \ge 0$, измерима на $X$
+
+$B \in \mathfrak{B}, \tilde{\nu}(B) := \int_{\Phi^{-1}(B)} \omega d\mu$ --- тоже мера, это и есть взвешенный образ меры $\mu$ при отображении $\Phi$
+
 \newpage
 
 \subsection{Важные теоремы}
@@ -211,6 +232,46 @@ $X, Y$ --- множества. $C \subset X \times Y$
 \[\int_{X}|f_n - f| d \mu \dbl \ntoinf \dbl 0\]
 
 \textit{Доказательство:}
+
+\subsubsection{Принцип Кавальери}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu), (Y, \mathfrak{B}, \nu)$ --- пространства с мерой
+    \item $\mu, \nu$ --- $\sigma$-конечные меры
+    \item $m = \mu \times \nu, \mathfrak{C} = \mathfrak{A} \otimes \mathfrak{B}$
+\end{itemize}
+
+Тогда: 
+
+\begin{enumerate}
+    \item при почти всех $x \quad C_{x} \in \mathfrak{B}$ 
+    \item $x \mapsto \nu C_{X}$ --- измеримо на $C_{x}$
+    \item $m C = \int_{X} \nu (C_{x}) d\mu(x)$
+\end{enumerate}
+
+Аналогично для сечений $C^{y}$
+
+\textit{Доказательство:}
+
+
+\subsubsection{Теорема Фубини}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu), (Y, \mathfrak{B}, \nu)$ --- пространства с мерой
+    \item $\mu, \nu$ --- $\sigma$-конечные меры
+    \item $m = \mu \times \nu$
+    \item $f: X \times Y \rightarrow \rinf$, суммируема на $X \times Y$ по мере $m$
+\end{itemize}
+
+Тогда:
+
+\begin{enumerate}
+    \item при почти всех $x$ функция $f_{x}$ суммируема на $Y$
+    \item $x \mapsto \varphi(x) = \int_{Y} f_{x} d\nu$ --- это суммируемая функция на $X$
+    \item \[\int_{X \times Y} f dm= \int_{X} \varphi(x) d \mu(x) = \int_{X} \left( \int_{Y} f(x, y) d  \nu (y)\right) d \mu(x)\]
+\end{enumerate}
 
 \newpage
 
@@ -354,6 +415,62 @@ $X, Y$ --- множества. $C \subset X \times Y$
 
 \textit{Доказательство:}
 
+\subsubsection{Теорема Тонелли}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu), (Y, \mathfrak{B}, \nu)$ --- пространства с мерой
+    \item $\mu, \nu$ --- $\sigma$-конечные меры
+    \item $m = \mu \times \nu$
+    \item $f: X \times Y \rightarrow \rinf \ge 0$, измерима относительно $\mathfrak{A} \otimes \mathfrak{B}$
+\end{itemize}
+
+Тогда:
+
+\begin{enumerate}
+    \item при почти всех $x$ функция$f_{x}$ измерима на $Y$
+    \item $x \mapsto \varphi(x) = \int_{Y} f_{x} d\nu$ --- это измеримая функция на $X$
+    \item \[\int_{X \times Y} f dm= \int_{X} \varphi(x) d \mu(x) = \int_{X} \left( \int_{Y} f(x, y) d  \nu (y)\right) d \mu(x)\]
+\end{enumerate}
+
+\textit{Доказательство:}
+
+
+
+\subsubsection{Формула для бета-функции}
+\textit{Формулировка:}
+Бета-функция задаётся следующим образом: 
+
+\[B(s, t) = \int_{0}^{1}x^{s - 1}(1 - x)^{t - 1}dx, \quad s, t > 0\]
+
+Тогда:
+
+\[B(s, t) = \frac{\Gamma(s)\Gamma(t)}{\Gamma(s + t)}\]
+
+\textit{Доказательство:}
+
+\subsubsection{Объем шара в $\mathbb{R}^m$}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $B(0, R) = \{x \in \mathbb{R}^{m}: x_1^{2} + x_2^{2} + \ldots + x_m^{2} \le R^{2}\}$
+    \item $\alpha_{m} \ \lambda_{m}(B(0, 1))$
+\end{itemize}
+
+Тогда: 
+
+\[\mu\left(B(0, R)\right) = \alpha_m R^{m}\]
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема Фату. Следствия}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\textit{Доказательство:}
 \newpage
 
 
