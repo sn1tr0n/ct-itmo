@@ -51,7 +51,8 @@
 
 \DeclareMathOperator{\sign}{sign}
 \DeclareMathOperator{\const}{const}
-\DeclareMathOperator{\segm}{Segm}
+\DeclareMathOperator{\segm}{Segm}\DeclareMathOperator*{\esssup}{ess\,sup}
+
 
 
 \newcommand*\lateraleye{%
@@ -129,6 +130,49 @@ Oh, fuck.}
 \section{Период Палеозойский}
 \subsection{Важные определения}
 
+\subsubsection{Пространство $L^p(E,\mu)$}
+$1 \le p < +\infty$, $(X, \mathfrak{A}, \mu)$, $E \in \mathfrak{A}$
+
+Тогда $\mathfrak{L}_p(E, \mu) = \{f:$ почти всех $E \rightarrow \mathbb{R} (\mathbb{C}), f$ --- измерима. $\int_{E} |f|^{p} < + \infty\}$
+
+\begin{enumerate}
+    \item $\mathfrak{L}_p(E, \mu)$ --- линейное пространство
+    \item $f \equiv g$, если $f = g$ почти всюду
+\end{enumerate}
+
+$L_p := \mathfrak{L}_p /_{\equiv}$ --- точки этого пространства
+
+$[f] = \{g: f \equiv g\}$
+$[f_1] + [f_2] = [f_1 + f_2]$
+
+И введём норму $||[f]|| = \left(\int_{E} |f|^{p}\right)^{\frac{1}{p}}$
+
+\subsubsection{Пространство $L^\infty(E,\mu)$}
+
+$\mathfrak{L}^{\infty}(E, \mu) = \{f: $ почти всех $E \rightarrow \mathbb{R} (\mathbb{C})$, измерима, $\esssup |f| < + \infty\}$
+
+$||f||_{\infty} = \esssup f$
+
+\textbf{Дописать всё}
+
+\subsubsection{Существенный супремум}
+
+$\esssup f = \inf \{a: f \le a $ почти всюду $\}$
+
+$a$ --- существенная верхняя граница функции $f$, если при почти всех $x \dbl f(x) \le a$
+
+\textit{Свойства: }
+\begin{enumerate}
+    \item $\esssup f(x) \le \sup f(x)$
+    \item при почти всех $x: f(x) \le \esssup f(x)$
+    \item $f$ --- суммируемая, $g$ --- измерима: $\esssup |g| < + \infty$
+    \[\left|\int_{E} fg\right| \le \esssup |g| \cdot \int_{E} |f|\]
+\end{enumerate}
+
+\subsubsection{Гильбертово пространство}
+
+$\mathfrak{H}$ --- линейное пространство, в котором задано скалярное произведение и соответствующая норма. Если $\mathfrak{H}$ --- полное, то оно называется гильбертовым.
+
 \newpage
 
 \subsection{Определения}
@@ -202,6 +246,75 @@ $\nu b = \int_{B} \omega d \mu$ --- ещё одна мера в $X$
 Здесь $\omega$ называется плотностью меры $\nu$ относительно меры $\mu$. И в этом случае:
 
 \[\int_{X}f(x)d\nu(x) = \int f(x) \cdot \omega(x) d\mu(x)\]
+
+\subsubsection{Условие $L_{loc}$}
+
+$f: X \times \tilde{Y} \rightarrow \rinf, Y \subset \tilde{Y}, a$ --- предельная точка $Y$ в $\tilde{Y}$. 
+
+$f$ удовлетворяет условию $L_{loc}(a): \exists g: X \rightarrow \rinf$ --- суммируемая, $\exists U(a): \forall$ почти всех $x \forall y \in U(a)$:
+
+\[|f(x, y)| \le g(x)\]
+
+\subsubsection{Интеграл комплекснозначной функции}
+
+База базовая: $(X, \mathfrak{A}, \mu), f: X \rightarrow \mathbb{C}$
+
+\[\int_{E}f(z)d\mu = \int_{E}\Re(f(z))d\mu + i\int_{E}\Im(f(z))d\mu\]
+
+Также измеримость и суммируемость следует из соттветствующих свойств реальной и мнимой частей функций.
+
+\subsubsection{Фундаментальная последовательность, полное пространство}
+
+$A \subset X$ --- нормированное пространство
+
+$A$ --- (всюду) плотное в $X$
+
+\[\forall x \in X \dbl \exists \varepsilon > 0 \quad B(x, \varepsilon) \cap A\text{--- непусто}\]
+
+\subsubsection{Мера Лебега-Стилтьеса, мера Бореля-Стилтьеса}
+
+\begin{enumerate}
+    \item $\mathcal{P}^{1}, g: \mathbb{R} \rightarrow \mathbb{R}, $ возрастает, непрерывно
+    \[\mu_g[a, b) := g(b) - g(a)\]
+
+    --- счётно аддитивная мера
+    \item $g$ --- возрастает, не обязательно непрпрывно
+    
+    \[\mu_g[a, b) = g(b - 0) - g(a - 0)\]
+
+    --- мера
+\end{enumerate}
+
+Запускаем теорему о продолжении, тогда
+
+$\exists \mathfrak{A} \supset \mathcal{P}^{1} \exists$ продолжение $\mu_g \subset \mathcal{P}$ на $\mathfrak{A}$
+
+$\mu_g$ --- полная мера на $\mathfrak{A}$ --- мера Лебега-Стильтьеса
+
+Если нассмотреть $\mu_g$ на борелевском $\mathfrak{B} \rightarrow \rinf$ --- мера Бореля
+
+
+\subsubsection{Функция распределения}
+$(X, \mathfrak{A}, \mu)$, $h: X \rightarrow \rinf$, измерима, вочти всюду конечна
+
+$\forall t \in \mathbb{R} \quad \mu X(h < t) < +\infty$
+
+Пусть $H(t) = \mu X(h < t)$ --- возрастающая
+
+$H(t)$ --- называется функцией распределеиния по мере $\mu$
+
+\subsubsection{Ортогональный ряд}
+
+Ряд $\sum a_k$ --- ортогональный, если $\forall k, l a_k \perp a_l$
+
+\subsubsection{Сходящийся ряд в гильбертовом пространстве}
+
+$\sum a_n, a_n \in \mathfrak{H}$
+
+$S_N := \sum_{1 \le n \le N} a_n$, если $\exists S \in \mathfrak{H}: S_N \goesto{\mathfrak{H}} S$
+
+Такой ряд называется сходящимся.
+
 \newpage
 
 \subsection{Важные теоремы}
@@ -602,6 +715,149 @@ $\nu b = \int_{B} \omega d \mu$ --- ещё одна мера в $X$
 Тогда $\exists \delta > 0 \dbl \forall$ Куб $Q \subset B(a, \delta)$
 
 \[\lambda \cdot \Phi(Q) < c \cdot \lambda Q\]
+
+\textit{Доказательство:}
+
+\subsubsection{Предельный переход по параметру в несобственном интеграле}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f: \langle a, b \rangle \times Y \rightarrow \rinf$
+    \item $Y \subset \tilde{Y}$ --- метризуемое
+    \item $y_0 \in \tilde{Y}$ --- предельная точка $Y$
+\end{itemize}
+
+\begin{enumerate}
+    \item при почти всех $x \exists f_0(x) = \lim_{y \rightarrow y_0} f(x, y)$
+    \item $\forall t \in (a, b) \dbl \forall f(x, y_0), f(x, y)$ --- суммируемые по $x$ на $(a, t)$ и $\int_a^{t} f(x, y) dx \goesto{y \rightarrow y_0} \int_a^{t} f_0(x) dx$
+    \item $J(y) = \int_a^{\rightarrow b} f(x, y)$ --- равномерно сходящаяся при $y \in Y$
+\end{enumerate}
+
+Тогда $\int_a^{\rightarrow b} f_0(x) dx$ --- существует (как несобственный)
+
+\textit{Доказательство:}
+
+
+\subsubsection{Предельный переход под знаком интеграла при наличии равномерной сходимости или $L_{loc}$}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f: X \times \tilde{Y} \rightarrow \rinf$
+    \item $X$ --- пространство с мерой, $\mu X < + \rinf$
+    \item $\tilde{Y}$ --- метрезуемое топологическое пространство
+    \item $Y \subset \tilde{Y}$
+    \item $a \in \tilde{Y}$ --- предельная точка  $Y$
+    \item $\forall y \in Y \quad x \mapsto f(x, y)$ --- суммируема на $X$
+    \item Пусть $f(x, y) \rsh{y \rightarrow a} \varphi(x)$
+\end{itemize}
+
+Тогда $\varphi$ --- суммируема на $X$ и 
+
+\[\lim_{y \rightarrow a} \int_{X} f(x, y) d \mu(x) = \int_{X} \varphi(x) d \mu(x)\]
+ 
+\textit{Доказательство:}
+
+\subsubsection{Правило Лейбница дифференцирования интеграла по параметру}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $Y$ --- промежуток $\subset \mathbb{R}$
+    \item $f: X \times Y \rightarrow \mathbb{R}$
+    \item $\forall \quad f(x, y)$ --- суммируемая функция от $x$
+    \item При почти всех $x \dbl \forall y \exists f'_y(x, y)$
+    \item $f'_y$ --- удовлетворяет условию $L_{loc}(y_0)$
+\end{itemize}
+
+Тогда:
+
+\begin{itemize}
+    \item $J(y) = \int_{X} f(x, y) d\mu(x)$ --- дифференцируема в $y_0$
+    \item $J'(y_0) = \int_{X} f'_y(x, y) d \mu(x)$
+\end{itemize}
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема о вложении пространств $L^p$}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\mu E < + \infty, 1 \le s < r \le +\infty$
+\end{itemize}
+
+Тогда:
+
+\begin{enumerate}
+    \item $L_r(E, \mu) \subset L_s(E, \mu)$
+    \item $||f||_s \le \left(\mu E\right)^{\frac{1}{s} - \frac{1}{r}} \cdot ||f||_{r}$
+\end{enumerate}
+
+\textbf{fix}
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема о сходимости в $L^p$ и по мере}
+\textit{Формулировка:}
+
+$1 \le p < +\infty \quad f_n \in L_p(E, \mu)$: 
+
+\begin{enumerate}
+    \item $f \in L_p \quad f_n \goesto{L_p} f$, тогда $f_n \underset{\mu}{\Longrightarrow} f$
+    \item $f_n \underset{\mu}{\Longrightarrow} f$ [либо $f_n \rightarrow f$ почти всюду], $|f_n| \le g$ почти всюду, при всех $n$, где $g \in L^p$. Тогда $f_n \goesto{L_p} f$
+\end{enumerate}
+\textit{Доказательство:}
+
+
+
+\subsubsection{Полнота $L^p$}
+\textit{Формулировка:}
+
+$L^p(E, \mu)$ ---- полное ($1 \le p < + \infty$)
+
+\textit{Доказательство:}
+
+\subsubsection{Плотность в $L^p$ множества ступенчатых функций}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu), 1 \le p \le +\infty$
+\end{itemize}
+
+Тогда множество ступенчатых функций плотно в $L_p(X, \mu)$
+
+\textit{Доказательство:}
+
+\subsubsection{Лемма Урысона}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $X$ --- нормированное топологическое пространство (например, $\mathbb{R}^m$)
+    \item $F_0, F_1 \subset X$ --- замкнутое
+    \item $F_0 \cap F_1 = \varnothing$
+\end{itemize}
+
+Тогда: $f: X \rightarrow \mathbb{R}, \quad 0 \le f \le 1$ --- непрерывное
+
+$f|_{F_0} \equiv  0$, $f|_{F_1} \equiv 1$
+
+\textit{Доказательство:}
+
+\subsubsection{Плотность в $L^p$ непрерывных финитных функций}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(\mathbb{R}^{m}, \mathfrak{M}^{m}, \lambda_m)$
+\end{itemize}
+
+Тогда $C_0(\mathbb{R}^{m})$ плотно в $L^{p}(\mathbb{R}^{m}, \lambda_m)$
+
+\textit{Доказательство:}
+
+\subsubsection{Интегрирование по мере Бореля--Стильтьеса, порожденной функцией распределения (с леммой)}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item 
+\end{itemize}
 
 \textit{Доказательство:}
 \newpage
