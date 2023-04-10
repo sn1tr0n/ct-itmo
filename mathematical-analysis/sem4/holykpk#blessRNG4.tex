@@ -193,6 +193,15 @@ $\omega: X \rightarrow \mathbb{R} \ge 0$, измерима на $X$
 
 $B \in \mathfrak{B}, \tilde{\nu}(B) := \int_{\Phi^{-1}(B)} \omega d\mu$ --- тоже мера, это и есть взвешенный образ меры $\mu$ при отображении $\Phi$
 
+\subsubsection{Плотность одной меры по отношению к другой}
+
+$X = Y, \mathfrak{A} = \mathfrak{B}, \Phi = $ id
+
+$\nu b = \int_{B} \omega d \mu$ --- ещё одна мера в $X$
+
+Здесь $\omega$ называется плотностью меры $\nu$ относительно меры $\mu$. И в этом случае:
+
+\[\int_{X}f(x)d\nu(x) = \int f(x) \cdot \omega(x) d\mu(x)\]
 \newpage
 
 \subsection{Важные теоремы}
@@ -272,6 +281,36 @@ $B \in \mathfrak{B}, \tilde{\nu}(B) := \int_{\Phi^{-1}(B)} \omega d\mu$ --- то
     \item $x \mapsto \varphi(x) = \int_{Y} f_{x} d\nu$ --- это суммируемая функция на $X$
     \item \[\int_{X \times Y} f dm= \int_{X} \varphi(x) d \mu(x) = \int_{X} \left( \int_{Y} f(x, y) d  \nu (y)\right) d \mu(x)\]
 \end{enumerate}
+
+\subsubsection{Теорема о преобразовании меры при диффеоморфизме}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\Phi: O \subset \mathbb{R}^{m} \rightarrow \mathbb{R}^{m}$, диффеоморфизм
+\end{itemize}
+
+Тогда $\forall A \in \mathbb{M}^{m}, A \subset O$
+
+\[\lambda \Phi(a) = \int_{A} |\det \Phi'(x)| dx\]
+
+\textit{Доказательство:}
+
+
+
+\subsubsection{Теорема о гладкой замене переменной в интеграле Лебега}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\Phi: O \subset \mathbb{R}^{m} \rightarrow \mathbb{R}^{m}$, диффеоморфизм
+    \item $\Phi(O) = O'$
+    \item $f: O' \rightarrow \mathbb{R} \ge 0$ --- измерима
+\end{itemize}
+
+Тогда:
+
+\[\int_{O'} fdx = \int_{O} f\left(\Phi(x)\right) \cdot |\det \Phi'(x) d\lambda(x)|\]
+
+\textit{Доказательство:}
 
 \newpage
 
@@ -467,8 +506,102 @@ $B \in \mathfrak{B}, \tilde{\nu}(B) := \int_{\Phi^{-1}(B)} \omega d\mu$ --- то
 \textit{Формулировка:}
 
 \begin{itemize}
-    \item 
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $f_n \ge 0$ --- измерима
+    \item $f_n \rightarrow f$ почти везде
+    \item Если $\exists C > 0\ \dbl \forall n \int_{X} f_n d\mu \le C$  
 \end{itemize}
+
+Тогда:
+
+\[\int_{X} f d\mu \le C\]
+
+\textit{Доказательство:}
+
+\textit{Следствие: }
+
+То же самое, только меняем сходимость почти везде на: 
+
+\begin{itemize}
+    \item $f_n, f \ge 0$, измеримы, почти везде конечны
+    \item $f_n \underset{\mu}{\Longrightarrow} f$
+\end{itemize}
+
+\textit{Следствие: }
+
+\begin{itemize}
+    \item $f_n \ge 0$, измеримы
+\end{itemize}
+
+Тогда:
+
+\[\int_{X} \underline{\lim}f_n \le \underline{\lim}\int_{X} f_n\]
+
+
+\subsubsection{Теорема о вычислении интеграла по взвешенному образу меры}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu), (Y, \mathfrak{B}, \_)$ --- пространства с мерой
+    \item $\omega: X \rightarrow \rinf \ge 0$ --- измеримо
+    \item $\Phi: X \rightarrow Y$ --- ``измеримое''
+    \item $\nu$ --- взвешенный образ $\mu$ (с весом $\omega$)
+\end{itemize}
+
+Тогда для $\forall f: Y \rightarrow \rinf \ge 0$ --- измеримых:
+\begin{enumerate}
+    \item $f \circ \Phi$ --- измеримо (относительно $\mathfrak{A}$)
+    \item $\int_{Y} f d\nu = \int_{X} f(\Phi(x))\cdot\omega(x) d\mu(x)$
+\end{enumerate}
+\textit{Доказательство:}
+
+\subsubsection{Критерий плотности}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $(X, \mathfrak{A}, \mu)$ --- пространство с мерой
+    \item $\nu$ --- ещё одна мера на $\mathfrak{A}$
+    \item $\omega: X \rightarrow \rinf \ge 0$, измеримо 
+\end{itemize}
+
+Тогда эквивалентно:
+
+\begin{enumerate}
+    \item $\omega$ --- плотность $\mu$ отностительно $\mu$
+    \item $\forall A \in \mathfrak{A} \quad \inf_{A} \omega \cdot \mu A \le \nu A \le \sup_{A} \omega \cdot \mu A$
+\end{enumerate}
+
+\textit{Доказательство:}
+
+\subsubsection{Лемма о единственности плотности}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f, g$ --- суммируемы на $X$
+    \item $\forall A$ --- измеримое, $\int_{A} f = \int_{A} g$
+\end{itemize}
+
+Тогда $f = g$ почти везде
+
+\textit{Доказательство:}
+
+\textit{Следствие: }
+
+Плотность меры определяется однозначно с точностью до изменения на множестве меры 0.
+
+\subsubsection{Лемма об оценке мер образов малых кубов}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\Phi: O \subset \mathbb{R}^{m} \rightarrow \mathbb{R}^{m}$
+    \item $\Phi \in C^{1}$
+    \item $a \in O$
+    \item Пусть $c > |\det \Phi'(a)| \neq 0$
+\end{itemize}
+
+Тогда $\exists \delta > 0 \dbl \forall$ Куб $Q \subset B(a, \delta)$
+
+\[\lambda \cdot \Phi(Q) < c \cdot \lambda Q\]
 
 \textit{Доказательство:}
 \newpage
