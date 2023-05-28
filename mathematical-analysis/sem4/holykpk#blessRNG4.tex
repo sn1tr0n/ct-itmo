@@ -173,6 +173,17 @@ $a$ --- существенная верхняя граница функции $f
 
 $\mathfrak{H}$ --- линейное пространство, в котором задано скалярное произведение и соответствующая норма. Если $\mathfrak{H}$ --- полное, то оно называется гильбертовым.
 
+\subsubsection{Ортонормированная система, примеры}
+
+${e_k}$ --- О. С. , тогда ${\frac{e_k}{|| e_k ||}}$ --- ортонормированная система.
+
+Примеры: 
+
+\begin{enumerate}
+    \item $l^2 \quad e_k = (0, \ldots, 0, 1, 0, \ldots)$
+    \item $L^2[0, 2\pi] \quad \{1, \cos t, \sin t, \cos 2t, \sin 2t, \cos 3t, \sin 3t, ldots\}$
+    \item $\left(\frac{e^{ikt}}{\sqrt{2\pi}}\right)_{k \in \mathbb{Z}}$
+\end{enumerate}
 \newpage
 
 \subsection{Определения}
@@ -315,6 +326,26 @@ $S_N := \sum_{1 \le n \le N} a_n$, если $\exists S \in \mathfrak{H}: S_N \go
 
 Такой ряд называется сходящимся.
 
+\subsubsection{Ортогональная система (семейство) векторов}
+
+${e_k} \subset \mathcal{H}$ --- ортогональная система, если:
+
+\begin{enumerate}
+    \item $k \neq j \dbl e_k \perp e_j$
+    \item $\forall k \dbl e_k \neq 0$
+\end{enumerate}
+
+\subsubsection{Коэффициенты Фурье}
+
+\[c_k(x) = \frac{\langle x, e_k \rangle}{||e_k||^2}\]
+
+--- коэффициент Фурье вектора $x$ по О. С. $e_k$
+
+\subsubsection{Ряд Фурье в Гильбертовом пространстве}
+
+\[c_k \cdot e_k\]
+--- ряд Фурье ветора $x$ по О. С. $e_k$
+
 \newpage
 
 \subsection{Важные теоремы}
@@ -425,6 +456,34 @@ $S_N := \sum_{1 \le n \le N} a_n$, если $\exists S \in \mathfrak{H}: S_N \go
 
 \textit{Доказательство:}
 
+\subsubsection{Теорема о непрерывности сдвига}
+    \textit{Формулировка:}
+
+    \begin{itemize}
+        \item $f: \mathbb{R}^{m} \rightarrow \rinf$
+        \item $h \in \mathbb{R}^{m}$
+        \item $f_{h}(x) := f(x + h)$
+    \end{itemize}
+
+    \begin{enumerate}
+        \item $f$ --- равномерно непрерывна в $\mathbb{R}^{m}$
+        
+        Тогда $||f_h - f||_{\infty} \goesto{h \rightarrow 0} 0$
+
+        \item $1 \le p < +\infty, \dbl f \in L^{p}(\mathbb{R}^{m})$
+        
+        Тогда $||f_h - f||_{p} \goesto{h \rightarrow 0} 0$
+
+        \item $f \in \tilde{C}[0, \tau]$
+        
+        Тогда $||f_h - f||_{\infty} \goesto{} 0$
+
+        \item $1 \le p < +\infty, \dbl f \in L^{p}[0, \tau]$
+        
+        Тогда $||f_h - f||_{p} \goesto{} 0$
+    \end{enumerate}
+
+    \textit{Доказательство:}
 \newpage
 
 \subsection{Теоремы}
@@ -856,13 +915,156 @@ $f|_{F_0} \equiv  0$, $f|_{F_1} \equiv 1$
 \textit{Формулировка:}
 
 \begin{itemize}
-    \item 
+    \item $f: \mathbb{R} \rightarrow \rinf \ge 0$, измерима по Борелю
+    \item $h: X \rightarrow \rinf$, измерима, почти везде конечна
+    \item $H$ --- функция распеределения
+    \item $\mu_{H}$ --- мера Бореля-Стильетса
 \end{itemize}
+
+Тогда:
+
+\[\int_{X} f\left(h(x)\right)d\mu(x) = \int_{\mathbb{R}} f(t)d\mu_{H}(t)\]
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема об интегрировании по частям}
+
+\textit{Формулировка: }
+
+\begin{itemize}
+    \item $g: [a, b] \rightarrow \mathbb{R}$, возрастающая
+    \item $f$ --- абсолютно непрерывная функция ($C^{1}$) на $[a, b]$
+    \item $\mu_{H}$ --- мера Бореля(Лебега ?)-Стильетса
+\end{itemize}
+
+Тогда:
+
+\[\int_{[a, b)} f(x) dg(x) = fg|_{a}^{b} - \int_{[a, c]} f'(x)g(x)dx\]
 
 \textit{Доказательство:}
 \newpage
 
 
+\subsubsection{Лемма о  ``почти признаке Дирихле''}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $-\inf < a < b \le +\inf$
+    \item $f$ --- ``доп.'' на $[a, b)$ ($\forall A \in (a, b) f$ --- суммируема на $(a, A)$)
+    \item $g(x)$ --- монотонно стремится к 0 при $x \rightarrow b - 0$
+    \item Пусть функция $F(t) = \int_{a}^{t} fdx$ --- ограничена
+\end{itemize}
+
+Тогда:
+
+\[\int_{a}^{\rightarrow b} fg dx\] --- сходится
+
+\[\left|\int_{a}^{\rightarrow b} fg dx\right| \le |g(a)| \cdot \sup_{t \in (a, b)} \left|\int_{t}^{\rightarrow b} f dx\right|\]
+
+\textit{Доказательство:}
+
+
+\subsubsection{Следствие о ``почти признаке Абеля''}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $\int_{a}^{\rightarrow b} f dx$ --- сходится, $g$ --- монотонна и ограничена на $[a, b)$
+\end{itemize}
+
+Тогда: $\int_{a}^{\rightarrow b} f dx$ --- сходится, и к тому же: 
+
+\[\left|\int_{a}^{\rightarrow b} fg\right| \le 5 (???) \cdot \sup_{(a, b)} \left|g(t)\right| \cdot \sup_{(a, b)} \left|\int_{t}^{\rightarrow b} f(x) dx \right|\]
+
+\textit{Доказательство:}
+
+\subsubsection{Признак Абеля равномерной сходимости интеграла}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $f, g: [a, b) \times Y \rightarrow \mathbb{R}$
+    \item $\int_{a}^{\rightarrow b} f(x, y) dx$ --- равномерно сходящийся на $Y$
+    \item $g(x, y)$ --- ограничена на $[a, b) \times Y$
+\end{itemize}
+
+Тогда:
+
+\[\int_{a}^{\rightarrow b} f(x, y) g(x, y) dx\]
+
+--- равномерно сходящийся на $Y$.
+
+\textit{Доказательство:}
+
+\newpage
+
+\section{Период Мезозойский}
+\subsection{Важные определения}
+
+\newpage
+
+\subsection{Определения}
+
+\subsubsection{Кусочно-гладкий путь}
+
+$\gamma$ --- кусочно-гладкий, $V$ --- непрерывно, $V = (V_1, V_2, \ldots, V_m)$
+
+\[I(V, \gamma) = \int_a^b\langle V\left(\gamma(t)\right), \gamma'(t)\rangle dt = \]
+
+\[\int_a^b V_1\left(\gamma(t)\right)\gamma'_1(t) + V_2\left(\gamma(t)\right)\gamma'_2(t) + \ldots + V_m\left(\gamma(t)\right)\gamma'_m(t) dt =\]
+
+Делаем замену: $x = \gamma(t)$; $x_1 = \gamma_1(t), x_2 = \gamma_2(t)$; $dx_m = \gamma'_m(t) dt$
+
+\[\int_{\gamma} V_1 dx_1 + V_2 dx_2 + \ldots + D_m dm\]
+
+\newpage
+
+\subsection{Важные теоремы}
+\newpage
+
+\subsection{Теоремы}
+\subsubsection{Теорема о свойствах сходимости в гильбертовом пространстве}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item $x_n \rightarrow x_0, y_n \rightarrow y_0 \quad \langle x_n, y_n \rangle \rightarrow \langle x_0, y_0 \rangle$
+    \item $\sum_n x_n$ --- сходится
+    
+    Тогда $\forall y \in \mathcal{H} \quad \langle \sum x_n , y\rangle = \sum \langle x_n, y \rangle$
+
+    \item $\sum x_n$ --- ортогональный ряд
+    
+    Тогда $\sum x_n$ --- сходится $\Leftrightarrow \sum ||x_n||^2$ --- сходится
+\end{itemize}
+
+\textit{Доказательство:}
+
+\subsubsection{Теорема о коэффициентах разложения по ортогональной системе}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item ${e_k}$ --- ортогональная система в $\mathcal{H}$
+    \item $x \in \mathcal{H}$
+    \item $x = \sum_{x = 1}^{\infty} c_k e_k$
+\end{itemize}
+
+Тогда:
+
+\begin{enumerate}
+    \item ${e_k}$ --- ЛНЗ
+    \item $c_k = \frac{\langle x, e_k \rangle}{||e_k||^2}$
+    \item $c_ke_k$ --- это проекция на прямую $l_k = {te_k, t \in \mathbb{R}}, x = c_ke_k + z, $ где $z \perp l_k$
+\end{enumerate}
+
+\textit{Доказательство:}
+
+
+\subsubsection{Теорема о свойствах частичных сумм ряда Фурье. Неравенство Бесселя}
+\textit{Формулировка:}
+
+\begin{itemize}
+    \item 
+\end{itemize}
+
+\textit{Доказательство:}
 \end{document}
 
 \begin{comment}
