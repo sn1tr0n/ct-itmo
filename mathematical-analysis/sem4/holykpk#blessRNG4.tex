@@ -2150,7 +2150,7 @@ $h$ --- измерима $\Rightarrow \dbl \forall B \in \mathfrak{B}, \dbl D \s
 
 \[\int_{a}^{\rightarrow b} fg dx\] --- сходится
 
-\[\left|\int_{a}^{\rightarrow b} fg dx\right| \le |g(a)| \cdot \sup_{t \in (a, b)} \left|\int_{t}^{\rightarrow b} f dx\right|\]
+\[\left|\int_{a}^{\rightarrow b} fg dx\right| \le |g(a)| \cdot \sup_{t \in (a, b)} \left|\int_{a}^{t} f dx\right|\]
 
 \textit{Доказательство:}
 
@@ -4288,7 +4288,7 @@ $M$ --- из АЕ2. Ну чтож, супер, давайте теперь оц�
 
 \begin{itemize}
     \item $f \in \tilde{C}[-\pi, \pi]: \sigma_n(f, x) \rsh{n \rightarrow \infty} f$
-    \item $f \in L^p[-\pi, \pi]: ||\sigma_n(f, x) - f||_1 \ntoinf 0$
+    \item $f \in L^p[-\pi, \pi]: ||\sigma_n(f, x) - f||_p \ntoinf 0$
     \item Если $f \in L^1[-\pi, \pi]$ непрерывна в точке $x$, тогда:
     \[\sigma_n(f, x) \ntoinf f(x)\]
 \end{itemize}
