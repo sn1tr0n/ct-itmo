@@ -1,0 +1,20 @@
+start: a;
+
+[] a returns []: b[]<> a1[]<>;
+[] a1 returns []: OR b[]<> a1[]<> | eps;
+[] b returns []: c[]<> b1[]<> | eps;
+[] b1 returns []: c[]<> b1[]<> | eps;
+[] c returns []: LB a[]<> RB d[]<> | CHAR d[]<>;
+[] d returns []: MANY
+  | LCB n[]<> RCB
+  | eps;
+[] n returns[]: NUMBER | eps;
+
+OR : $\\|$;
+LB: $\\($;
+RB: $\\)$;
+CHAR:$[a-zA-Z]+$;
+MANY:$\\*$;
+LCB: $\\{$;
+RCB: $\\}$;
+NUMBER: $[0-9]+$;

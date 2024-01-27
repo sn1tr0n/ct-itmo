@@ -1,0 +1,30 @@
+start: e;
+WS: $[ \n\t\r]+$;
+
+[] e returns ['res: Int = 0']:
+    t[]<> ePrime['t0.res']<'result.res = ePrime0.res'>;
+['acc: Int'] ePrime returns ['res: Int = 0']:
+    PLUS t[]<> ePrime['acc + t0.res']<'result.res = ePrime0.res'>
+    | MINUS t[]<> ePrime['acc - t0.res']<'result.res = ePrime0.res'>
+    | eps<'result.res = acc'>;
+[] t returns ['res: Int = 0']: f[]<> tPrime['f0.res']<'result.res = tPrime0.res'>;
+['acc: Int'] tPrime returns ['res: Int = 0']:
+    MUL f[]<> tPrime['acc * f0.res']<'result.res = tPrime0.res'>
+    | DIV f[]<> tPrime['acc / f0.res']<'result.res = tPrime0.res'>
+    | eps<'result.res = acc'>;
+[] f returns ['res: Int = 0']:
+    NUMBER<'result.res = NUMBER0.text.toInt()'>
+    | LB e[]<'result.res = e0.res'> RB
+    | SLB e[]<> COMMA e[]<> SRB<'result.res = com.google.common.math.BigIntegerMath.binomial(e0.res, e1.res).toInt()'>
+    | MINUS f[]<'result.res = -f0.res'>;
+
+PLUS : $\\+$;
+MINUS: $-$;
+MUL : $\\*$;
+DIV : $/$;
+LB : $\\($;
+RB : $\\)$;
+SLB : $\\[$;
+SRB : $\\]$;
+COMMA : $,$;
+NUMBER : $[0-9]+$;
