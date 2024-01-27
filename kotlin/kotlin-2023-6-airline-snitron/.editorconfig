@@ -1,0 +1,11 @@
+[*]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+[*.{kt,kts}]
+ktlint_code_style = ktlint_official
+ktlint_standard_no-wildcard-imports = disabled
+ktlint_standard_no-blank-line-before-rbrace = disabled
+ij_kotlin_imports_layout = *
+insert_final_newline = true

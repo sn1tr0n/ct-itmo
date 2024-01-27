@@ -1,0 +1,33 @@
+name: Kotlin hw1 check 
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+
+jobs:
+  build:
+
+    runs-on: [self-hosted, kotlin]
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: adopt
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Check list of changet files (should be Task.kt only)
+        run: |
+          git fetch origin main > /dev/null 2>&1
+          if [ $(git diff origin/main HEAD --name-only | grep -v "Task.kt" | wc -c) -gt 1 ]; 
+            then echo "Your solution changed not only Task.kt files. Please roll back changes in other files" && exit 1;
+          fi
+        shell: bash
+
+      - name: Build with Gradle
+        run: ./gradlew build
