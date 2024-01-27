@@ -4,7 +4,7 @@
 
 ## 5 семестр
 ### Математическая статистика
-> [Лабы](matstat)
+> [Лабы](https://github.com/snitron/matstat)
 
 ### Методы трансляции
 > [Лабы](translation-methods)
@@ -14,6 +14,7 @@
 
 ### Kotlin
 > [ДЗ](kotlin)
+
 ## 4 семестр
 ### Математический анализ 
 >  Полный конспект [PDF](/mathematical-analysis/sem4/holykpk%23blessRNG4.pdf) [TeX](/mathematical-analysis/sem4/holykpk%23blessRNG4.tex)
