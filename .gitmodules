@@ -1,0 +1,3 @@
+[submodule "matstat"]
+	path = matstat
+	url = https://github.com/snitron/matstat
