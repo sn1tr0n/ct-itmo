@@ -1,0 +1,5 @@
+package-dbs: clear,
+             global,
+             /Users/snitron/.stack/snapshots/aarch64-osx/ea6af8a3d06e89716042f0f2032407a8081ab4eb70b0021dc619e297e10155f3/8.10.7/pkgdb,
+             /Users/snitron/Projects/homework-6-snitron/hw6/.stack-work/install/aarch64-osx/ea6af8a3d06e89716042f0f2032407a8081ab4eb70b0021dc619e297e10155f3/8.10.7/pkgdb
+ignore-project: False
