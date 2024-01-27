@@ -12,6 +12,8 @@
 ### Функциональное программирование 
 > [ДЗ](fp)
 
+### Kotlin
+> [ДЗ](kotlin)
 ## 4 семестр
 ### Математический анализ 
 >  Полный конспект [PDF](/mathematical-analysis/sem4/holykpk%23blessRNG4.pdf) [TeX](/mathematical-analysis/sem4/holykpk%23blessRNG4.tex)
