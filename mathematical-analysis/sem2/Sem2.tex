@@ -108,7 +108,6 @@
 В данном конспекте отсутсвуют следующие теоремы:
 \begin{enumerate}
 \item Теорема о группировке слагаемых
-\item Теорема о перестановке слагаемых
 \item Теорема о произведении рядов
 \item Теорема об условиях сходимости бесконечного произведения
 \item Лемма об оценке приближения экспоненты ее замечательным пределом
@@ -1543,6 +1542,41 @@ $R_N = \sum_{k=N}^{+\infty} a_k$ --- $N$-ый остаток ряда.
 \subsubsection{Критерий Больцано--Коши сходимости числового ряда\texorpdfstring{$^1$}{}}
 \nameref{КБК}
 
+\subsubsection{Бесконечное произведение\texorpdfstring{$^3$}{}}
+
+Выражение вида $\prod\limits_{k=1}^{+\infty}a_k$ будем называть бесконечным произведением. 
+
+Обозначим $P_n = \prod\limits_{k=1}^{n}a_k$ - что-то типа частичного произведения.
+
+Если:
+\begin{enumerate}
+    \item $\exists $ конечный $ \lim\limits_{n\to+\infty} P_n \in (0, +\infty)$, то произведение сходится
+    \item $\lim\limits_{n\to+\infty} P_n = +\infty$, то произведение расходится
+    \item $\lim\limits_{n\to+\infty} P_n = 0$, то произведение расходится к нулю
+    \item $\nexists \lim\limits_{n\to+\infty} P_n$, то произведение расходится
+\end{enumerate}
+
+
+Обозначим $\prod_n = \prod\limits_{k=n}^{+\infty}$ и отметим пару свойств бесконечных произведений:
+\begin{enumerate}
+    \item $\prod\limits_{k=n}^{+\infty} = P_{n - 1} \cdot \prod_n$ 
+    \item $\prod\limits_{k=n}^{+\infty} a_k$ сходится $\Rightarrow \prod_n \to 1$ при $n \to +\infty$ 
+    \item $\prod\limits_{k=n}^{+\infty} a_k$ сходится $\Rightarrow a_k \to 1$
+    \item $\prod\limits_{k=n}^{+\infty} a_k$ сходится только если $\exists K \in \mathbb{N}:\quad \forall k > K \quad a_k > 0$
+    \item Пусть $a_k >0$. Тогда $\prod\limits_{k=n}^{+\infty} a_k$ сходится $\Leftrightarrow$ ряд $\sum \ln{a_k}$ сходится. Причем если $\sum \ln{a_k} = S$, то $\prod\limits_{k=n}^{+\infty} a_k = e^S$
+\end{enumerate}
+
+Доказываются эти свойства очевидно, поэтому просто накину идеи доказательств. 
+
+\begin{enumerate}
+    \item Предельный переход при $n\to +\infty$
+    \item Выражаем нужный член из первого пункта
+    \item $a_k = \frac{P_k}{P_{k-1}} \to 1$ при $k \to +\infty$
+    \item Теорема о стабилизации знака
+    \item Просто прологарифмируем $P_n$
+\end{enumerate}
+
+
 \newpage
 \subsection{Важные теоремы}
 \subsubsection{Гамма функция Эйлера. Простейшие свойства.\texorpdfstring{$^1$}{}}
@@ -2579,6 +2613,34 @@ $$
 Левое слагаемое конечно, обратим внимание на правое: $\sum_{k=1}^{+\infty} a_k (b_k - \beta)$ сходится по признаку Дирихле, так как $a_k$ сходится $\Rightarrow a_k$ ограничено, $b_k \rightarrow \beta \Rightarrow b_k - \beta \rightarrow 0$, монотонность $b_k$ у нас остаётся по условию.
 
 Таким образом, получившееся выражение тоже целиком сходится.
+
+\subsubsection{Теорема о перестановке слагаемых\texorpdfstring{$^3$}{}}
+
+\subparagraph{Формулировка: }
+
+Рассмотрим ряд $\sum a_k$ - положительный ряд. 
+
+Пусть $\sum b_k$ - его перестановка. 
+
+Тогда,
+если ряд $\sum a_k$ абсолютно сходится, то ряд $\sum b_k$ абсолютно сходится к той же сумме.
+
+\subparagraph{Доказательство: }
+
+\begin{enumerate}
+    \item Путь $\sum a_k$ - положительный ряд. 
+
+        По определению частичная сума $\sum S_k^b = a_{\pi(1)} + \ldots + a_{\pi(k)} \leq S_M^a$, где $M = \max{(\pi(1), \ldots, \pi(k))}$
+
+        Так как $M \to \infty$ при $k \to \infty$, а пределы частичных сумм существуют, получаем, что $S^b \leq S^a$, следовательно существует $\pi^{-1}$. 
+        
+        Аналогично получаем $S^a \leq S^b$, т.е. $S^a = S^b$.
+    \item Убираем ограничение на член ряда. 
+
+        Рассматриваем ряды $\sum a_k^+, \sum b_k^+$, где $a_k^+ = \max{(a_k, 0)}, b_k^+ = \max{(b_k, 0)}$. Опа, то есть эти ряды - есть перестановки, которые задаются биекцией, и по п.$1$ абсолютно сходятся к одному и тому же значению. 
+
+        Аналогично определяем $a_k^- = \max{(-a_k, 0)}, b_k^- = \max{(-b_k, 0)}$. Понимаем, что $\sum a_k = \sum a_k^+ + \sum a_k^-$. И осознаем, что теорема доказана.
+\end{enumerate}
 
 
 \subsubsection{Единственность производной\texorpdfstring{$^2$}{}}
